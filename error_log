@@ -1,0 +1,22 @@
+[27-Dec-2014 09:02:16 Etc/GMT] PHP Warning:  require(/home/iitkgrib/public_html/wp-includes/load.php): failed to open stream: No such file or directory in /home/iitkgrib/public_html/wp-settings.php on line 21
+[27-Dec-2014 09:02:16 Etc/GMT] PHP Fatal error:  require(): Failed opening required '/home/iitkgrib/public_html/wp-includes/load.php' (include_path='.:/usr/local/altphp54/lib/php') in /home/iitkgrib/public_html/wp-settings.php on line 21
+[27-Dec-2014 09:02:16 Etc/GMT] PHP Warning:  require(/home/iitkgrib/public_html/wp-includes/load.php): failed to open stream: No such file or directory in /home/iitkgrib/public_html/wp-settings.php on line 21
+[27-Dec-2014 09:02:16 Etc/GMT] PHP Fatal error:  require(): Failed opening required '/home/iitkgrib/public_html/wp-includes/load.php' (include_path='.:/usr/local/altphp54/lib/php') in /home/iitkgrib/public_html/wp-settings.php on line 21
+[27-Dec-2014 09:02:22 Etc/GMT] PHP Warning:  require(/home/iitkgrib/public_html/wp-includes/load.php): failed to open stream: No such file or directory in /home/iitkgrib/public_html/wp-settings.php on line 21
+[27-Dec-2014 09:02:22 Etc/GMT] PHP Fatal error:  require(): Failed opening required '/home/iitkgrib/public_html/wp-includes/load.php' (include_path='.:/usr/local/altphp54/lib/php') in /home/iitkgrib/public_html/wp-settings.php on line 21
+[05-Jan-2015 04:21:47 UTC] PHP Fatal error:  Call to undefined function get_author_posts_url() in /home/iitkgrib/public_html/wp-content/themes/esteem/content-blog-full-content.php on line 22
+[15-Jan-2015 11:49:58 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/features/email-confirmation/email-confirmation.php on line 111
+[15-Jan-2015 12:39:56 UTC] PHP Parse error:  syntax error, unexpected '>' in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[15-Jan-2015 12:40:03 UTC] PHP Parse error:  syntax error, unexpected '>' in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[15-Jan-2015 12:40:16 UTC] PHP Parse error:  syntax error, unexpected '>' in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[15-Jan-2015 12:40:24 UTC] PHP Parse error:  syntax error, unexpected '>' in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:02:39 UTC] PHP Parse error:  syntax error, unexpected ''" title="'' (T_CONSTANT_ENCAPSED_STRING) in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:06:00 UTC] PHP Warning:  sprintf(): Too few arguments in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:08:56 UTC] PHP Warning:  sprintf(): Too few arguments in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:09:04 UTC] PHP Warning:  sprintf(): Too few arguments in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:10:06 UTC] PHP Warning:  sprintf(): Too few arguments in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:10:08 UTC] PHP Warning:  sprintf(): Too few arguments in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:11:21 UTC] PHP Parse error:  syntax error, unexpected ''" title="'' (T_CONSTANT_ENCAPSED_STRING) in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[16-Jan-2015 11:12:48 UTC] PHP Parse error:  syntax error, unexpected ''" title="'' (T_CONSTANT_ENCAPSED_STRING) in /home/iitkgrib/public_html/wp-content/plugins/profile-builder/front-end/login.php on line 199
+[07-Feb-2015 05:50:43 UTC] PHP Fatal error:  Call to undefined function the_advanced_excerpt() in /home/iitkgrib/public_html/wp-content/themes/iit/index.php on line 99
+[07-Feb-2015 05:50:43 UTC] PHP Fatal error:  Call to undefined function the_advanced_excerpt() in /home/iitkgrib/public_html/wp-content/themes/iit/index.php on line 99

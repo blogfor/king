@@ -1,0 +1,194 @@
+<?php
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme and one
+ * of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query,
+ * e.g., it puts together the home page when no home.php file exists.
+ *
+ * @link http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package WordPress
+ * @subpackage Twenty_Fourteen
+ * @since Twenty Fourteen 1.0
+ */
+
+get_header(); ?>
+
+<div class="motopress-wrapper content-holder clearfix">
+<div class="container">
+<div class="row">
+<div class="span12" data-motopress-wrapper-file="page-home.php" data-motopress-wrapper-type="content">
+<div class="row">
+<div class="span12" data-motopress-type="static" data-motopress-static-file="static/static-slider.php">
+<div id="slider-wrapper" class="slider">
+<div class="container">
+<div class="slider-inner clearfix">
+
+<div id="camera" class="camera_wrap">
+<div data-src='<?php echo get_template_directory_uri(); ?>/images/11.jpg' data-thumb='<?php echo get_template_directory_uri(); ?>/images/11.jpg' style=""> 
+</div>
+<div data-src='<?php echo get_template_directory_uri(); ?>/images/slider12.jpg' data-thumb='<?php echo get_template_directory_uri(); ?>/images/slider12.jpg'> 
+</div>
+
+<div data-src='<?php echo get_template_directory_uri(); ?>/images/slider13.jpg' data-thumb='<?php echo get_template_directory_uri(); ?>/images/slider13.jpg'> 
+</div>
+
+<div data-src='<?php echo get_template_directory_uri(); ?>/images/slider14.jpg' data-thumb='<?php echo get_template_directory_uri(); ?>/images/slider14.jpg'> 
+</div>
+<div data-src='<?php echo get_template_directory_uri(); ?>/images/slider15.jpg' data-thumb='<?php echo get_template_directory_uri(); ?>/images/slider15.jpg'> 
+</div>
+<div data-src='<?php echo get_template_directory_uri(); ?>/images/slider16.jpg' data-thumb='<?php echo get_template_directory_uri(); ?>/images/slider16.jpg'> 
+</div>
+</div> 
+
+</div>
+</div>
+</div>  </div>
+</div>
+</div>
+</div>
+<div id="content">
+<div data-motopress-type="loop" data-motopress-loop-file="loop/loop-page.php">
+<div id="post-203" class="post-203 page type-page status-publish hentry page">
+<div class="carousel-wrap ">
+<div id="carousel-blog" class="es-carousel-wrapper">
+<div class="es-carousel">
+
+<ul class="es-carousel_list unstyled">
+<li class="es-carousel_li ">
+<figure class="featured-thumbnail"><a href="?page_id=43" title="NEWS LETTER"><img src="<?php echo get_template_directory_uri(); ?>/images/ico1.png" alt="join  our university"/></a></figure>
+<div class="desc"><h5><a href="?page_id=43" title="NEWS LETTER">NEWS LETTER</a></h5><a href="?page_id=43" class="btn btn-primary" title="NEWS LETTER">read more</a></div></li>
+
+<li class="es-carousel_li "><figure class="featured-thumbnail"><a href="?page_id=45" title=" GALLERY"><img src="<?php echo get_template_directory_uri(); ?>/images/ico3.png" alt=" GALLERY"/></a></figure>
+<div class="desc"><h5><a href="?page_id=18" title=" GALLERY"> GALLERY</a></h5><a href="?page_id=45" class="btn btn-primary" title=" GALLERY">read more</a></div></li>
+
+<li class="es-carousel_li ">
+<figure class="featured-thumbnail"><a href="?page_id=47" title="ANNOUNCEMENTS"><img src="<?php echo get_template_directory_uri(); ?>/images/ico2.png" alt="ANNOUNCEMENTS"/></a></figure>
+<div class="desc"><h5><a href="?page_id=47" title="ANNOUNCEMENTS">ANNOUNCEMENTS</a></h5><a href="?page_id=47" class="btn btn-primary" title="ANNOUNCEMENTS">read more</a></div></li>
+<li class="es-carousel_li ">
+<figure class="featured-thumbnail"><a href="?page_id=49" title="WANT TO DONATE"><img src="<?php echo get_template_directory_uri(); ?>/images/ico4-58x64.png" alt="WANT TO DONATE"/></a></figure>
+<div class="desc"><h5><a href="?page_id=49" title="WANT TO DONATE">WANT TO DONATE</a></h5><a href="?page_id=86" class="btn btn-primary" title="WANT TO DONATE">read more</a></div></li>
+
+<li class="es-carousel_li "><figure class="featured-thumbnail"><a href="?page_id=51" title="ORGANISE AN EVENT"><img src="<?php echo get_template_directory_uri(); ?>/images/ico5-58x64.png" alt="ORGANISE AN EVENT"/></a></figure>
+<div class="desc"><h5><a href="?page_id=51" title="ORGANISE AN EVENT">ORGANISE AN EVENT</a></h5><a href="?page_id=92" class="btn btn-primary" title="ORGANISE AN EVENT">read more</a></div></li>
+
+
+
+<li class="es-carousel_li "><figure class="featured-thumbnail"><a href="?page_id=51" title="IIT KGP CONNECT"><img src="<?php echo get_template_directory_uri(); ?>/images/ico5-58x64.png" alt="IIT KGP CONNECT"/></a></figure>
+<div class="desc"><h5><a href="?page_id=51" title="IIT KGP CONNECT">IIT KGP CONNECT</a></h5><a href="?page_id=89" class="btn btn-primary" title="IIT KGP CONNECT">read more</a></div></li>
+
+<li class="es-carousel_li "><figure class="featured-thumbnail"><a href="?page_id=51" title="PAST EVENTS"><img src="<?php echo get_template_directory_uri(); ?>/images/ico5-58x64.png" alt="PAST EVENTS"/></a></figure>
+<div class="desc"><h5><a href="?page_id=51" title="PAST EVENTS">PAST EVENTS</a></h5><a href="?page_id=45" class="btn btn-primary" title="PAST EVENTS">read more</a></div></li>
+<li class="es-carousel_li "><figure class="featured-thumbnail"><a href="?page_id=51" title="ORGANISE AN EVENT"><img src="<?php echo get_template_directory_uri(); ?>/images/shakehand.png" alt="ORGANISE AN EVENT"/></a></figure>
+<!--<div class="desc"><h5><a href="?page_id=51" title="ORGANISE AN EVENT">ORGANISE AN EVENT</a></h5><a href="?page_id=51" class="btn btn-primary" title="ORGANISE AN EVENT">read more</a></div>--></li>
+
+</ul></div></div><script>
+					jQuery("#carousel-blog").elastislide({
+						imageW 		: 58,
+						minItems	: 3,
+						speed		: 600,
+						easing		: "easeOutQuart",
+						margin		: 18,
+						border		: 0,
+						onClick		: function() {}
+					});</script></div>
+<div class="hr"> </div>
+<div class="row">
+<div class="span3"><h2>EVENTS AND UPDATES</h2>
+<ul class="mini-posts-list ">
+<?php
+$post_1 = get_post(60); 
+$title1 = $post_1->post_title;
+$content1=$post_1->post_content;
+
+$post_2 = get_post(62); 
+$title2 = $post_2->post_title;
+$content2 = $post_2->post_content;
+
+$post_3 = get_post(39); 
+$title3 = $post_3->post_title;
+$content3 = $post_3->post_content;
+
+$post_4 = get_post(1); 
+$title4 = $post_4->post_title;
+$content4 = $post_4->post_content;
+?> 
+
+<li class="mini-post-holder clearfix"><div class="mini-post-content"><h4><a href="#" title="Events and Updates"><?php echo $title1;?></a></h4>
+<div class="mini-post-meta" style="float:left;"><img src="<?php echo get_template_directory_uri(); ?>/images/ico1.png" width="30px" height="30px"/></div><div class="excerpt"><?php echo $content1;?> </div></div>
+</li>
+
+<li class="mini-post-holder clearfix"><div class="mini-post-content"><h4><a href="#" title="Announcements"><?php echo $title2;?></a></h4><div class="mini-post-meta" style="float:left;"><img src="<?php echo get_template_directory_uri(); ?>/images/ico2.png" width="30px" height="30px"/></div><div class="excerpt"><?php echo $content2;?> </div></div></li></ul> 
+<a href="?page_id=45" title="read more" class="btn btn-link btn-normal btn-inline " target="_self" style="float:right;">read more</a> </div>
+
+<div class="span3"><h2>ADVERTISEMENT</h2>
+<div class="list styled arrow2-list">
+<img src="<?php echo get_template_directory_uri(); ?>/images/advertise_icon.jpg"/>
+</div>
+ </div>
+
+<!--<div class="span3">
+<ul class="mini-posts-list ">
+
+<li class="mini-post-holder clearfix"><div class="mini-post-content"><h4><a href="#" title="Reunions"><?php echo $title3;?></a></h4>
+<div class="mini-post-meta" style="float:left;"><img src="<?php echo get_template_directory_uri(); ?>/images/ico1.png" width="30px" height="30px"/></div><div class="excerpt"><?php echo $content3;?> </div></div>
+</li>
+
+<li class="mini-post-holder clearfix"><div class="mini-post-content"><h4><a href="#" title="Lectures"><?php echo $title4;?></a></h4><div class="mini-post-meta" style="float:left;"><img src="<?php echo get_template_directory_uri(); ?>/images/ico2.png" width="30px" height="30px"/></div><div class="excerpt"><?php echo $content4;?> </div></div></li></ul> 
+<a href="#" title="read more" class="btn btn-link btn-normal btn-inline " target="_self">read more</a> </div>-->
+
+<!--<div class="span6"><h2>ANNOUNCEMENTS</h2>
+<ul class="recent-posts admission unstyled">
+<li class="recent-posts_li post-73 post type-post status-publish format-standard hentry category-admission category-services tag-lorem cat-4-id cat-5-id">
+<figure class="thumbnail featured-thumbnail"><a href="#" title="AWARDS AND ACHIEVEMENTS"><img src="<?php echo get_template_directory_uri(); ?>/images/ico1.png"/></a>
+</figure>
+<span style="float:left; font-size:18px;"><a href="#" title="AWARDS AND ACHIEVEMENTS">AWARDS AND ACHIEVEMENTS</a></span>
+<div class="excerpt" style="float:left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit... </div>
+<div class="clear"></div></li>
+
+ <li class="recent-posts_li post-63 post type-post status-publish format-standard hentry category-admission category-services tag-lorem cat-4-id cat-5-id">
+ <figure class="thumbnail featured-thumbnail"><a href="#" title="Lorem ipsum"><img src="<?php echo get_template_directory_uri(); ?>/images/ico2.png"/></a></figure>
+<span style="float:left; font-size:18px;"><a href="#" title="AWARDS AND ACHIEVEMENTS">AWARDS AND ACHIEVEMENTS</a></span>
+<div class="excerpt" style="float:left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit... </div>
+<div class="clear"></div>
+
+<div class="clear"></div>
+</li> 
+</ul> 
+<a href="#" title="read more" class="btn btn-link btn-normal btn-inline " target="_self">read more</a> </div>-->
+<div class="span4" style="float:right;"><h2>WANT TO BECOME A MEMBER</h2>
+<div class="list styled arrow2-list">
+<ul>
+<li><a href="?page_id=26">Register</a></li>
+<li><a href="?page_id=29">Login</a></li>
+</ul>
+</div>
+ </div>
+ 
+ 
+ 
+</div>  
+
+
+
+<div class="hr"> </div>
+<div class="row" style="display:none;">
+
+
+
+
+<div class="span4"><h2>WANT TO BECOME A MEMBER</h2>
+<a href="#" >Register Here</a>
+  </div>
+</div>  
+ 
+</div> 
+</div>
+</div>
+</div>
+</div>
+
+<?php
+get_footer();

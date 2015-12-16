@@ -1,0 +1,1 @@
+[14-Nov-2014 11:33:53 Etc/GMT] PHP Fatal error:  Call to undefined function get_header() in /home/wwwgleaf/public_html/demo/iit/wp-content/themes/iit/index.php on line 17
