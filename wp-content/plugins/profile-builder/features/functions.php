@@ -39,6 +39,12 @@ function wppb_add_plugin_stylesheet() {
 		wp_register_style( 'wppb_stylesheet', WPPB_PLUGIN_URL . 'assets/css/style-front-end.css' );
 		wp_enqueue_style( 'wppb_stylesheet' );
 	}
+	if( is_rtl() ) {
+		if ( ( file_exists( WPPB_PLUGIN_DIR . '/assets/css/rtl.css' ) ) && ( isset( $wppb_generalSettings['extraFieldsLayout'] ) && ( $wppb_generalSettings['extraFieldsLayout'] == 'default' ) ) ){
+			wp_register_style( 'wppb_stylesheet_rtl', WPPB_PLUGIN_URL . 'assets/css/rtl.css' );
+			wp_enqueue_style( 'wppb_stylesheet_rtl' );
+		}
+	}
 }
 
 
@@ -72,14 +78,16 @@ if(!function_exists('wppb_curpageurl')){
 			$pageURL .= "s";
 			
 		$pageURL .= "://";
-		
+
 		if ($_SERVER["SERVER_PORT"] != "80")
 			$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
 			
 		else
 			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 		
-		return $pageURL;
+		if ( function_exists('apply_filters') ) apply_filters('wppb_curpageurl', $pageURL);
+
+        return $pageURL;
 	}
 }
 
@@ -146,18 +154,18 @@ if ( is_admin() ){
  * @param string $message_from
  *
  */
-function wppb_mail($to, $subject, $message, $message_from){
-	$to = apply_filters ( 'wppb_send_email_to', $to );
-	$send_email = apply_filters ( 'wppb_send_email', true, $to, $subject, $message );
-	
+function wppb_mail( $to, $subject, $message, $message_from, $context = null ) {
+	$to = apply_filters( 'wppb_send_email_to', $to );
+	$send_email = apply_filters( 'wppb_send_email', true, $to, $subject, $message, $context );
+
 	$message = apply_filters( 'wppb_email_message', $message );
 
 	do_action( 'wppb_before_sending_email', $to, $subject, $message, $send_email );
 	
-	if ( $send_email ){
+	if ( $send_email ) {
 		//we add this filter to enable html encoding
-		add_filter( 'wp_mail_content_type', create_function( '', 'return "text/html"; ' ) );	
-		
+		add_filter( 'wp_mail_content_type', create_function( '', 'return "text/html"; ' ) );
+
 		$sent = wp_mail( $to , $subject, $message );
 	}
 	
@@ -196,8 +204,8 @@ function wppb_add_activation_message( $content ){
 
 // Create a new, top-level page
 $args = array(							
-			'page_title'	=> __( 'Profile Builder', 'profilebuilder' ),
-			'menu_title'	=> __( 'Profile Builder', 'profilebuilder' ),
+			'page_title'	=> 'Profile Builder',
+			'menu_title'	=> 'Profile Builder',
 			'capability'	=> 'manage_options',
 			'menu_slug' 	=> 'profile-builder',
 			'page_type'		=> 'menu_page',
@@ -233,16 +241,32 @@ function wppb_print_cpt_script( $hook ){
 	if ( $hook == 'profile-builder_page_manage-fields' ){
 		wp_enqueue_script( 'wppb-manage-fields-live-change', WPPB_PLUGIN_URL . 'assets/js/jquery-manage-fields-live-change.js', array(), PROFILE_BUILDER_VERSION, true );
 	}
-	
-	if ( ( $hook == 'profile-builder_page_manage-fields' ) || ( $hook == 'profile-builder_page_profile-builder-basic-info' ) || ( $hook == 'profile-builder_page_profile-builder-modules' ) || ( $hook == 'profile-builder_page_profile-builder-general-settings' ) || ( $hook == 'profile-builder_page_profile-builder-admin-bar-settings' ) || ( $hook == 'profile-builder_page_profile-builder-register' ) || ( $hook == 'profile-builder_page_profile-builder-wppb_userListing' ) || ( $hook == 'profile-builder_page_profile-builder-wppb_customRedirect' ) || ( $hook == 'profile-builder_page_profile-builder-wppb_emailCustomizer' ) || ( $hook == 'profile-builder_page_profile-builder-wppb_emailCustomizerAdmin' ) || ( $hook == 'profile-builder_page_profile-builder-add-ons' ) ){
-		wp_enqueue_style( 'wppb-back-end-style', WPPB_PLUGIN_URL . 'assets/css/style-back-end.css', false, PROFILE_BUILDER_VERSION );
+
+	if (( $hook == 'profile-builder_page_manage-fields' ) ||
+		( $hook == 'profile-builder_page_profile-builder-basic-info' ) ||
+		( $hook == 'profile-builder_page_profile-builder-modules' ) ||
+		( $hook == 'profile-builder_page_profile-builder-general-settings' ) ||
+		( $hook == 'profile-builder_page_profile-builder-admin-bar-settings' ) ||
+		( $hook == 'profile-builder_page_profile-builder-register' ) ||
+		( $hook == 'profile-builder_page_profile-builder-wppb_userListing' ) ||
+		( $hook == 'profile-builder_page_custom-redirects' ) ||
+		( $hook == 'profile-builder_page_profile-builder-wppb_emailCustomizer' ) ||
+		( $hook == 'profile-builder_page_profile-builder-wppb_emailCustomizerAdmin' ) ||
+		( $hook == 'profile-builder_page_profile-builder-add-ons' ) ||
+		( $hook == 'profile-builder_page_profile-builder-woocommerce-sync') ||
+		( $hook == 'admin_page_profile-builder-pms-promo') ) {
+			wp_enqueue_style( 'wppb-back-end-style', WPPB_PLUGIN_URL . 'assets/css/style-back-end.css', false, PROFILE_BUILDER_VERSION );
 	}
 	
 	if ( $hook == 'profile-builder_page_profile-builder-general-settings' )
 		wp_enqueue_script( 'wppb-manage-fields-live-change', WPPB_PLUGIN_URL . 'assets/js/jquery-email-confirmation.js', array(), PROFILE_BUILDER_VERSION, true );
 
-    if( $hook == 'profile-builder_page_profile-builder-add-ons' )
-        wp_enqueue_script( 'wppb-add-ons', WPPB_PLUGIN_URL . 'assets/js/jquery-pb-add-ons.js', array(), PROFILE_BUILDER_VERSION, true );
+    if( ($hook == 'profile-builder_page_profile-builder-add-ons' ) ||
+        ($hook == 'admin_page_profile-builder-pms-promo' ) ) {
+        wp_enqueue_script('wppb-add-ons', WPPB_PLUGIN_URL . 'assets/js/jquery-pb-add-ons.js', array(), PROFILE_BUILDER_VERSION, true);
+        wp_enqueue_style( 'thickbox' );
+        wp_enqueue_script( 'thickbox' );
+    }
 
 	if ( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if ( isset( $_GET['post_type'] ) )
@@ -257,9 +281,9 @@ function wppb_print_cpt_script( $hook ){
 		}
 	}
     if ( file_exists ( WPPB_PLUGIN_DIR.'/update/update-checker.php' ) ) {
-        wp_enqueue_style( 'wppb-serial-notice-css', WPPB_PLUGIN_URL . 'assets/css/serial-notice.css', false, PROFILE_BUILDER_VERSION );
         wp_enqueue_script( 'wppb-sitewide', WPPB_PLUGIN_URL . 'assets/js/jquery-pb-sitewide.js', array(), PROFILE_BUILDER_VERSION, true );
     }
+    wp_enqueue_style( 'wppb-serial-notice-css', WPPB_PLUGIN_URL . 'assets/css/serial-notice.css', false, PROFILE_BUILDER_VERSION );
 }
 add_action( 'admin_enqueue_scripts', 'wppb_print_cpt_script' );
 
@@ -270,7 +294,7 @@ function wppb_delete(){
 		
 		if ( ( isset( $_POST['what'] ) ) && ( $_POST['what'] == 'avatar' ) ){
 			if ( !wp_verify_nonce( $_POST['_ajax_nonce'], 'user'.base64_decode( $_POST['currentUser'] ).'_nonce_avatar' ) ){
-				echo __( 'The user-validation has failed - the avatar was not deleted!', 'profilebuilder' );
+				echo __( 'The user-validation has failed - the avatar was not deleted!', 'profile-builder' );
 				die();
 				
 			}else{
@@ -281,7 +305,7 @@ function wppb_delete(){
 			}
 		}elseif ( ( isset( $_POST['what'] ) ) && ( $_POST['what'] == 'attachment' ) ){
 			if ( !wp_verify_nonce( $_POST['_ajax_nonce'], 'user'.base64_decode( $_POST['currentUser'] ).'_nonce_upload' ) ){
-				echo __( 'The user-validation has failed - the attachment was not deleted!', 'profilebuilder' );
+				echo __( 'The user-validation has failed - the attachment was not deleted!', 'profile-builder' );
 				die();
 				
 			}else{
@@ -297,9 +321,6 @@ add_action( 'wp_ajax_hook_wppb_delete', 'wppb_delete' );
 
 //the function used to overwrite the avatar across the wp installation
 function wppb_changeDefaultAvatar( $avatar, $id_or_email, $size, $default, $alt ){
-
-	global $wpdb;
-  
 	/* Get user info. */ 
 	if(is_object($id_or_email)){
 		$my_user_id = $id_or_email->user_id;
@@ -318,12 +339,27 @@ function wppb_changeDefaultAvatar( $avatar, $id_or_email, $size, $default, $alt 
 	if ( $wppb_manage_fields != 'not_found' ){
 		foreach( $wppb_manage_fields as $value ){
 			if ( $value['field'] == 'Avatar'){
-				$customUserAvatar = get_user_meta( $my_user_id, 'resized_avatar_'.$value['id'], true );
-                $customUserAvatarRelativePath = get_user_meta( $my_user_id, 'resized_avatar_'.$value['id'].'_relative_path', true );
 
-				if ( ( ($customUserAvatar != '') || ($customUserAvatar != null) ) && file_exists($customUserAvatarRelativePath) ){
-					$avatar = "<img alt='{$alt}' src='{$customUserAvatar}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
-				}
+                $customUserAvatar = get_user_meta( $my_user_id, $value['meta-name'], true );
+                if( !empty( $customUserAvatar ) ){
+                    if( is_numeric( $customUserAvatar ) ){
+                        $img_attr = wp_get_attachment_image_src( $customUserAvatar, 'wppb-avatar-size-'.$size );
+                        if( $img_attr[3] === false ){
+                            $img_attr = wp_get_attachment_image_src( $customUserAvatar, 'thumbnail' );
+                            $avatar = "<img alt='{$alt}' src='{$img_attr[0]}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
+                        }
+                        else
+                            $avatar = "<img alt='{$alt}' src='{$img_attr[0]}' class='avatar avatar-{$size} photo avatar-default' height='{$img_attr[2]}' width='{$img_attr[1]}' />";
+                    }
+                    else {
+                        $customUserAvatar = get_user_meta($my_user_id, 'resized_avatar_' . $value['id'], true);
+                        $customUserAvatarRelativePath = get_user_meta($my_user_id, 'resized_avatar_' . $value['id'] . '_relative_path', true);
+
+                        if ((($customUserAvatar != '') || ($customUserAvatar != null)) && file_exists($customUserAvatarRelativePath)) {
+                            $avatar = "<img alt='{$alt}' src='{$customUserAvatar}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
+                        }
+                    }
+                }
 			}
 		}
 	}
@@ -423,17 +459,14 @@ if ( is_admin() ){
 		else
 			$delete = $wpdb->delete( $wpdb->prefix.'signups', array( 'user_login' => $userLogin ) );
 	}
-	
-	if ( is_multisite() )
-		add_action( 'wpmu_delete_user', 'wppb_delete_user_from_signups_table' );
-	
-	else{
-		$wppb_generalSettings = get_option( 'wppb_general_settings' );
-				
-		if ( $wppb_generalSettings['emailConfirmation'] == 'yes' )
-			add_action( 'delete_user', 'wppb_delete_user_from_signups_table' );
-	}
 
+    $wppb_generalSettings = get_option( 'wppb_general_settings' );
+    if ( $wppb_generalSettings['emailConfirmation'] == 'yes' ) {
+        if( is_multisite() )
+            add_action( 'wpmu_delete_user', 'wppb_delete_user_from_signups_table' );
+        else
+            add_action('delete_user', 'wppb_delete_user_from_signups_table');
+    }
 }
 
 
@@ -464,7 +497,7 @@ function wppb_check_missing_http( $redirectLink ) {
 function wppb_password_strength_checker_html(){
     $wppb_generalSettings = get_option( 'wppb_general_settings' );
     if( !empty( $wppb_generalSettings['minimum_password_strength'] ) ){
-        $password_strength = '<span id="pass-strength-result">'.__('Strength indicator', 'profilebuilder' ).'</span>
+        $password_strength = '<span id="pass-strength-result">'.__('Strength indicator', 'profile-builder' ).'</span>
         <input type="hidden" value="" name="wppb_password_strength" id="wppb_password_strength"/>';
         return $password_strength;
     }
@@ -489,7 +522,7 @@ function wppb_check_password_strength(){
     $wppb_generalSettings = get_option( 'wppb_general_settings' );
     if( isset( $_POST['wppb_password_strength'] ) && !empty( $wppb_generalSettings['minimum_password_strength'] ) ){
         $password_strength_array = array( 'short' => 0, 'bad' => 1, 'good' => 2, 'strong' => 3 );
-        $password_strength_text = array( 'short' => __( 'Very Weak', 'profilebuilder' ), 'bad' => __( 'Weak', 'profilebuilder' ), 'good' => __( 'Medium', 'profilebuilder' ), 'strong' => __( 'Strong', 'profilebuilder' ) );
+        $password_strength_text = array( 'short' => __( 'Very Weak', 'profile-builder' ), 'bad' => __( 'Weak', 'profile-builder' ), 'good' => __( 'Medium', 'profile-builder' ), 'strong' => __( 'Strong', 'profile-builder' ) );
         if( $password_strength_array[$_POST['wppb_password_strength']] < $password_strength_array[$wppb_generalSettings['minimum_password_strength']] ){
             return $password_strength_text[$wppb_generalSettings['minimum_password_strength']];
         }
@@ -503,7 +536,7 @@ function wppb_check_password_strength(){
 function wppb_password_length_text(){
     $wppb_generalSettings = get_option( 'wppb_general_settings' );
     if( !empty( $wppb_generalSettings['minimum_password_length'] ) ){
-        return sprintf(__('Minimum length of %d characters', 'profilebuilder'), $wppb_generalSettings['minimum_password_length']);
+        return sprintf(__('Minimum length of %d characters', 'profile-builder'), $wppb_generalSettings['minimum_password_length']);
     }
     return '';
 }
@@ -577,9 +610,16 @@ function wppb_password_strength_check(){
  * Create functions for repeating error messages in front-end forms
  */
 function wppb_required_field_error($field_title='') {
-    $required_error = apply_filters('wppb_required_error' , __('This field is required','profilebuilder') , $field_title);
+    $required_error = apply_filters('wppb_required_error' , __('This field is required','profile-builder') , $field_title);
 
     return $required_error;
+
+}
+/* Function for displaying reCAPTCHA error on Login and Recover Password forms */
+function wppb_recaptcha_field_error($field_title='') {
+    $recaptcha_error = apply_filters('wppb_recaptcha_error' , __('Please enter a (valid) reCAPTCHA value','profile-builder') , $field_title);
+
+    return $recaptcha_error;
 
 }
 
@@ -590,35 +630,35 @@ function wppb_get_query_var( $varname ){
 
 /*Filter the "Save Changes" button text, to make it translatable*/
 function wppb_change_save_changes_button($value){
-    $value = __('Save Changes','profilebuilder');
+    $value = __('Save Changes','profile-builder');
     return $value;
 }
 add_filter( 'wck_save_changes_button', 'wppb_change_save_changes_button', 10, 2);
 
 /*Filter the "Cancel" button text, to make it translatable*/
 function wppb_change_cancel_button($value){
-    $value = __('Cancel','profilebuilder');
+    $value = __('Cancel','profile-builder');
     return $value;
 }
 add_filter( 'wck_cancel_button', 'wppb_change_cancel_button', 10, 2);
 
 /*Filter the "Delete" button text, to make it translatable*/
 function wppb_change_delete_button($value){
-    $value = __('Delete','profilebuilder');
+    $value = __('Delete','profile-builder');
     return $value;
 }
 add_filter( 'wck_delete_button', 'wppb_change_delete_button', 10, 2);
 
 /*Filter the "Edit" button text, to make it translatable*/
 function wppb_change_edit_button($value){
-    $value = __('Edit','profilebuilder');
+    $value = __('Edit','profile-builder');
     return $value;
 }
 add_filter( 'wck_edit_button', 'wppb_change_edit_button', 10, 2);
 
 /*Filter the User Listing, Register Forms and Edit Profile forms metabox header content, to make it translatable*/
 function wppb_change_metabox_content_header(){
-  return '<thead><tr><th class="wck-number">#</th><th class="wck-content">'. __( 'Content', 'profilebuilder' ) .'</th><th class="wck-edit">'. __( 'Edit', 'profilebuilder' ) .'</th><th class="wck-delete">'. __( 'Delete', 'profilebuilder' ) .'</th></tr></thead>';
+  return '<thead><tr><th class="wck-number">#</th><th class="wck-content">'. __( 'Content', 'profile-builder' ) .'</th><th class="wck-edit">'. __( 'Edit', 'profile-builder' ) .'</th><th class="wck-delete">'. __( 'Delete', 'profile-builder' ) .'</th></tr></thead>';
 }
 add_filter('wck_metabox_content_header_wppb_ul_page_settings', 'wppb_change_metabox_content_header', 1);
 add_filter('wck_metabox_content_header_wppb_rf_page_settings', 'wppb_change_metabox_content_header', 1);
@@ -626,14 +666,14 @@ add_filter('wck_metabox_content_header_wppb_epf_page_settings', 'wppb_change_met
 
 
 /* Add a notice if people are not able to register via Profile Builder; Membership -> "Anyone can register" checkbox is not checked under WordPress admin UI -> Settings -> General tab */
-if ( get_option('users_can_register') == false) {
+if ( (get_option('users_can_register') == false) && (!class_exists('PMS_Add_General_Notices')) ) {
     if( is_multisite() ) {
         new WPPB_Add_General_Notices('wppb_anyone_can_register',
-            sprintf(__('To allow users to register for your website via Profile Builder, you first must enable user registration. Go to %1$sNetwork Settings%2$s, and under Registration Settings make sure to check “User accounts may be registered”. %3$sDismiss%4$s', 'profilebuilder'), "<a href='" . network_admin_url('settings.php') . "'>", "</a>", "<a href='" . add_query_arg('wppb_anyone_can_register_dismiss_notification', '0') . "'>", "</a>"),
+            sprintf(__('To allow users to register for your website via Profile Builder, you first must enable user registration. Go to %1$sNetwork Settings%2$s, and under Registration Settings make sure to check “User accounts may be registered”. %3$sDismiss%4$s', 'profile-builder'), "<a href='" . network_admin_url('settings.php') . "'>", "</a>", "<a href='" . esc_url( add_query_arg('wppb_anyone_can_register_dismiss_notification', '0') ) . "'>", "</a>"),
             'update-nag');
     }else{
         new WPPB_Add_General_Notices('wppb_anyone_can_register',
-            sprintf(__('To allow users to register for your website via Profile Builder, you first must enable user registration. Go to %1$sSettings -> General%2$s tab, and under Membership make sure to check “Anyone can register”. %3$sDismiss%4$s', 'profilebuilder'), "<a href='" . admin_url('options-general.php') . "'>", "</a>", "<a href='" . add_query_arg('wppb_anyone_can_register_dismiss_notification', '0') . "'>", "</a>"),
+            sprintf(__('To allow users to register for your website via Profile Builder, you first must enable user registration. Go to %1$sSettings -> General%2$s tab, and under Membership make sure to check “Anyone can register”. %3$sDismiss%4$s', 'profile-builder'), "<a href='" . admin_url('options-general.php') . "'>", "</a>", "<a href='" . esc_url( add_query_arg('wppb_anyone_can_register_dismiss_notification', '0') ) . "'>", "</a>"),
             'update-nag');
     }
 }
@@ -651,3 +691,10 @@ function wppb_change_default_post_updated_messages($messages){
     return $messages;
 }
 add_filter('post_updated_messages','wppb_change_default_post_updated_messages', 2);
+
+
+/* for meta-names with spaces in them PHP converts the space to underline in the $_POST  */
+function wppb_handle_meta_name( $meta_name ){
+    $meta_name = str_replace( ' ', '_', $meta_name );
+    return $meta_name;
+}

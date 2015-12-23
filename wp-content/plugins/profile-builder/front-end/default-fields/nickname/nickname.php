@@ -18,9 +18,11 @@ function wppb_nickname_handler( $output, $form_location, $field, $user_id, $fiel
 		if ( array_key_exists( $field['id'], $field_check_errors ) )
 			$error_mark = '<img src="'.WPPB_PLUGIN_URL.'assets/images/pencil_delete.png" title="'.wppb_required_field_error($field["field-title"]).'"/>';
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="nickname">'.$item_title.$error_mark.'</label>
-			<input class="text-input default_field_nickname" name="nickname" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="nickname" value="'. esc_attr( wp_unslash( $input_value ) ) .'" />';
+			<input class="text-input default_field_nickname" name="nickname" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="nickname" value="'. esc_attr( wp_unslash( $input_value ) ) .'" '. $extra_attr .'/>';
         if( !empty( $item_description ) )
             $output .= '<span class="wppb-description-delimiter">'. $item_description .'</span>';
 
@@ -31,9 +33,12 @@ add_filter( 'wppb_output_form_field_default-nickname', 'wppb_nickname_handler', 
 
 
 /* handle field validation */
-function wppb_check_nickname_value( $message, $field, $request_data, $form_location ){	
-	if ( ( isset( $request_data['nickname'] ) && ( trim( $request_data['nickname'] ) == '' ) ) && ( $field['required'] == 'Yes' ) )
-		return wppb_required_field_error($field["field-title"]);
+function wppb_check_nickname_value( $message, $field, $request_data, $form_location ){
+    if( $field['required'] == 'Yes' ){
+        if( ( isset( $request_data['nickname'] ) && ( trim( $request_data['nickname'] ) == '' ) ) || !isset( $request_data['nickname'] ) ){
+            return wppb_required_field_error($field["field-title"]);
+        }
+    }
 
     return $message;
 }

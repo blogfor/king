@@ -69,6 +69,7 @@ function wppb_add_on_download_and_install( $button ) {
     var file_name = $download_button.attr('data-add-on-slug') + '.zip';
     var add_on_name = $download_button.attr('data-add-on-name');
     var add_on_index = $download_button.parents('.wppb-add-on').index('.wppb-add-on');
+    var nonce = $download_button.data('nonce');
 
     $download_button
         .attr('disabled', true);
@@ -86,7 +87,7 @@ function wppb_add_on_download_and_install( $button ) {
     wppb_add_on_set_status_message( $download_button, 'dashicons-download', jQuery('#wppb-add-on-downloading-message-text').text(), fade_in_out_speed, fade_in_out_speed );
 
 
-    jQuery.post( ajaxurl, { action: 'wppb_add_on_download_zip_file', wppb_add_on_download_url: download_url, wppb_add_on_zip_name: file_name, wppb_add_on_name: add_on_name, wppb_add_on_index: add_on_index }, function( response ) {
+    jQuery.post( ajaxurl, { action: 'wppb_add_on_download_zip_file', wppb_add_on_download_url: download_url, wppb_add_on_zip_name: file_name, wppb_add_on_name: add_on_name, wppb_add_on_index: add_on_index, nonce: nonce }, function( response ) {
 
         // Check if we have any errors and display a message to the user
         if( response.indexOf('error') === 0 ) {
@@ -140,6 +141,10 @@ function wppb_add_on_download_and_install( $button ) {
             // Set status confirmation message
             wppb_add_on_set_status_message( $download_button, 'dashicons-yes', jQuery('#wppb-add-on-download-finished-message-text').text(), fade_in_out_speed, fade_in_out_speed, true );
 
+            /* For PMS as we are trying to increase active installs activate it automatically */
+            if( add_on_name == 'Paid Member Subscriptions' ){
+                wppb_add_on_activate( $download_button );
+            }
         });
 
     });
@@ -155,6 +160,7 @@ function wppb_add_on_activate( $button ) {
     var fade_in_out_speed = 300;
     var plugin = $activate_button.attr('href');
     var add_on_index = $activate_button.parents('.wppb-add-on').index('.wppb-add-on');
+    var nonce = $activate_button.data('nonce');
 
     $activate_button
         .attr('disabled', true);
@@ -168,7 +174,7 @@ function wppb_add_on_activate( $button ) {
     // Remove the current displayed message
     wppb_add_on_remove_status_message( $activate_button, fade_in_out_speed);
 
-    jQuery.post( ajaxurl, { action: 'wppb_add_on_activate', wppb_add_on_to_activate: plugin, wppb_add_on_index: add_on_index }, function( response ) {
+    jQuery.post( ajaxurl, { action: 'wppb_add_on_activate', wppb_add_on_to_activate: plugin, wppb_add_on_index: add_on_index, nonce: nonce }, function( response ) {
 
         add_on_index = response;
 
@@ -206,6 +212,7 @@ function wppb_add_on_deactivate( $button ) {
     var fade_in_out_speed = 300;
     var plugin = $button.attr('href');
     var add_on_index = $button.parents('.wppb-add-on').index('.wppb-add-on');
+    var nonce = $button.data('nonce');
 
     $button
         .removeClass('wppb-add-on-deactivate')
@@ -220,7 +227,7 @@ function wppb_add_on_deactivate( $button ) {
     // Remove the current displayed message
     wppb_add_on_remove_status_message( $button, fade_in_out_speed );
 
-    jQuery.post( ajaxurl, { action: 'wppb_add_on_deactivate', wppb_add_on_to_deactivate: plugin, wppb_add_on_index: add_on_index }, function( response ) {
+    jQuery.post( ajaxurl, { action: 'wppb_add_on_deactivate', wppb_add_on_to_deactivate: plugin, wppb_add_on_index: add_on_index, nonce: nonce }, function( response ) {
 
         add_on_index = response;
 

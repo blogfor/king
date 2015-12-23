@@ -10,9 +10,11 @@ function wppb_password_repeat_handler( $output, $form_location, $field, $user_id
 		if ( array_key_exists( $field['id'], $field_check_errors ) )
 			$error_mark = '<img src="'.WPPB_PLUGIN_URL.'assets/images/pencil_delete.png" title="'.wppb_required_field_error($field["field-title"]).'"/>';
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="passw2">' . $item_title.$error_mark . '</label>
-			<input class="text-input" name="passw2" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="password" id="passw2" value="" autocomplete="off" />';
+			<input class="text-input" name="passw2" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="password" id="passw2" value="" autocomplete="off" '. $extra_attr .'/>';
         if( !empty( $item_description ) )
             $output .= '<span class="wppb-description-delimiter">'.$item_description.'</span>';
 	}
@@ -32,11 +34,11 @@ function wppb_check_repeat_password_value( $message, $field, $request_data, $for
 			return wppb_required_field_error($field["field-title"]);
 			
 		elseif ( isset( $request_data['passw1'] ) && isset( $request_data['passw2'] ) && ( trim( $request_data['passw1'] ) != trim( $request_data['passw2'] ) ) && ( $field['required'] == 'Yes' ) )
-			return __( "The passwords do not match", "profilebuilder" );
+			return __( "The passwords do not match", "profile-builder" );
 	
 	}elseif ( $form_location == 'edit_profile' ){
 		if ( isset( $request_data['passw1'] ) && isset( $request_data['passw2'] ) && ( trim( $request_data['passw1'] ) != trim( $request_data['passw2'] ) ) )
-			return __( "The passwords do not match", "profilebuilder" );
+			return __( "The passwords do not match", "profile-builder" );
 	}
 
     return $message;

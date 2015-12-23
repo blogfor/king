@@ -143,7 +143,6 @@ var fields 	=	{
 						'Default - Password':					{	'show_rows'	:	[
 																						'.row-field-title',
 																						'.row-description',
-																						'.row-default-value',
 																						'.row-required'
 																					],
                                                                     'properties':	{
@@ -157,7 +156,6 @@ var fields 	=	{
 						'Default - Repeat Password':			{	'show_rows'	:	[
 																					'.row-field-title',
 																					'.row-description',
-																					'.row-default-value',
 																					'.row-required'
 																					],
                                                                     'properties':	{
@@ -266,6 +264,7 @@ var fields 	=	{
 																						'.row-field-title',
 																						'.row-meta-name',
 																						'.row-description',
+                                                                                        '.row-default-option-country',
 																						'.row-required',
 																						'.row-overwrite-existing'
 																					]
@@ -275,6 +274,7 @@ var fields 	=	{
 																						'.row-field-title',
 																						'.row-meta-name',
 																						'.row-description',
+                                                                                        '.row-default-option-timezone',
 																						'.row-required',
 																						'.row-overwrite-existing'
 																					]
@@ -353,6 +353,8 @@ var fields 	=	{
 																						'.row-description',
 																						'.row-public-key',
 																						'.row-private-key',
+                                                                                        '.row-captcha-pb-forms',
+                                                                                        '.row-captcha-wp-forms',
 																						'.row-required'
 																					],
 																	'required'	:	[

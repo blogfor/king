@@ -1,6 +1,7 @@
 var isPopUpOpened = false;
 
 function spider_createpopup(url, current_view, width, height, duration, description, lifetime) {
+  url = url.replace(/&#038;/g, '&');
   if (isPopUpOpened) { return };
   isPopUpOpened = true;
   if (spider_hasalreadyreceivedpopup(description) || spider_isunsupporteduseragent()) {
@@ -44,6 +45,12 @@ function spider_receivedpopup(description, lifetime) {
 	var date = new Date(); 
 	date.setDate(date.getDate() + lifetime);
 	document.cookie = description + "=true;expires=" + date.toUTCString() + ";path=/"; 
+  if (lightbox_ctrl_btn_pos == 'bottom') {
+    jQuery(".bwg_toggle_container").css("bottom", jQuery(".bwg_ctrl_btn_container").height() + "px");
+  }
+  else if (lightbox_ctrl_btn_pos == 'top') {
+    jQuery(".bwg_toggle_container").css("top", jQuery(".bwg_ctrl_btn_container").height() + "px");
+  }
 }
 
 function spider_isunsupporteduseragent() {
@@ -56,6 +63,9 @@ function spider_destroypopup(duration) {
       if (jQuery.fullscreen.isFullScreen()) {
         jQuery.fullscreen.exit();
       }
+    }
+    if (typeof enable_addthis != "undefined" && enable_addthis) {
+      jQuery(".at4-share-outer").hide();
     }
     setTimeout(function () {
       jQuery(".spider_popup_wrap").remove();
@@ -84,6 +94,8 @@ function spider_ajax_save(form_id) {
   post_data["ajax_task"] = jQuery("#ajax_task").val();
   post_data["image_id"] = jQuery("#image_id").val();
   post_data["comment_id"] = jQuery("#comment_id").val();
+    post_data["bwg_tag_id_" + id] = jQuery("#bwg_tag_id_" + id).val();
+
   // Loading.
   jQuery("#ajax_loading").css('height', jQuery(".bwg_comments").css('height'));
   jQuery("#opacity_div").css('width', jQuery(".bwg_comments").css('width'));

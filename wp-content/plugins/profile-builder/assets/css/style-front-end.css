@@ -190,18 +190,8 @@ input#send_credentials_via_email{
 	font-style:italic;
 }
 
-.wppb-form-field .wppb-avatar-nofile,
-.wppb-form-field .wppb-avatar-file,
-.wppb-form-field .wppb-upload-nofile,
-.wppb-form-field .wppb-upload-file{
-	font-size:100%;
-	font-style:normal;
-	margin:10px 0 10px 30%;
-}
-
-.wppb-file-icons{
-	padding-left:10px;
-	box-shadow:none !important;
+.wppb_upload_button{
+    display:inline-block;
 }
 
 .wppb-user-forms .wppb-checkboxes li,
@@ -237,11 +227,21 @@ input#send_credentials_via_email{
 	margin-left:0;
 }
 
+.wppb-checkbox-terms-and-conditions label {
+    width: 100%;
+}
 
-#recaptcha_widget_div{
+.wppb-form-field.wppb-checkbox-terms-and-conditions input[type="checkbox"].custom_field_toa {
+    float:none;
+    width:auto;
+    margin-right:10px
+}
+
+
+.g-recaptcha{
 	display: inline-block;
 }
-#recaptcha_widget_div iframe{
+.g-recaptcha iframe{
     margin-bottom: 0;
 }
 
@@ -409,6 +409,50 @@ ul.wppb-profile li h3:first-child{
     padding-top:20px;
     border-top:1px solid #d2d2d2;
 }
+
+@media screen and ( max-width: 720px ) {
+
+    .wppb-table {
+        border: 0;
+    }
+
+    .wppb-table thead {
+        display: none
+    }
+
+    .wppb-table tr {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    .wppb-table td {
+        display: block;
+        text-align: right;
+        border-bottom: 0;
+    }
+
+    .wppb-table td:last-of-type {
+        border-bottom: 1px solid #e1e1e1;
+    }
+
+    .wppb-table .wppb-posts,
+    .wppb-table .wppb-moreinfo{
+        text-align: right;
+    }
+
+    .wppb-table td:before {
+        content: attr(data-label);
+        float: left;
+    }
+
+    .wppb-table td:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+}
+
 /*--------------------------------------------------------------
 6.0 Media Queries
 --------------------------------------------------------------*/
@@ -483,4 +527,27 @@ ul.wppb-profile li h3:first-child{
 #pass-strength-result.strong {
     background-color: #c3ff88;
     border-color: #8dff1c;
+}
+
+/**************************************************/
+/* Profile Builder Subscription Plans Field
+/**************************************************/
+.wppb-form-field.wppb-subscription-plans label {
+    width: 100%;
+    float: none;
+}
+
+.wppb-form-field.wppb-subscription-plans input {
+    display: inline-block;
+    width: auto;
+    float: none;
+    margin-right: 10px !important;
+}
+
+.wppb-form-field.wppb-subscription-plans span.description {
+    display: block;
+    font-size: 100%;
+    font-style: italic;
+    margin-left: 0;
+    margin-bottom: 1.5em;
 }

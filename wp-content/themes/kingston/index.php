@@ -13,13 +13,11 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
-
 get_header(); ?>
 <script>
     $('#myCarousel').carousel({
   interval: 10000
 })
-
 $('.carousel .item').each(function(){
   var next = $(this).next();
   if (!next.length) {
@@ -36,24 +34,23 @@ $('.carousel .item').each(function(){
 });
     </script>
     
-
 	  <div>
 	  
 			<div style="overflow: hidden; width: 100%; height: 415px;" class="banner has-dots">
 				<ul style="width: 400%; position: relative; left: -300%; height: 415px;">
-					<li style="background-image: url("img/sunset.jpg"); width: 25%;">
+					<li style="background-image: url(img/sunset.jpg); width: 25%;">
 						<img src="<?php echo get_template_directory_uri();?>/images/banner.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
 					</li>
 					
-					<li style="background-image: url("img/wood.jpg"); width: 25%;">
+					<li style="background-image: url(img/wood.jpg); width: 25%;">
 						<img src="<?php echo get_template_directory_uri();?>/images/banner2.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
 					</li>
 					
-					<li style="background-image: url("img/subway.jpg"); width: 25%;">
+					<li style="background-image: url(img/subway.jpg); width: 25%;">
 						<img src="<?php echo get_template_directory_uri();?>/images/banner3.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
 					</li>
 					
-					<li style="background-image: url("img/shop.jpg"); width: 25%;">
+					<li style="background-image: url(img/shop.jpg); width: 25%;">
 						<img src="<?php echo get_template_directory_uri();?>/images/banner4.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
 					</li>
 				</ul>
@@ -107,7 +104,6 @@ $('.carousel .item').each(function(){
   
  
   
-
  <div class="container">
  <div class="col-md-9">
  <div class="row">
@@ -125,7 +121,6 @@ $('.carousel .item').each(function(){
   <h2>Computer Lab</h2>
     <p>In the separate Computer Laboratories, adequate computers have been installed.  Dedicated internet connection for 24 Hours, in the internet lab.</p></div> </div>    
    
-
  </div><!-- 1st row-->
  <div class="row">
  <div class="container">
@@ -174,9 +169,7 @@ $('.carousel .item').each(function(){
   <a data-slide="next" href="#myCarousel" class="right carousel-control"><i class="glyphicon glyphicon-chevron-right"></i></a>
 </div>
 </div>
-
  </div>
-
   </div><!-- 3rd row--> 
   
   
@@ -242,7 +235,6 @@ $('.carousel .item').each(function(){
  
  </div><!-- 1st row--> 
  <div class="row">
-
  <div class="col-lg-12 col-md-12 col-sm-12">
  <div class="map"><h2>WHERE WE ARE</h2>
     <img src="<?php echo get_template_directory_uri();?>/images/map.jpg" width="270" height="218"></div>
@@ -289,13 +281,6 @@ $('.carousel .item').each(function(){
  
  
  
-
  </div><!--right-->
  </div>
-
-
-
-
 <?php get_footer(); ?>
-
-

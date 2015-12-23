@@ -7,7 +7,7 @@
 ul {
   list-style: none; }
 
-h2 {
+#huge_it_gallery h2 {
   font-family: Arvo, Arial, sans-serif;
   font-size: 30px;
   line-height: 25px;
@@ -16,7 +16,7 @@ h2 {
   color: white;
   letter-spacing: 1px; }
 
-p {
+#huge_it_gallery  p {
   font-family: Georgia, Arial, sans-serif;
   font-size: 15px;
   line-height: 15px;

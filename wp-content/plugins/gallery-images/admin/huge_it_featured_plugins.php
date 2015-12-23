@@ -139,7 +139,7 @@
 <div class="element hugeitmicro-item">
 	<div class="left-block">
 		<div class="main-image-block">
-			<a href="<?php echo plugins_url( '../images/slider-logo.png' , __FILE__ ); ?>" rel="content"><img src="<?php echo plugins_url( '../images/slider-logo.png' , __FILE__ ); ?>"></a>
+			<img src="<?php echo plugins_url( '../images/slider-logo.png' , __FILE__ ); ?>">
 		</div>
 	</div>
 	<div class="right-block">
@@ -156,7 +156,7 @@
 <div class="element hugeitmicro-item">
 	<div class="left-block">
 		<div class="main-image-block">
-			<a href="<?php echo plugins_url( '../images/potfolio-gallery-logo.png' , __FILE__ ); ?>" rel="content"><img src="<?php echo plugins_url( '../images/potfolio-gallery-logo.png' , __FILE__ ); ?>"></a>
+			<img src="<?php echo plugins_url( '../images/potfolio-gallery-logo.png' , __FILE__ ); ?>">
 		</div>
 	</div>
 	<div class="right-block">
@@ -172,7 +172,23 @@
 <div class="element hugeitmicro-item">
 	<div class="left-block">
 		<div class="main-image-block">
-			<a href="<?php echo plugins_url( '../images/lightbox-logo.jpg' , __FILE__ ); ?>" rel="content"><img src="<?php echo plugins_url( '../images/lightbox-logo.jpg' , __FILE__ ); ?>"></a>
+			<img src="<?php echo plugins_url( '../images/product-catalog-logo.png' , __FILE__ ); ?>">
+		</div>
+	</div>
+	<div class="right-block">
+		<div class="title-block"><h3>WordPress Product Catalog</h3></div>
+		<div class="description-block">
+			<p>Huge-IT Product Catalog is made for demonstration, sale, advertisements for your products. Imagine a stand with a variety of catalogs with a specific product category. To imagine is not difficult, to use is even easier.</p>
+		</div>			  				
+		<div class="button-block">
+			<a href="http://huge-it.com/product-catalog/" target="_blank">View Plugin</a>
+		</div>
+	</div>
+</div>
+<div class="element hugeitmicro-item">
+	<div class="left-block">
+		<div class="main-image-block">
+			<img src="<?php echo plugins_url( '../images/lightbox-logo.jpg' , __FILE__ ); ?>">
 		</div>
 	</div>
 	<div class="right-block">
@@ -188,7 +204,7 @@
 <div class="element hugeitmicro-item">
 	<div class="left-block">
 		<div class="main-image-block">
-			<a href="<?php echo plugins_url( '../images/video-gallery-logo.png' , __FILE__ ); ?>" rel="content"><img src="<?php echo plugins_url( '../images/video-gallery-logo.png' , __FILE__ ); ?>"></a>
+			<img src="<?php echo plugins_url( '../images/video-gallery-logo.png' , __FILE__ ); ?>">
 		</div>
 	</div>
 	<div class="right-block">
@@ -197,14 +213,14 @@
 			<p>Video Gallery plugin was created and specifically designed to show your video files in unusual splendid ways. It has 5 good-looking views. Each are made in different taste so that you can choose any of them, according to the style of your website.</p>
 		</div>			  				
 		<div class="button-block">
-			<a href="http://huge-it.com/video-gallery/" target="_blank">View Plugin</a>
+			<a href="http://huge-it.com/wordpress-video-gallery/" target="_blank">View Plugin</a>
 		</div>
 	</div>
 </div>
 <div class="element hugeitmicro-item">
 	<div class="left-block">
 		<div class="main-image-block">
-			<a href="<?php echo plugins_url( '../images/share-buttons-logo.png' , __FILE__ ); ?>" rel="content"><img src="<?php echo plugins_url( '../images/share-buttons-logo.png' , __FILE__ ); ?>"></a>
+			<img src="<?php echo plugins_url( '../images/share-buttons-logo.png' , __FILE__ ); ?>">
 		</div>
 	</div>
 	<div class="right-block">
@@ -220,7 +236,7 @@
 <div class="element hugeitmicro-item">
 	<div class="left-block">
 		<div class="main-image-block">
-			<a href="<?php echo plugins_url( '../images/google-maps-logo.png' , __FILE__ ); ?>" rel="content"><img src="<?php echo plugins_url( '../images/google-maps-logo.png' , __FILE__ ); ?>"></a>
+			<img src="<?php echo plugins_url( '../images/google-maps-logo.png' , __FILE__ ); ?>">
 		</div>
 	</div>
 	<div class="right-block">
@@ -236,16 +252,16 @@
 <div class="element hugeitmicro-item">
 	<div class="left-block">
 		<div class="main-image-block">
-			<a href="<?php echo plugins_url( '../images/colorbox-logo.png' , __FILE__ ); ?>" rel="content"><img src="<?php echo plugins_url( '../images/colorbox-logo.png' , __FILE__ ); ?>"></a>
+			<img src="<?php echo plugins_url( '../images/video-player-logo.png' , __FILE__ ); ?>">
 		</div>
 	</div>
 	<div class="right-block">
-		<div class="title-block"><h3>Wordpress Colorbox</h3></div>
-			<p>Huge-It Colorbox is the most spellbinding plugin in WordPress that implement Lightbox-effect look of the images and videos (when you click on the thumbnail of the image/video it nicely opens and increases in the same window with a beautiful effect).</p>
+		<div class="title-block"><h3>Wordpress Video Player</h3></div>
+			<p>Inserting video on a page is a perfect way to supplement website with media content and expand the user’s interest in your site. Huge-IT Video Player is extremely necessary video tool for your sites, which provides a wide range of different file formats.</p>
 		<div class="description-block">
 		</div>			  				
 		<div class="button-block">
-			<a href="http://huge-it.com/colorbox/" target="_blank">View Plugin</a>
+			<a href="http://huge-it.com/video-player/" target="_blank">View Plugin</a>
 		</div>
 	</div>
 </div>

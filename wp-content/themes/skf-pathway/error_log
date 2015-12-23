@@ -1,1 +1,0 @@
-[31-Dec-2014 02:08:56 Etc/GMT] PHP Fatal error:  Call to undefined function get_header() in /home/iitkgrib/public_html/wp-content/themes/iit/index.php on line 17

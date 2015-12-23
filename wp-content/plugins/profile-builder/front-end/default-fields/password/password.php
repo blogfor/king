@@ -10,9 +10,11 @@ function wppb_password_handler( $output, $form_location, $field, $user_id, $fiel
 		if ( array_key_exists( $field['id'], $field_check_errors ) )
 			$error_mark = '<img src="'.WPPB_PLUGIN_URL.'assets/images/pencil_delete.png" title="'.wppb_required_field_error($field["field-title"]).'"/>';
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="passw1">' . $item_title.$error_mark . '</label>
-			<input class="text-input" name="passw1" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="password" id="passw1" value="" autocomplete="off" />';
+			<input class="text-input" name="passw1" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="password" id="passw1" value="" autocomplete="off" '. $extra_attr .'/>';
         if( !empty( $item_description ) )
             $output .= '<span class="wppb-description-delimiter">'.$item_description.' '.wppb_password_length_text().'</span>';
         else
@@ -41,11 +43,11 @@ function wppb_check_password_value( $message, $field, $request_data, $form_locat
         $wppb_generalSettings = get_option( 'wppb_general_settings' );
 
         if( wppb_check_password_length( $request_data['passw1'] ) )
-            return '<br/>'. sprintf( __( "The password must have the minimum length of %s characters", "profilebuilder" ), $wppb_generalSettings['minimum_password_length'] );
+            return '<br/>'. sprintf( __( "The password must have the minimum length of %s characters", "profile-builder" ), $wppb_generalSettings['minimum_password_length'] );
 
 
         if( wppb_check_password_strength() ){
-            return '<br/>' . sprintf( __( "The password must have a minimum strength of %s", "profilebuilder" ), wppb_check_password_strength() );
+            return '<br/>' . sprintf( __( "The password must have a minimum strength of %s", "profile-builder" ), wppb_check_password_strength() );
         }
     }
 

@@ -36,7 +36,6 @@ function wppb_display_name_handler( $output, $form_location, $field, $user_id, $
         $public_display = array_map( 'trim', $public_display );
         $public_display = array_unique( $public_display );
 
-
         $output = '<label for="display_name">'.$item_title.$error_mark.'</label>';
         $output .= '<select class="default_field_display-name" name="display_name" id="display-name">';
 
@@ -58,8 +57,11 @@ add_filter( 'wppb_output_form_field_default-display-name-publicly-as', 'wppb_dis
 
 /* handle field validation */
 function wppb_check_display_name_value( $message, $field, $request_data, $form_location ){
-	if ( ( isset( $request_data['display_name'] ) && ( trim( $request_data['display_name'] ) == '' ) ) && ( $field['required'] == 'Yes' ) )
-		return wppb_required_field_error($field["field-title"]);
+    if( $field['required'] == 'Yes' ){
+        if( ( isset( $request_data['display_name'] ) && ( trim( $request_data['display_name'] ) == '' ) ) || !isset( $request_data['display_name'] ) ){
+            return wppb_required_field_error($field["field-title"]);
+        }
+    }
 
     return $message;
 }

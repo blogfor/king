@@ -21,12 +21,13 @@ class BWGControllerOptions_bwg {
   public function execute() {
     $task = ((isset($_POST['task'])) ? esc_html(stripslashes($_POST['task'])) : '');
     $id = ((isset($_POST['current_id'])) ? esc_html(stripslashes($_POST['current_id'])) : 0);
-
+    
     if($task != ''){
       if(!WDWLibrary::verify_nonce('options_bwg')){
         die('Sorry, your nonce did not verify.');
       }
     }
+
 
     if (method_exists($this, $task)) {
       $this->$task($id);
@@ -102,7 +103,7 @@ class BWGControllerOptions_bwg {
     $thumb_height = (isset($_POST['thumb_height']) ? esc_html(stripslashes($_POST['thumb_height'])) : 90);
     $upload_thumb_width = (isset($_POST['upload_thumb_width']) ? esc_html(stripslashes($_POST['upload_thumb_width'])) : 300);
     $upload_thumb_height = (isset($_POST['upload_thumb_height']) ? esc_html(stripslashes($_POST['upload_thumb_height'])) : 300);
-	$upload_img_width = (isset($_POST['upload_img_width']) ? esc_html(stripslashes($_POST['upload_img_width'])) : 1200);
+	  $upload_img_width = (isset($_POST['upload_img_width']) ? esc_html(stripslashes($_POST['upload_img_width'])) : 1200);
     $upload_img_height = (isset($_POST['upload_img_height']) ? esc_html(stripslashes($_POST['upload_img_height'])) : 1200);	
     $image_enable_page = (isset($_POST['image_enable_page']) ? esc_html(stripslashes($_POST['image_enable_page'])) : 1);
     $image_title_show_hover = (isset($_POST['image_title_show_hover']) ? esc_html(stripslashes($_POST['image_title_show_hover'])) : 'none');
@@ -132,7 +133,7 @@ class BWGControllerOptions_bwg {
     $slideshow_filmstrip_height = (isset($_POST['slideshow_filmstrip_height']) ? esc_html(stripslashes($_POST['slideshow_filmstrip_height'])) : 70);
     $slideshow_enable_title = (isset($_POST['slideshow_enable_title']) ? esc_html(stripslashes($_POST['slideshow_enable_title'])) : 0);
     $slideshow_title_position = (isset($_POST['slideshow_title_position']) ? esc_html(stripslashes($_POST['slideshow_title_position'])) : 'top-right');
-	$slideshow_title_full_width = (isset($_POST['slideshow_title_full_width']) ? esc_html(stripslashes($_POST['slideshow_title_full_width'])) : 0);
+    $slideshow_title_full_width = (isset($_POST['slideshow_title_full_width']) ? esc_html(stripslashes($_POST['slideshow_title_full_width'])) : 0);
     $slideshow_enable_description = (isset($_POST['slideshow_enable_description']) ? esc_html(stripslashes($_POST['slideshow_enable_description'])) : 1);
     $slideshow_description_position = (isset($_POST['slideshow_description_position']) ? esc_html(stripslashes($_POST['slideshow_description_position'])) : 'bottom-right');
     $slideshow_enable_music = (isset($_POST['slideshow_enable_music']) ? esc_html(stripslashes($_POST['slideshow_enable_music'])) : 0);
@@ -194,6 +195,10 @@ class BWGControllerOptions_bwg {
     $comment_moderation = (isset($_POST['comment_moderation']) ? esc_html(stripslashes($_POST['comment_moderation'])) : 0);
     $popup_hit_counter = (isset($_POST['popup_hit_counter']) ? esc_html(stripslashes($_POST['popup_hit_counter'])) : 0);
     $enable_ML_import = (isset($_POST['enable_ML_import']) ? esc_html(stripslashes($_POST['enable_ML_import'])) : 0);
+    $autoupdate_interval = (isset($_POST['autoupdate_interval_hour']) && isset($_POST['autoupdate_interval_min']) ? ((int) $_POST['autoupdate_interval_hour'] * 60 + (int) $_POST['autoupdate_interval_min']) : 30);
+    /*minimum autoupdate interval is 1 min*/
+    $autoupdate_interval = ($autoupdate_interval >= 1 ? $autoupdate_interval : 1 );
+    $instagram_access_token = (isset($_POST['instagram_access_token']) ? esc_html(stripslashes($_POST['instagram_access_token'])) : '');
     $showthumbs_name = (isset($_POST['thumb_name']) ? esc_html(stripslashes($_POST['thumb_name'])) : 1);
     $show_album_name = (isset($_POST['show_album_name_enable']) ? esc_html(stripslashes($_POST['show_album_name_enable'])) : 1);
     $show_image_counts = (isset($_POST['show_image_counts']) ? esc_html(stripslashes($_POST['show_image_counts'])) : 0);
@@ -201,7 +206,31 @@ class BWGControllerOptions_bwg {
     $show_masonry_thumb_description = (isset($_POST['show_masonry_thumb_description']) ? esc_html(stripslashes($_POST['show_masonry_thumb_description'])) : 0);
     $popup_info_full_width = (isset($_POST['popup_info_full_width']) ? esc_html(stripslashes($_POST['popup_info_full_width'])) : 0);
 		$show_sort_images = (isset($_POST['show_sort_images']) ? esc_html(stripslashes($_POST['show_sort_images'])) : 0);
-    $description_tb = (isset($_POST['description_tb']) ? esc_html(stripslashes($_POST['description_tb'])) : 0);
+		$enable_seo = (isset($_POST['enable_seo']) ? esc_html(stripslashes($_POST['enable_seo'])) : 1);
+    $autohide_lightbox_navigation = (isset($_POST['autohide_lightbox_navigation']) ? esc_html(stripslashes($_POST['autohide_lightbox_navigation'])) : 1);
+    $autohide_slideshow_navigation = (isset($_POST['autohide_slideshow_navigation']) ? esc_html(stripslashes($_POST['autohide_slideshow_navigation'])) : 1);
+    $read_metadata = (isset($_POST['read_metadata']) ? esc_html(stripslashes($_POST['read_metadata'])) : 0);
+    $enable_loop = (isset($_POST['enable_loop']) ? esc_html(stripslashes($_POST['enable_loop'])) : 1);
+    $enable_addthis = (isset($_POST['enable_addthis']) ? esc_html(stripslashes($_POST['enable_addthis'])) : 0);
+    $addthis_profile_id = (isset($_POST['addthis_profile_id']) ? esc_html(stripslashes($_POST['addthis_profile_id'])) : '');
+
+    $carousel_interval = (isset($_POST['carousel_interval']) ? esc_html(stripslashes($_POST['carousel_interval'])) : 5);
+    $carousel_width = (isset($_POST['carousel_width']) ? esc_html(stripslashes($_POST['carousel_width'])) : 300);
+    $carousel_height = (isset($_POST['carousel_height']) ? esc_html(stripslashes($_POST['carousel_height'])) : 300);      
+    $carousel_image_par = (isset($_POST['carousel_image_par']) ? esc_html(stripslashes($_POST['carousel_image_par'])) : 0.75);
+	  $carousel_image_column_number = (isset($_POST['carousel_image_column_number']) ? esc_html(stripslashes($_POST['carousel_image_column_number'])) : 5);
+    $carousel_enable_title = (isset($_POST['carousel_enable_title']) ? esc_html(stripslashes($_POST['carousel_enable_title'])) : 0);  
+   	$carousel_enable_autoplay = (isset($_POST['carousel_enable_autoplay']) ? esc_html(stripslashes($_POST['carousel_enable_autoplay'])) : 0);
+    $carousel_r_width = (isset($_POST['carousel_r_width']) ? esc_html(stripslashes($_POST['carousel_r_width'])) : 800);
+    $carousel_fit_containerWidth = (isset($_POST['carousel_fit_containerWidth']) ? esc_html(stripslashes($_POST['carousel_fit_containerWidth'])) : 1);
+    $carousel_prev_next_butt = (isset($_POST['carousel_prev_next_butt']) ? esc_html(stripslashes($_POST['carousel_prev_next_butt'])) : 1);
+    $carousel_play_pause_butt = (isset($_POST['carousel_play_pause_butt']) ? esc_html(stripslashes($_POST['carousel_play_pause_butt'])) : 1);
+    $bwg_permissions = (isset($_POST['permissions']) ? esc_html(stripslashes($_POST['permissions'])) : 'manage_options');
+    $facebook_app_id = (isset($_POST['facebook_app_id']) ? esc_html(stripslashes($_POST['facebook_app_id'])) : '');
+	$facebook_app_secret = (isset($_POST['facebook_app_secret']) ? esc_html(stripslashes($_POST['facebook_app_secret'])) : '');
+	$show_tag_box = (isset($_POST['show_tag_box']) ? esc_html(stripslashes($_POST['show_tag_box'])) : 0);
+  $show_hide_custom_post = (isset($_POST['show_hide_custom_post']) ? esc_html(stripslashes($_POST['show_hide_custom_post'])) : 0);
+  $show_hide_post_meta = (isset($_POST['show_hide_post_meta']) ? esc_html(stripslashes($_POST['show_hide_post_meta'])) : 0);
 
     $save = $wpdb->update($wpdb->prefix . 'bwg_option', array(
       'images_directory' => $images_directory,
@@ -215,7 +244,7 @@ class BWGControllerOptions_bwg {
       'thumb_height' => $thumb_height,
       'upload_thumb_width' => $upload_thumb_width,
       'upload_thumb_height' => $upload_thumb_height,
-	  'upload_img_width' => $upload_img_width, 
+      'upload_img_width' => $upload_img_width, 
       'upload_img_height' => $upload_img_height,
       'image_enable_page' => $image_enable_page,
       'image_title_show_hover' => $image_title_show_hover,
@@ -245,7 +274,7 @@ class BWGControllerOptions_bwg {
       'slideshow_filmstrip_height' => $slideshow_filmstrip_height,
       'slideshow_enable_title' => $slideshow_enable_title,
       'slideshow_title_position' => $slideshow_title_position,
-	  'slideshow_title_full_width' => $slideshow_title_full_width,
+      'slideshow_title_full_width' => $slideshow_title_full_width,
       'slideshow_enable_description' => $slideshow_enable_description,
       'slideshow_description_position' => $slideshow_description_position,
       'slideshow_enable_music' => $slideshow_enable_music,
@@ -307,6 +336,8 @@ class BWGControllerOptions_bwg {
       'comment_moderation' => $comment_moderation,
       'popup_hit_counter' => $popup_hit_counter,
       'enable_ML_import' => $enable_ML_import,
+      'autoupdate_interval' => $autoupdate_interval,
+      'instagram_access_token' => $instagram_access_token,
       'showthumbs_name' => $showthumbs_name,
       'show_album_name' => $show_album_name,
       'show_image_counts' => $show_image_counts,
@@ -314,7 +345,31 @@ class BWGControllerOptions_bwg {
       'show_masonry_thumb_description' => $show_masonry_thumb_description,
       'popup_info_full_width' => $popup_info_full_width,
       'show_sort_images' => $show_sort_images,
-      'description_tb' => $description_tb,
+      'enable_seo' => $enable_seo,
+      'autohide_lightbox_navigation' => $autohide_lightbox_navigation,
+      'autohide_slideshow_navigation' => $autohide_slideshow_navigation,
+      'read_metadata' => $read_metadata,
+      'enable_loop' => $enable_loop,
+      'enable_addthis' => $enable_addthis,
+      'addthis_profile_id' => $addthis_profile_id,
+
+      'carousel_interval' => $carousel_interval,
+      'carousel_width' => $carousel_width,
+      'carousel_height' => $carousel_height,
+	    'carousel_image_column_number' => $carousel_image_column_number,
+      'carousel_image_par' => $carousel_image_par,
+      'carousel_enable_title' => $carousel_enable_title,
+	    'carousel_enable_autoplay' => $carousel_enable_autoplay,
+      'carousel_r_width' => $carousel_r_width,
+      'carousel_fit_containerWidth' => $carousel_fit_containerWidth,
+      'carousel_prev_next_butt' => $carousel_prev_next_butt,
+      'carousel_play_pause_butt' => $carousel_play_pause_butt,
+      'permissions' => $bwg_permissions,
+      'facebook_app_id' => $facebook_app_id,
+	  'facebook_app_secret' => $facebook_app_secret,
+	  'show_tag_box' => $show_tag_box,
+    'show_hide_custom_post' => $show_hide_custom_post,
+    'show_hide_post_meta' => $show_hide_post_meta,
       ), array('id' => 1));
 
     if ($save !== FALSE) {      
@@ -324,7 +379,8 @@ class BWGControllerOptions_bwg {
       if (!is_dir(ABSPATH . $images_directory . '/photo-gallery')) {
         mkdir(ABSPATH . $images_directory . '/photo-gallery', 0777);
       }
-      echo WDWLibrary::message('Item Succesfully Saved.', 'updated');
+      echo WDWLibrary::message(__('Item Succesfully Saved.', 'bwg_back'), 'updated');
+
     }
     else {
       echo WDWLibrary::message('Error. Please install plugin again.', 'error');

@@ -1,10 +1,10 @@
-=== Photo Gallery ===
+=== Gallery ===
 Contributors: webdorado
-Donate link: http://web-dorado.com/products/wordpress-photo-gallery-plugin.html
-Tags: photo, photo gallery, image gallery, video gallery, gallery, galleries,  wordpress gallery plugin, images gallery, album, photo albums, simple gallery, best gallery plugin, free photo gallery, wp gallery, wordpress gallery, website gallery, gallery shortcode, best gallery, picture, pictures, gallery slider, photo album, photogallery, widget gallery, image, images, photos,  gallery lightbox, photoset, wordpress photo gallery plugin, wp gallery plugins, responsive wordpress photo gallery, media, image album, filterable gallery, banner rotator, fullscreen gallery, fotogalerie, galleria, galerie, galeri, responsive gallery, add album,  add gallery, add pictures, fotoalbum, foto, gallery decription, multiple pictures, photoalbum, upload images, upload photos, view images, view pictures, admin, AJAX, comments, gallery image, image lightbox, image rotate, image slideshow, image slider, jquery, jquery gallery, slide show, slideshow, thumbnail, thumbnail view, thumbnails, thumbs, responsive, watermarking, watermarks,fullscreen slider, lightbox, photography, sidebar, slide, youtube, vimeo, videos  
+Donate link: https://web-dorado.com/products/wordpress-photo-gallery-plugin.html
+Tags: photo, photo gallery, image gallery, video gallery, gallery, galleries,  wordpress gallery plugin, images gallery, album, photo albums, simple gallery, best gallery plugin, free photo gallery, wp gallery, wordpress gallery, website gallery, gallery shortcode, best gallery, picture, pictures, gallery slider, photo album, photogallery, widget gallery, image, images, photos,  gallery lightbox, photoset, wordpress photo gallery plugin, wp gallery plugins, responsive wordpress photo gallery, media, image album, filterable gallery, banner rotator, fullscreen gallery, fotogalerie, galleria, galerie, galeri, responsive gallery, add album,  add gallery, add pictures, fotoalbum, foto, gallery decription, multiple pictures, photoalbum, upload images, upload photos, view images, view pictures, admin, AJAX, comments, gallery image, image lightbox, image rotate, image slideshow, image slider, jquery, jquery gallery, slide show, slideshow, thumbnail, thumbnail view, thumbnails, thumbs, responsive, watermarking, watermarks,fullscreen slider, lightbox, photography, sidebar, slide, youtube, vimeo, videos, instagram, facebook, mosaic, facebook integration, instagram feed, Flickr, Dailymotion, widget, youtube gallery
 Requires at least: 3.4 
-Tested up to: 4.1 
-Stable tag: 1.2.17 
+Tested up to: 4.4 
+Stable tag: 1.2.81    
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,11 +15,17 @@ Create 100% responsive FREE WordPress photo gallery in minutes. Easy to customiz
    
 https://www.youtube.com/watch?v=4Mxg0FsFZZE&index=5&list=PLnxWPiY5tLFUsFI67acGEPAqoDMZqss5F
 
-[WordPress Photo Gallery](http://web-dorado.com/products/wordpress-photo-gallery-plugin.html)  
+[WordPress Photo Gallery](https://web-dorado.com/products/wordpress-photo-gallery-plugin.html)  
 [Photo Gallery Demo](http://wpdemo.web-dorado.com/gallery/)  
 [Photo Gallery Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=galleries_bwg)  
-[Photo Gallery User Manual](http://web-dorado.com/wordpress-gallery-guide-step-1.html)  
-[Photo Gallery Support Forum](http://web-dorado.com/forum/photo-gallery.html)  
+[Photo Gallery User Manual](https://web-dorado.com/wordpress-gallery-guide-step-1.html)  
+[Photo Gallery Support Forum](https://web-dorado.com/forum/photo-gallery.html)  
+
+
+= Photo Gallery Add-ons: =
+[Facebook Integration Add-on](https://web-dorado.com/products/wordpress-photo-gallery-plugin/add-ons/facebook.html)       
+[Export/Import Add-on](https://web-dorado.com/products/wordpress-photo-gallery-plugin/add-ons/export-import.html)     
+
 
 Photo Gallery is an advanced plugin with a list of tools and options for adding and editing images for different views. It is fully responsive. The product includes plugin for adding image galleries and albums to posts and pages, as well as multiple widgets. You can add images, providing detailed descriptions and tags, organize the galleries into different albums.  
 
@@ -35,6 +41,7 @@ The plugin allows displaying galleries/albums within the following views:
 *   Extended Album view for displaying albums with descriptions
 *   Blog Style gallery view (commercial version)
 
+
 You can make the required customizations for the view in the shortcode in advance to adding in the posts/pages. 
 
 Included File Manager will help to rename, upload, remove, copy images and/or image directories within a few simple steps.
@@ -47,7 +54,7 @@ Photo Gallery product in addition to the main plugin includes 4 specific widgets
 *   Photo Gallery (similar to the main plugin option)
 
 ###IMPORTANT:    
-If you think you found a bug in Photo Gallery or have any problem/question concerning the plugin, please check out [Photo Gallery Support Forum](http://web-dorado.com/forum/photo-gallery.html) in our website. If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
+If you think you found a bug in Photo Gallery or have any problem/question concerning the plugin, please check out [Photo Gallery Support Forum](https://web-dorado.com/forum/photo-gallery.html) in our website. If you do not find a solution here, do not hesitate to [click here to contact us](https://web-dorado.com/support/contact-us.html).
 
 
 ### The list of the features:
@@ -84,7 +91,7 @@ If you think you found a bug in Photo Gallery or have any problem/question conce
 *   Redirection option upon clicking image thumbnail  
 *   Front-end image sorting possibility (dropdown) for the users  
 
-Upgrade to [WordPress Photo Gallery Pro](http://web-dorado.com/products/wordpress-photo-gallery-plugin.html) to add features:
+Upgrade to [WordPress Photo Gallery Pro](https://web-dorado.com/products/wordpress-photo-gallery-plugin.html) to add features:
 
 *   Masonry gallery View. 
 *   Mosaic gallery View   
@@ -92,11 +99,12 @@ Upgrade to [WordPress Photo Gallery Pro](http://web-dorado.com/products/wordpres
 *   Masonry Album view   
 *   Slideshow/Lightbox 15 effects.    
 *   Editable themes.   
+*	Instagram Integration.   
 *   Commenting possibility with Captcha protection possibility.   
-*   Social sharing possibility (Facebook, Google+, Twitter, Pinterest and Tumblr)    
+*   Social sharing possibility (Facebook, Google+, Twitter, Pinterest and Tumblr).    
 *   Dynamic Photo Gallery Tag Cloud widget  with image tag cloud and text tag cloud options.   
-*   Possibility to include both videos and images within a single gallery.   
-
+*   Possibility to include both videos and images within a single gallery.     
+*   Add ons support.      
 
 ### Supported languages 
 
@@ -125,6 +133,7 @@ Greek (el)
 Hebrew (he_IL)  
 Hindi (hi_IN)  
 Hungarian (hu_HU)  
+Icelandic (is_IS) by Eggert Johannesson    
 Indonesian (id_ID)  
 Italian (it_IT)  
 Japanese (ja)  
@@ -138,11 +147,11 @@ Norwegian (nb_NO)
 Persian (fa_IR)  
 Polish (pl_PL)  
 Portuguese (pt_PT)  
-Russian (ru_RU)  
+Russian (ru_RU) by Ruslan Tertyshny      
 Romanian (ro_RO)  
 Serbian (sr_RS)  
 Slovak (sk_SK)  
-Spanish (es_ES)  
+Spanish (es_ES) by Alexandro Lacadena       
 Swedish (sv_SE)  
 Tamil (ta)  
 Thai (th)  
@@ -155,7 +164,7 @@ Vietnamese (vi)
 #### Thank you for your interest in Photo Gallery.  
 
 ### Minimum requirements.  
-*   Wordpress 3.0+  
+*   Wordpress 3.4+  
 *   PHP 5.x  
 *   MySQL 5.x  
 
@@ -170,7 +179,7 @@ After downloading the ZIP file,
 *Go to your Downloads folder and locate the folder with the gallery plugin. Right-click on the folder and select Compress. Now you have a newly created .zip file which can be installed as described here.*     
 4. Click `Install Now` button.     
 5. Click `Activate Plugin` button for activating the gallery plugin.    
-6. If the installation does not succeed, please contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
+6. If the installation does not succeed, please [click here to contact us](https://web-dorado.com/support/contact-us.html).
 
 == Screenshots ==
 1.  Photo Gallery - Popup View   
@@ -206,108 +215,356 @@ Yes, it is possible to add advertising and/or watermark over the images. In both
 
 == Changelog ==
 
+= 1.2.81 =
+*  Fixed: Bug on options save.     
+*  Changed: Featured themes page.    
+
+= 1.2.80 =
+*  Changed: Social options.            
+*  Fixed: Instagram only gallery.       
+
+= 1.2.79 =
+*  Fixed: Youtube embed size in firefox.     
+*  Fixed: Russian translation (Thanks to Ruslan Tertyshny).    
+
+= 1.2.78 =
+*  Fixed: Compability with Wordpress 4.4.             
+*  Fixed: Undefined property on album widget.         
+*  Fixed: German backend translation.        
+*  Fixed: Dutch backend translation.           
+*  Added: Youtube embed with start time.         
+   
+
+= 1.2.77 =
+*  Fixed: Themes.
+*  Fixed: Error on uninstall.
+
+= 1.2.76 =
+*  Changed: Theme DB table structure.        
+*  Fixed: Error on facebook share.       
+
+= 1.2.75 =
+*  Fixed: German translation.      
+*  Changed: Featured plugins page.      
+
+= 1.2.74 =
+*  Changed: Share url.     
+*  Fixed: Twitter share.       
+*  Added: Possibility to add custom style for front end thumbnails.      
+  
+= 1.2.73 =  
+*  Fixed: SEO bug.      
+
+= 1.2.72 =
+*  Fixed:Bug on options save.    
+
+= 1.2.71 = 
+*  Fixed: Quotes in advertisement text.      
+*  Fixed: Reset, edit unsaved image.     
+*  Fixed: Facebook share image sizes.      
+*  Fixed: Images loop when swiping.      
+
+= 1.2.70 =
+*  Changed: Blog style view scroll load.       
+*  Changed: Lightbox buttons responsiveness.      
+*  Fixed: Spanish translation by Alexandro Lacadena.      
+  
+= 1.2.69 =
+*  Fixed: Album view bug.      
+
+= 1.2.68 =
+*  Fixed: Random ordering.      
+*  Changed: Pause embed video on image change.      
+*  Fixed: Translations bug in javascript.       
+  
+= 1.2.67 =
+*  Added: Backend translation.      
+*  Fixed: Pagination on tags page.         
+
+= 1.2.66 =
+*  Fixed: Minor bug in backend.     
+
+= 1.2.65 =   
+*  Fixed: Right click protection on Safari.      
+*  Added: Export/Import add-on.       
+
+= 1.2.64 =
+*  Fixed: Embed media responsiveness.     
+*  Changed: Permissions for shortcode(pro version).    
+*  Added: Show/hide custom post types (optional).      
+
+= 1.2.63 =
+*  Fixed: Bug in comments.
+*  Changed: Licensing page.
+
+= 1.2.62 =
+*  Changed: Thumbnail click action.  
+
+= 1.2.61 =
+*  Added: Filter by tags in frontend.
+
+= 1.2.60 =
+*  Changed: Notices show order.  
+
+= 1.2.59 =
+*  New: Facebook embed add-on.   
+*  Added: Add-ons page.
+
+= 1.2.58 =
+*  Added: Translation in Icelandic. Thanks to Eggert Johannesson.   
+*  Fixed: Serbian translation.    
+*  Fixed: Share url on Pinterest.   
+
+= 1.2.57 =
+*  Fixed: Edit images with quotas in name.   
+*  Fixed: Edit newly added images.   
+*  Changed: Featured plugins page.   
+  
+= 1.2.56 =
+*  Fixed: Play/pause button in carousel view.   
+*  Fixed: Recreate thumbnail.   
+*  Fixed: Division by zero in pagination.   
+*  Changed: Add to pinterest description image alt.   
+
+= 1.2.55 =
+*  Added: Support/rate us messages.  
+  
+= 1.2.54 =
+*  Fixed: Image browser view pagination styles.  
+
+= 1.2.53 =
+*  Fixed: Open shared album image.
+*  Fixed: Image browse pagination.
+
+= 1.2.52 =
+*  Added: Images count parameter for load more.   
+*  Fixed: Pinterest share.   
+*  Fixed: Depricated function in carousel.   
+
+= 1.2.51 =
+*  Changed: Compability with Wordpress 4.3.   
+
+= 1.2.50 =
+*  Fixed: JavaScript conflict with some themes.
+
+= 1.2.49 =
+*  Added: Call photo gallery by php function.
+
+= 1.2.48 =
+*  Fixed: Back to previous album/gallery.
+
+= 1.2.47 =
+*  Added: Transition for mosaic view.  
+  
+= 1.2.46 =
+*  Changed: Activate, Deactivate hooks for multisite.
+
+= 1.2.45 =
+*  Changed: Licensing page.
+
+= 1.2.44 =
+*  Fixed: "Open image in original size" and "Download original image" for embed.
+*  Fixed: Instagram thumbnail.
+*  Fixed: Watermark link.
+
+= 1.2.43 =
+*  New: Tools for editing images.
+  
+= 1.2.42 =
+*  Fixed: Security issue.  
+
+= 1.2.41 =
+*  Fixed: Embed media for wordpress lower than 4.0.0.
+
+= 1.2.40 =
+*  Changed: Save images ordering in admin.
+*  Fixed: Warnings in filemanager.
+*  Fixed: Prevent opening lightbox on swipe.
+  
+= 1.2.39 =
+*  New: Search by name in file manager.  
+
+= 1.2.38 =
+*  New: Carousel view.   
+*  Fixed: Horizontal Mosaic view bug.  
+*  Fixed: Print bug.  
+
+= 1.2.37 =
+*  New: Load more with scroll.   
+*  Fixed: Thumbnail size on recover.      
+  
+= 1.2.36 =
+*  Changed: Featured plugins page.    
+*  Fixed: Mosaic view show title.   
+*  Fixed: AddThis javascript bug.    
+
+= 1.2.35 = 
+*  New: Addthis (pro version).     
+*  Fixed: Link text font size in extended album description.     
+
+= 1.2.34= 
+*  New: Recreate thumbnail button in gallery page.   
+
+= 1.2.33 =
+*  Fixed: Delete/update custom posts on gallery/album edit.    
+*  Fixed: Image width/height size with open comments.    
+
+= 1.2.32 =
+*  New: Loop option for lightbox.   
+*  Fixed: Embed media by YouTube short url.    
+
+= 1.2.31 =
+*  New: Load more button instead of pagination (optional).   
+*  Fixed: Minor bug on gallery save on php5.3.   
+  
+= 1.2.30 =
+*  Change links.    
+
+= 1.2.29 = 
+*  Changed: Featured plugins page.  
+*  New: Featured themes page.   
+
+= 1.2.28 =
+*  change user guide links.    
+*  minor bug fixed.
+
+= 1.2.27 =
+*  minor bug fixed.
+
+= 1.2.26 =
+*  Fixed: Lightbox opening bug for ios.
+
+= 1.2.25 =
+*  Fixed: Lightbox opening bug for mobile browsers.
+
+= 1.2.24 = 
+*  duplicated id in slideshow view.    
+*  deprecated options removed (roles). 
+
+= 1.2.23 =
+*  bug in preload option fixed.
+
+= 1.2.21 =
+*  minor bugs fixes.
+
+= 1.2.19 =
+*  conflict with some themes fixed.
+
+= 1.2.18 =
+*  New: Bottom pagination in admin views.    
+*  New: Improve SEO.   
+*  New: Autohide option for slideshow and lightbox navigation buttons.   
+*  New: Read image meta data.   
+*  Fixed: Slideshow bullets centering.  
+*  Fixed: Admin-ajax url for frontend.   
+*  Fixed: Upload images to .original not resized.   
+*  Fixed: Order by filename.   
+
+= 1.2.17 =
+Edit licensing page.  
+
 = 1.2.16 =
-*  New: Embed support.
-*  New: Photo gallery can be loaded through AJAX request.
-*  New: Image meta auto-filling.  
-*  Changed: Deleted tag posts.
-*  Changed: Improved security of backend.
-*  Fixed: Thumbnail and filmstrip sizes for embeds.
-*  Fixed: Search in backend galleries view.
-*  Fixed: Gallery box image URL on a page with multiple galleries.
-*  Fixed: Maximize/resize buttons in gallery box when exiting fullscreen.
-*  Fixed: Other minor bugs.
+*  New: Embed support.  
+*  New: Photo gallery can be loaded through AJAX request.  
+*  New: Image meta auto-filling.    
+*  Changed: Deleted tag posts.  
+*  Changed: Improved security of backend.  
+*  Fixed: Thumbnail and filmstrip sizes for embeds.   
+*  Fixed: Search in backend galleries view.   
+*  Fixed: Gallery box image URL on a page with multiple galleries.   
+*  Fixed: Maximize/resize buttons in gallery box when exiting fullscreen.   
+*  Fixed: Other minor bugs.    
   
 = 1.2.15 =  
-*  added large image url in page source for SEO  
+*  added large image url in page source for SEO. 
 
 = 1.2.14 = 
-*  shortcode issue fixed  
+*  shortcode issue fixed . 
 
 = 1.2.13 =  
-*  [CVE-2015-2324] security issue fixed in filemanager     
-This vulnerability was discovered by Fortinet's FortiGuard Labs.  
+*  [CVE-2015-2324] security issue fixed in filemanager.         
+This vulnerability was discovered by Fortinet's FortiGuard Labs.      
 
 = 1.2.12 =
-*  Front-end image sorting possibility (dropdown) for the users
+*  Front-end image sorting possibility (dropdown) for the users.  
 
 = 1.2.11 =
-*  security issue fixed
-*  bug in fullscreen button and laoding image animation fixed
+*  security issue fixed.    
+*  bug in fullscreen button and laoding image animation fixed.
 
 = 1.2.9 =
-*  updated font-awesome to 4.2.0 version
-*  sort bug in ligthbox
+*  updated font-awesome to 4.2.0 version.    
+*  sort bug in ligthbox.
 
 = 1.2.8 =
-*  security issue fixed
+*  security issue fixed.
 
 = 1.2.7 =
-*  masonry album view type   
-*  single quota bug in image fixed
+*  masonry album view type.    
+*  single quota bug in image fixed.
 
 = 1.2.6 =
-*  bug in new image save fixed
+*  bug in new image save fixed.
 
 = 1.2.5 =
-*  wrap around in lightbox
+*  wrap around in lightbox.
 
 = 1.2.4 =
-*  pagination input
+*  pagination input.
 
 = 1.2.3 =
-*  play icon over the video thumbnail
+*  play icon over the video thumbnail.
 
 = 1.2.2 =
-*  add upload images with custom size
+*  add upload images with custom size.
 
 = 1.2.1 =
-*  minor changes in shortcode generation code 
+*  minor changes in shortcode generation code. 
 
 = 1.2.0 =
-*  change shortcodes
+*  change shortcodes.
 
 = 1.1.30 =
-*  images count in ligthbox (optional - only in options page)  
-*  images count column in galleries table   
-*  WordPress Search Integration by gallery and album title   
-*  show gallery, album title (optional - only in options page)  
+*  images count in ligthbox (optional - only in options page).     
+*  images count column in galleries table.     
+*  WordPress Search Integration by gallery and album title.    
+*  show gallery, album title (optional - only in options page).   
 
 = 1.1.29 =
-*  Bug fixed in tag cloud widget
+*  Bug fixed in tag cloud widget. 
 
 = 1.1.28 =
-*  Bug fixed in filemanager     
+*  Bug fixed in filemanager.     
 
 = 1.1.27 =
-*  change in loading   
+*  change in loading.   
 
 = 1.1.26 =
-*  added option "Import from Media Library"      
+*  added option "Import from Media Library".      
 
 = 1.1.25 =
-*  bug fixed in save gallery      
+*  bug fixed in save gallery.      
 
 = 1.1.24 =
-*  Improve translation, Add tags to all images      
+*  Improve translation, Add tags to all images.      
 
 = 1.1.23 =
-*  redirect from widget, unique tags name      
+*  redirect from widget, unique tags name.      
 
 = 1.1.22 =
-*  order option for album images   
+*  order option for album images.   
 
 = 1.1.21 =
-*  added option for sorting gallery images within album   
+*  added option for sorting gallery images within album.   
 
 = 1.1.20 =
-*  bug fixed on lightbox   
+*  bug fixed on lightbox.   
 
 = 1.1.19 =
-*  preload images count options  
+*  preload images count options.  
 
 = 1.1.18 =
-*  redirect url optional 
+*  redirect url optional. 
 
 = 1.1.15 =
 *  added search images in gallery (optional), optional info, resize.
@@ -374,7 +631,7 @@ This vulnerability was discovered by Fortinet's FortiGuard Labs.
   
 = Step 1: Installing the Gallery =   
 1.1 Minimum requirements.  
-Wordpress 3.0+  
+Wordpress 3.4+  
 PHP 5.x  
 MySQL 5.x  
   
@@ -384,7 +641,7 @@ Go to Plugins Add > New > Upload.
 Click `Choose file` (`Browse`) and select the Photo Gallery zip file.  
 Click `Upload&Install` button.  
 Click `Activate Plugin` button for activating the plugin.  
-If the installation succeeded you will see the success message. If any problem occurs, please contact us  info@web-dorado.com.  
+If the installation succeeded you will see the success message. If any problem occurs, please [click here to contact us](https://web-dorado.com/support/contact-us.html).  
   
   
   
