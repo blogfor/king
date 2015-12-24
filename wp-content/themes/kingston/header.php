@@ -39,13 +39,16 @@
         <div  class="">
             <div class="head_top">
                 <div class="container">
-                    <div class="col-lg-6 col-md-6 col-sm-6 logo"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" width="548" height="86" alt="Kingston Educational Institute" class="img-responsive"></a></div> 
+                    <div class="col-lg-6 col-md-6 col-sm-6 logo">
+                        <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" width="548" height="86" alt="Kingston Educational Institute" class="img-responsive"></a>
+                    <div class="iso"><p> AN ISO 9001 :2008 CERTIFIED INSTITUTE</p></div>
+                    </div> 
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="contact-box">
                             <div class="helpline"><P>HELPLINE</P></div>
                             <div class="ph_number"><p>Call: 8100981098</p></div>
                         </div>
-                        <div class="iso"><p> AN ISO 9001 :2008 CERTIFIED INSTITUTE</p></div>
+                        
                     </div>
                 </div>
             </div><!-- head_top-->
@@ -76,6 +79,28 @@
                                 <li><a href="#">CONTACT US</a></li>
                                 <li><a href="#">STUDENT LOGIN</a></li>
                             </ul>
+                            <?php 
+                            $defaults = array(
+                                
+                                'menu'            => 'Top_menu',
+                                'container'       => 'div',
+                                'container_class' => '',
+                                'container_id'    => '',
+                                'menu_class'      => 'menu',
+                                'menu_id'         => '',
+                                'echo'            => true,
+                                'fallback_cb'     => 'wp_page_menu',
+                                'before'          => '',
+                                'after'           => '',
+                                'link_before'     => '',
+                                'link_after'      => '',
+                                'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                                'depth'           => 0,
+                                'walker'          => ''
+                        );
+
+                        wp_nav_menu( $defaults );
+                            ?>
                         </div>
                     </div>
                 </div>
