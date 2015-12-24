@@ -18,9 +18,11 @@ function wppb_website_handler( $output, $form_location, $field, $user_id, $field
 		if ( array_key_exists( $field['id'], $field_check_errors ) )
 			$error_mark = '<img src="'.WPPB_PLUGIN_URL.'assets/images/pencil_delete.png" title="'.wppb_required_field_error($field["field-title"]).'"/>';
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="website">'.$item_title.$error_mark.'</label>
-			<input class="text-input default_field_website" name="website" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="website" value="'.esc_url( wp_unslash( $input_value ) ).'" />';
+			<input class="text-input default_field_website" name="website" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="website" value="'.esc_url( wp_unslash( $input_value ) ).'" '. $extra_attr .'/>';
         if( !empty( $item_description ) )
             $output .= '<span class="wppb-description-delimiter">'. $item_description .'</span>';
 
@@ -32,9 +34,12 @@ add_filter( 'wppb_output_form_field_default-website', 'wppb_website_handler', 10
 
 
 /* handle field validation */
-function wppb_check_website_value( $message, $field, $request_data, $form_location ){	
-	if ( ( isset( $request_data['website'] ) && ( trim( $request_data['website'] ) == '' ) ) && ( $field['required'] == 'Yes' ) )
-		return wppb_required_field_error($field["field-title"]);
+function wppb_check_website_value( $message, $field, $request_data, $form_location ){
+    if( $field['required'] == 'Yes' ){
+        if( ( isset( $request_data['website'] ) && ( trim( $request_data['website'] ) == '' ) ) || !isset( $request_data['website'] ) ){
+            return wppb_required_field_error($field["field-title"]);
+        }
+    }
 
     return $message;
 }

@@ -6,27 +6,27 @@ add_action( 'widgets_init', 'wppb_register_login_widget' );
 
 class wppb_login_widget extends WP_Widget {
 
-	function wppb_login_widget() {
-		$widget_ops = array( 'classname' => 'login', 'description' => __( 'This login widget lets you add a login form in the sidebar.', 'profilebuilder' ) );
+	function __construct() {
+		$widget_ops = array( 'classname' => 'login', 'description' => __( 'This login widget lets you add a login form in the sidebar.', 'profile-builder' ) );
 		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wppb-login-widget' );
-		
+
 		do_action( 'wppb_login_widget_settings', $widget_ops, $control_ops);
-		
-		$this->WP_Widget( 'wppb-login-widget', __('Profile Builder Login Widget', 'profilebuilder'), $widget_ops, $control_ops );
-		
+
+		parent::__construct( 'wppb-login-widget', __('Profile Builder Login Widget', 'profile-builder'), $widget_ops, $control_ops );
+
 	}
 
 	function widget( $args, $instance ) {
 		extract( $args );
 
-		$title = apply_filters('wppb_login_widget_title', $instance['title'] );
-		$redirect = trim($instance['redirect']);
-		$register = trim($instance['register']);
-		$lostpass = trim($instance['lostpass']);
+		$title = apply_filters( 'wppb_login_widget_title', ( isset( $instance['title'] ) ? $instance['title'] : '' ) );
+		$redirect = ( isset( $instance['redirect'] ) ? trim( $instance['redirect'] ) : '' );
+		$register = ( isset( $instance['register'] ) ? trim( $instance['register'] ) : '' );
+		$lostpass = ( isset( $instance['lostpass'] ) ? trim( $instance['lostpass'] ) : '' );
 
 		echo $before_widget;
 
-		if ( $title )
+		if ( ! empty( $title ) )
 			echo $before_title . $title . $after_title;
 
 		echo do_shortcode('[wppb-login display="false" register_url="'.$register.'" lostpassword_url="'.$lostpass.'" redirect="'.$redirect.'"]');
@@ -56,26 +56,26 @@ class wppb_login_widget extends WP_Widget {
 
 	function form( $instance ) {
 
-		$defaults = array( 'title' => __('Login', 'profilebuilder'), 'redirect' => '', 'register' => '', 'lostpass' => '' );
+		$defaults = array( 'title' => __('Login', 'profile-builder'), 'redirect' => '', 'register' => '', 'lostpass' => '' );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'profilebuilder' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'profile-builder' ); ?></label>
 			<input id="<?php echo $this->get_field_id( 'title' ); ?>" class="widefat" type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'redirect' ); ?>"><?php _e( 'After login redirect URL (optional):', 'profilebuilder' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'redirect' ); ?>"><?php _e( 'After login redirect URL (optional):', 'profile-builder' ); ?></label>
 			<input id="<?php echo $this->get_field_id( 'redirect' ); ?>" class="widefat" type="url" name="<?php echo $this->get_field_name( 'redirect' ); ?>" value="<?php echo $instance['redirect']; ?>" style="width:100%;" />
 		</p>
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'register' ); ?>"><?php _e( 'Register page URL (optional):', 'profilebuilder' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'register' ); ?>"><?php _e( 'Register page URL (optional):', 'profile-builder' ); ?></label>
 			<input id="<?php echo $this->get_field_id( 'register' ); ?>" class="widefat" type="url" name="<?php echo $this->get_field_name( 'register' ); ?>" value="<?php echo $instance['register']; ?>" style="width:100%;" />
 		</p>		
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'lostpass' ); ?>"><?php _e( 'Password Recovery page URL (optional):', 'profilebuilder' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'lostpass' ); ?>"><?php _e( 'Password Recovery page URL (optional):', 'profile-builder' ); ?></label>
 			<input id="<?php echo $this->get_field_id( 'lostpass' ); ?>" class="widefat" type="url" name="<?php echo $this->get_field_name( 'lostpass' ); ?>" value="<?php echo $instance['lostpass']; ?>" style="width:100%;" />
 		</p>
 
@@ -94,4 +94,4 @@ function wppb_scroll_down_to_widget($content){
 function wppb_require_jquery(){
 	wp_enqueue_script( 'jquery' );
 }
-//add_action( 'wp_enqueue_scripts', 'wppb_require_jquery' ); 
+//add_action( 'wp_enqueue_scripts', 'wppb_require_jquery' );

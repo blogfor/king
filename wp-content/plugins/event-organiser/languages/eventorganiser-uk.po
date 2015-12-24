@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Event Organiser\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-19 12:56+0000\n"
-"PO-Revision-Date: 2013-12-04 20:12:37+0000\n"
+"POT-Creation-Date: 2015-12-09 22:54+0000\n"
+"PO-Revision-Date: 2015-09-26 19:53:43+0000\n"
 "Last-Translator: stephenharris <stephenh1988@gmail.com>\n"
 "Language-Team: \n"
 "Language: Ukrainian\n"
@@ -112,7 +112,7 @@ msgid "Displays a list of events"
 msgstr "Відображає список подій"
 
 #: classes/class-eo-event-list-widget.php:23 event-organiser-venues.php:482
-#: event-organiser.php:136 includes/event-organiser-cpt.php:217
+#: event-organiser.php:139 includes/event-organiser-cpt.php:217
 #: includes/event-organiser-cpt.php:229
 #: includes/event-organiser-install.php:96 templates/archive-event.php:42
 msgid "Events"
@@ -174,17 +174,17 @@ msgstr ""
 msgid "'No events' message"
 msgstr "Повідомлення \"Немає подій\""
 
-#: classes/class-eo-venue-list-table.php:72 templates/single-event.php:71
+#: classes/class-eo-venue-list-table.php:75 templates/single-event.php:71
 msgid "Edit"
 msgstr "Редагування"
 
-#: classes/class-eo-venue-list-table.php:73
-#: classes/class-eo-venue-list-table.php:128
+#: classes/class-eo-venue-list-table.php:80
+#: classes/class-eo-venue-list-table.php:142
 msgid "Delete"
 msgstr "Видалення"
 
-#: classes/class-eo-venue-list-table.php:74
-#: includes/event-organiser-ajax.php:674
+#: classes/class-eo-venue-list-table.php:85
+#: includes/event-organiser-ajax.php:691
 msgid "View"
 msgstr "Перегляд"
 
@@ -199,7 +199,7 @@ msgstr "Категорії подій"
 
 #: classes/class-eo-widget-categories.php:28 event-organiser-manage.php:35
 #: includes/event-organiser-cpt.php:103
-#: includes/event-organiser-event-functions.php:1512
+#: includes/event-organiser-event-functions.php:1466
 #: templates/event-meta-event-single.php:69
 msgid "Categories"
 msgstr "Категорії"
@@ -239,7 +239,7 @@ msgstr "Розташування"
 msgid "Select Venue"
 msgstr ""
 
-#: classes/class-eventorganiser-shortcodes.php:391
+#: classes/class-eventorganiser-shortcodes.php:393
 msgid "There is no excerpt because this is a protected post."
 msgstr "Немає витяга, оскільки ця публікація є захищеною."
 
@@ -313,7 +313,7 @@ msgid "24 hour time"
 msgstr "Години у форматі 24"
 
 #: event-organiser-calendar.php:249
-#: includes/event-organiser-event-functions.php:1457
+#: includes/event-organiser-event-functions.php:1411
 msgid "Loading&#8230;"
 msgstr "Завантаження&#8230;"
 
@@ -333,7 +333,7 @@ msgstr "Коли"
 msgid "Event Title"
 msgstr "Назва події"
 
-#: event-organiser-calendar.php:277 includes/event-organiser-ajax.php:397
+#: event-organiser-calendar.php:277 includes/event-organiser-ajax.php:410
 msgid "Where"
 msgstr "Де"
 
@@ -448,15 +448,16 @@ msgid "unknown"
 msgstr "невідомо"
 
 #: event-organiser-edit.php:31 event-organiser-manage.php:23
-#: event-organiser-settings.php:142 includes/event-organiser-ajax.php:384
+#: event-organiser-settings.php:142 includes/event-organiser-ajax.php:397
 msgid "Organiser"
 msgstr "Організатор"
 
 #: event-organiser-edit.php:75
 msgid "This is a reoccurring event"
-msgstr "Це - подія що повторюється"
+msgstr ""
 
 #: event-organiser-edit.php:76
+#, fuzzy
 msgid "Check to edit this event and its reoccurrences"
 msgstr "Редагувати цю подію та всі її повторення"
 
@@ -483,12 +484,13 @@ msgid "All day"
 msgstr "Цілий день"
 
 #: event-organiser-edit.php:139
+#, fuzzy
 msgid "Reoccurence:"
-msgstr "Повторення:"
+msgstr "Повторення"
 
 #: event-organiser-edit.php:141
-msgid "once"
-msgstr "один раз"
+msgid "none"
+msgstr ""
 
 #: event-organiser-edit.php:141
 msgid "daily"
@@ -520,6 +522,7 @@ msgid "on"
 msgstr ", "
 
 #: event-organiser-edit.php:176
+#, fuzzy
 msgid "day of month"
 msgstr "число місяця"
 
@@ -534,6 +537,7 @@ msgid "until"
 msgstr "до"
 
 #: event-organiser-edit.php:195
+#, fuzzy
 msgid "Include/Exclude occurrences"
 msgstr "Включити/виключити повторення"
 
@@ -550,7 +554,7 @@ msgstr "Обрати розташування"
 msgid "Venue Name"
 msgstr "Назва розташування"
 
-#: event-organiser-edit.php:415
+#: event-organiser-edit.php:416
 msgid "Event dates were not saved."
 msgstr "Дати подій не було збережено"
 
@@ -617,48 +621,49 @@ msgid "Event"
 msgstr "Подія"
 
 #: event-organiser-manage.php:38
+#, fuzzy
 msgid "Reoccurrence"
 msgstr "Повторення"
 
-#: event-organiser-manage.php:152
+#: event-organiser-manage.php:163
 msgid "View all events"
 msgstr "Переглянути всі події"
 
-#: event-organiser-manage.php:153
+#: event-organiser-manage.php:164
 msgid "Future events"
 msgstr "Майбутні події"
 
-#: event-organiser-manage.php:154
+#: event-organiser-manage.php:165
 msgid "Expired events"
 msgstr "Події, що завершилися"
 
-#: event-organiser-manage.php:155
+#: event-organiser-manage.php:166
 msgid "Events within 24 hours"
 msgstr "Події впродовж 24 годин"
 
-#: event-organiser-manage.php:156
+#: event-organiser-manage.php:167
 msgid "Events within 1 week"
 msgstr "Події впродовж 1 тижня"
 
-#: event-organiser-manage.php:157
+#: event-organiser-manage.php:168
 #, php-format
 msgid "Events within %d weeks"
 msgstr "Події впродовж %d тижнів"
 
-#: event-organiser-manage.php:158
+#: event-organiser-manage.php:169
 msgid "Events within 1 month"
 msgstr "Події впродовж 1 місяця"
 
-#: event-organiser-manage.php:159
+#: event-organiser-manage.php:170
 #, php-format
 msgid "Events within %d months"
 msgstr "Події впродовж %d місяців"
 
-#: event-organiser-manage.php:160
+#: event-organiser-manage.php:171
 msgid "Events within 1 year"
 msgstr "Події впродовж 1 року"
 
-#: event-organiser-manage.php:211
+#: event-organiser-manage.php:222
 msgid "&mdash; No Change &mdash;"
 msgstr "&mdash; Без змін &mdash;"
 
@@ -690,42 +695,42 @@ msgstr "Налаштування органайзера подій"
 msgid "Event Organiser"
 msgstr "Органайзер подій"
 
-#: event-organiser-settings.php:46 event-organiser.php:109
+#: event-organiser-settings.php:46 event-organiser.php:112
 #: includes/event-organiser-install.php:112
 msgid "Edit Events"
 msgstr "Редагування подій"
 
-#: event-organiser-settings.php:47 event-organiser.php:110
+#: event-organiser-settings.php:47 event-organiser.php:113
 #: includes/event-organiser-install.php:113
 msgid "Publish Events"
 msgstr "Публікація подій"
 
-#: event-organiser-settings.php:48 event-organiser.php:111
+#: event-organiser-settings.php:48 event-organiser.php:114
 #: includes/event-organiser-install.php:114
 msgid "Delete Events"
 msgstr "Видалення подій"
 
-#: event-organiser-settings.php:49 event-organiser.php:112
+#: event-organiser-settings.php:49 event-organiser.php:115
 #: includes/event-organiser-install.php:115
 msgid "Edit Others' Events"
 msgstr "Редагування чужих подій"
 
-#: event-organiser-settings.php:50 event-organiser.php:113
+#: event-organiser-settings.php:50 event-organiser.php:116
 #: includes/event-organiser-install.php:116
 msgid "Delete Other's Events"
 msgstr "Видалення чужих подій"
 
-#: event-organiser-settings.php:51 event-organiser.php:114
+#: event-organiser-settings.php:51 event-organiser.php:117
 #: includes/event-organiser-install.php:117
 msgid "Read Private Events"
 msgstr "Читання приватних подій"
 
-#: event-organiser-settings.php:52 event-organiser.php:115
+#: event-organiser-settings.php:52 event-organiser.php:118
 #: includes/event-organiser-install.php:118
 msgid "Manage Venues"
 msgstr "Керування розташуваннями"
 
-#: event-organiser-settings.php:53 event-organiser.php:116
+#: event-organiser-settings.php:53 event-organiser.php:119
 #: includes/event-organiser-install.php:119
 msgid "Manage Event Categories & Tags"
 msgstr "Керування категоріями та теґами подій"
@@ -858,8 +863,9 @@ msgid "Exclude events from searches:"
 msgstr "Виключити події з пошуку:"
 
 #: event-organiser-settings.php:236
+#, fuzzy
 msgid "Enable templates:"
-msgstr "Увімкнути шаблони:"
+msgstr "Шаблони"
 
 #: event-organiser-settings.php:242
 msgid ""
@@ -869,12 +875,6 @@ msgid ""
 "it will use its own default template. To prevent this, uncheck this option. "
 "WordPress will then decide which template from your theme's folder to use."
 msgstr ""
-"Для кожної сторінки використовується відповідний шаблон. Щоб використати Ваш "
-"власний шаблон, просто дайте йому таку ж назву, і збережіть у теці Вашої "
-"теми. За замовчуванням, якщо Органайзер подій не може знайти шаблон у "
-"директорії Вашої теми, він буде використовувати свій власний шаблон за "
-"замовчуванням. Щоб уникнути цього, вимкніть цю опцію. Тоді Wordpress "
-"вирішуватиме, який шаблон з теки Вашої теми слід використати."
 
 #: event-organiser-settings.php:248
 msgid "Events archives:"
@@ -1036,9 +1036,9 @@ msgid "Venue(s) <strong>deleted</strong>"
 msgstr "Розташування <strong>видалено</strong>"
 
 #: event-organiser-venues.php:258
-#, fuzzy, php-format
+#, php-format
 msgid "Search results for &#8220;%s&#8221;"
-msgstr "Результати пошуку для &#8220;%&#8221;"
+msgstr "Результати пошуку для &#8220;%s&#8221;"
 
 #: event-organiser-venues.php:418
 msgid "Latitude/Longitude:"
@@ -1204,69 +1204,70 @@ msgstr "Було створено 1 категорію"
 msgid "%d categories were created"
 msgstr "Було ствоерно %d категорій"
 
-#: includes/event-organiser-ajax.php:347
+#: includes/event-organiser-ajax.php:360
 msgid "Protected"
 msgstr "Захищена"
 
-#: includes/event-organiser-ajax.php:349
+#: includes/event-organiser-ajax.php:362
 msgid "Private"
 msgstr "Приватна"
 
-#: includes/event-organiser-ajax.php:351
+#: includes/event-organiser-ajax.php:364
 msgid "Draft"
 msgstr "Чернетка"
 
-#: includes/event-organiser-ajax.php:381
+#: includes/event-organiser-ajax.php:394
 #: templates/event-meta-event-single.php:58
 msgid "Start"
 msgstr "Початок"
 
-#: includes/event-organiser-ajax.php:382
+#: includes/event-organiser-ajax.php:395
 msgid "End"
 msgstr "Завершення"
 
-#: includes/event-organiser-ajax.php:423
+#: includes/event-organiser-ajax.php:436
+#, fuzzy
 msgid "This event reoccurs"
 msgstr "Ця подія повторюється"
 
-#: includes/event-organiser-ajax.php:429 includes/event-organiser-cpt.php:221
+#: includes/event-organiser-ajax.php:442 includes/event-organiser-cpt.php:221
 msgid "Edit Event"
 msgstr "Редагувати подію"
 
-#: includes/event-organiser-ajax.php:448
+#: includes/event-organiser-ajax.php:462
 msgid "Delete this occurrence"
 msgstr "Видалити це повторення"
 
-#: includes/event-organiser-ajax.php:462
+#: includes/event-organiser-ajax.php:479
 msgid "Break this series"
 msgstr "Розірвати цю серію"
 
-#: includes/event-organiser-ajax.php:670
-#: includes/event-organiser-event-functions.php:1409
+#: includes/event-organiser-ajax.php:687
+#: includes/event-organiser-event-functions.php:1363
 msgid "All Day"
 msgstr "Цілий день"
 
-#: includes/event-organiser-ajax.php:675
+#: includes/event-organiser-ajax.php:692
 msgid "Add To Google Calendar"
 msgstr "Додати до календаря Google"
 
-#: includes/event-organiser-ajax.php:786
+#: includes/event-organiser-ajax.php:803
 msgid "Event not found"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:798
+#: includes/event-organiser-ajax.php:815
 msgid "Events are not editable via the admin calendar"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:808
+#: includes/event-organiser-ajax.php:825
 msgid "Are you sure you want to do this?"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:818
+#: includes/event-organiser-ajax.php:835
 msgid "You do not have permission to edit this event"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:840
+#: includes/event-organiser-ajax.php:857
 #, php-format
 msgid "Event not created: %s"
 msgstr ""
@@ -1410,7 +1411,7 @@ msgid "Choose from the most used tags"
 msgstr "Оберіть теґи серед найбільш популярних"
 
 #: includes/event-organiser-cpt.php:157
-#: includes/event-organiser-event-functions.php:1520
+#: includes/event-organiser-event-functions.php:1474
 #: templates/event-meta-event-single.php:74
 msgid "Tags"
 msgstr "Теґи"
@@ -1466,12 +1467,14 @@ msgid "Event updated. <a href=\"%s\">View event</a>"
 msgstr "Подію оновлено. <a href=\"%s\">Переглянути подію</a>"
 
 #: includes/event-organiser-cpt.php:311
+#, fuzzy
 msgid "Custom field updated."
-msgstr "Додаткове поле оновлено."
+msgstr "Додаткові поля"
 
 #: includes/event-organiser-cpt.php:312
+#, fuzzy
 msgid "Custom field deleted."
-msgstr "Додаткове поле видалено."
+msgstr "Не обрано жодного файлу."
 
 #: includes/event-organiser-cpt.php:313
 msgid "Event updated."
@@ -1530,6 +1533,7 @@ msgid "Creating events:"
 msgstr "Створення подій:"
 
 #: includes/event-organiser-cpt.php:519
+#, fuzzy
 msgid ""
 "The start date is the date the event starts. If the event is a reoccuring "
 "event, this is the start date of the first occurrence."
@@ -1538,6 +1542,7 @@ msgstr ""
 "це - дата першого повторення."
 
 #: includes/event-organiser-cpt.php:520
+#, fuzzy
 msgid ""
 "The end date is the date the event finishes. If the event is a reoccuring "
 "event, this is the end date of the first occurrence."
@@ -1558,6 +1563,7 @@ msgid "Repeating events"
 msgstr "Повторювані події"
 
 #: includes/event-organiser-cpt.php:527
+#, fuzzy
 msgid ""
 "To repeat an event according to some regular pattern, use the reoccurrence "
 "dropdown menu to select how the event is to repeat. Further options then "
@@ -1572,6 +1578,7 @@ msgid "Specify how regularly the event should repeat (default 1)"
 msgstr "Вкажіть, скільки разів має повторюватися подія (за замовчуванням - 1)"
 
 #: includes/event-organiser-cpt.php:530
+#, fuzzy
 msgid ""
 "Choose the reoccurrence end date. No further occurrences are added after "
 "this date, but an occurrence that starts before may finish after this date."
@@ -1581,6 +1588,7 @@ msgstr ""
 "дати."
 
 #: includes/event-organiser-cpt.php:531
+#, fuzzy
 msgid ""
 "If monthly reoccurrence is selected, select whether this should repeat on "
 "that date of the month (e.g. on the 24th) or on the day of the month (e.g. "
@@ -1591,6 +1599,7 @@ msgstr ""
 "(наприклад, на третій вівторок)"
 
 #: includes/event-organiser-cpt.php:532
+#, fuzzy
 msgid ""
 "If weekly reoccurrence is selected, select which days of the week the event "
 "should be repeated. If no days are selected, the day of the start date is "
@@ -1622,6 +1631,7 @@ msgid "Overview"
 msgstr "Огляд"
 
 #: includes/event-organiser-cpt.php:552
+#, fuzzy
 msgid ""
 "This is the list of all saved events. Note that <strong> reoccurring events "
 "appear as a single row </strong> in the table and the start and end date "
@@ -1750,6 +1760,7 @@ msgid "one time only"
 msgstr "лише один раз"
 
 #: includes/event-organiser-event-functions.php:760
+#, fuzzy
 msgid "custom reoccurrence"
 msgstr "інша повторюваність"
 
@@ -1860,10 +1871,6 @@ msgid ""
 "href='%s'>attempt to auto-fill them</a>. You can always manually change the "
 "details aftewards."
 msgstr ""
-"<h4>Додано поля \"місто\" і \"штат\"</h4>До розташувань тепер додано поля "
-"\"місто\" і \"штат/провінція\". </br> Якщо хочете, Органайзер подій може <a "
-"href='%s'>спробувати автоматично їх заповнити</a>. Ви зможете вручну "
-"відредагувати ці деталі пізніше."
 
 #: includes/event-organiser-register.php:675
 msgid ""
@@ -1905,35 +1912,35 @@ msgstr "Поштовий індекс"
 msgid "Country"
 msgstr "Країна"
 
-#: includes/event.php:549
+#: includes/event.php:615
 msgid "Schedule not recognised."
 msgstr "Розклад не розпізнано."
 
-#: includes/event.php:558
+#: includes/event.php:624
 msgid "Start date not provided."
 msgstr "Не вказано дату початку."
 
-#: includes/event.php:576
+#: includes/event.php:642
 msgid "Start date occurs after end date."
 msgstr "Дата початку пізніша за дату завершення."
 
-#: includes/event.php:579
+#: includes/event.php:645
 msgid "Schedule end date is before is before the start date."
 msgstr "Кінцева дата розкладу є ранішою за дату початку."
 
-#: includes/event.php:662
+#: includes/event.php:727
 msgid "Invalid monthly schedule (invalid ordinal)"
 msgstr "Неправильний місячний розклад (неправильне порядкове число)"
 
-#: includes/event.php:782
+#: includes/event.php:861
 msgid "Event does not contain any dates."
 msgstr ""
 
-#: includes/event.php:923
+#: includes/event.php:1004
 msgid "Occurrence not deleted. Occurrence not found."
 msgstr ""
 
-#: includes/event.php:984
+#: includes/event.php:1065
 msgid "There is already an occurrence on this date"
 msgstr ""
 
@@ -2015,20 +2022,22 @@ msgstr ""
 #: templates/taxonomy-event-category.php:31
 #, fuzzy, php-format
 msgid "Event Category Archives: %s"
-msgstr "Архіви категорії подій: %"
+msgstr "Категорії подій"
 
 #: templates/taxonomy-event-category.php:120
+#, fuzzy
 msgid "Apologies, but no events were found for the requested category. "
-msgstr "Даруйте, але ми не знайшли жодної події в запитуваній категорії"
+msgstr "Даруйте, але ми не знайшли жодного результату для запитуваного архіву"
 
 #: templates/taxonomy-event-tag.php:31
-#, php-format
+#, fuzzy, php-format
 msgid "Event Tag Archives: %s"
-msgstr "Архіви теґу подій: %s"
+msgstr "Архіви подій:"
 
 #: templates/taxonomy-event-tag.php:120
+#, fuzzy
 msgid "Apologies, but no events were found for the requested tag. "
-msgstr "Даруйте, але ми не знайшли жодної події із запитуваним теґом."
+msgstr "Даруйте, але ми не знайшли жодного результату для запитуваного архіву"
 
 #: templates/taxonomy-event-venue.php:31
 #, php-format
@@ -2036,5 +2045,25 @@ msgid "Events at: %s"
 msgstr "Події в: %s"
 
 #: templates/taxonomy-event-venue.php:118
+#, fuzzy
 msgid "Apologies, but no events were found for the requested venue. "
-msgstr "Даруйте, але ми не знайшли жодної події із запитуваним розташуванням."
+msgstr "Даруйте, але ми не знайшли жодного результату для запитуваного архіву"
+
+#~ msgid "End Date"
+#~ msgstr "Дата завершення"
+
+#~ msgid "End Time"
+#~ msgstr "час завершення"
+
+#, fuzzy
+#~ msgid "Enter date in %s format"
+#~ msgstr "Формат дати/часу події"
+
+#~ msgid "Repeat on days of week:"
+#~ msgstr "день тижня"
+
+#~ msgid "Start Date"
+#~ msgstr "Дата початку"
+
+#~ msgid "Start Time"
+#~ msgstr "час початку"

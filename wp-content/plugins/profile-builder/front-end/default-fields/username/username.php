@@ -18,9 +18,11 @@ function wppb_username_handler( $output, $form_location, $field, $user_id, $fiel
 		
 		$readonly = ( ( $form_location == 'edit_profile' ) ? ' disabled="disabled"' : '' );
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="username">'.$item_title.$error_mark.'</label>
-			<input class="text-input default_field_username" name="username" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="username" value="'. esc_attr( $input_value ) .'"'.$readonly.'/>';
+			<input class="text-input default_field_username" name="username" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="username" value="'. esc_attr( $input_value ) .'" '.$readonly.' '. $extra_attr .'/>';
         if( !empty( $item_description ) )
             $output .= '<span class="wppb-description-delimiter">'.$item_description.'</span>';
 	}
@@ -33,25 +35,34 @@ add_filter( 'wppb_output_form_field_default-username', 'wppb_username_handler', 
 /* handle field validation */
 function wppb_check_username_value( $message, $field, $request_data, $form_location ){
 	global $wpdb;
-	
-	if ( ( isset( $request_data['username'] ) && ( trim( $request_data['username'] ) == '' ) ) && ( $field['required'] == 'Yes' ) )
-		return wppb_required_field_error($field["field-title"]);
+
+    if( $field['required'] == 'Yes' ){
+        if( ( isset( $request_data['username'] ) && ( trim( $request_data['username'] ) == '' ) ) || ( $form_location == 'register' && !isset( $request_data['username'] ) ) ){
+            return wppb_required_field_error($field["field-title"]);
+        }
+
+    }
 
     if( !empty( $request_data['username'] ) ){
         if( $form_location == 'register' )
             $search_by_user_login = get_users( 'search='.$request_data['username'] );
         if( !empty( $search_by_user_login ) ){
-            return __( 'This username already exists.', 'profilebuilder' ) .'<br/>'. __( 'Please try a different one!', 'profilebuilder' );
+            return __( 'This username already exists.', 'profile-builder' ) .'<br/>'. __( 'Please try a different one!', 'profile-builder' );
         }
 		if( ! validate_username( $request_data['username'] ) ) {
-			return __( 'This username is invalid because it uses illegal characters.', 'profilebuilder' ) .'<br/>'. __( 'Please enter a valid username.', 'profilebuilder' );
+			return __( 'This username is invalid because it uses illegal characters.', 'profile-builder' ) .'<br/>'. __( 'Please enter a valid username.', 'profile-builder' );
 		}
 
         $wppb_generalSettings = get_option('wppb_general_settings');
-        if ( is_multisite() || ( !is_multisite() && $wppb_generalSettings['emailConfirmation'] == 'yes'  ) ){
+        if ( $wppb_generalSettings['emailConfirmation'] == 'yes'  ){
+
+            if( is_multisite() && $request_data['username'] != preg_replace( '/\s+/', '', $request_data['username'] ) ){
+                return __( 'This username is invalid because it uses illegal characters.', 'profile-builder' ) .'<br/>'. __( 'Please enter a valid username.', 'profile-builder' );
+            }
+
             $userSignup = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."signups WHERE user_login = %s", $request_data['username'] ) );
             if ( !empty( $userSignup ) ){
-                return __( 'This username is already reserved to be used soon.', 'profilebuilder') .'<br/>'. __( 'Please try a different one!', 'profilebuilder' );
+                return __( 'This username is already reserved to be used soon.', 'profile-builder') .'<br/>'. __( 'Please try a different one!', 'profile-builder' );
             }
         }
     }

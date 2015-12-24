@@ -7,7 +7,7 @@ function edit_tag(m) {
   jQuery("#td_id_" + m).attr('class', 'table_big_col');
 }
 
-function save_tag(tag_id) { 
+function save_tag(tag_id) {
   var tagname=jQuery('input[name=tagname'+tag_id+']').val();
   var slug = jQuery('input[name=slug'+tag_id+']').val();
   var datas = "tagname="+tagname+"&"+"slug="+slug+"&"+"tag_id="+tag_id;
@@ -24,7 +24,7 @@ function save_tag(tag_id) {
         massege = array[0];
       }
       else {
-        massege = "Item Succesfully Saved.";
+        massege = bwg_objectL10B.saved;
         jQuery("#td_check_" + tag_id).attr('class', 'table_small_col check-column');
         td_check='<input id="check_'+tag_id+'" name="check_'+tag_id+'" type="checkbox" />';
         jQuery("#td_check_" + tag_id).html(td_check);
@@ -75,6 +75,7 @@ function spider_ajax_save(form_id, tr_group) {
   var bwg_nonce = jQuery("#bwg_nonce").val();
   var name = jQuery("#name").val();
   var slug = jQuery("#slug").val();
+
   if ((typeof tinyMCE != "undefined") && tinyMCE.activeEditor && !tinyMCE.activeEditor.isHidden() && tinyMCE.activeEditor.getContent) {
     var description = tinyMCE.activeEditor.getContent();
   }
@@ -90,6 +91,10 @@ function spider_ajax_save(form_id, tr_group) {
   var ids_string = jQuery("#ids_string").val();
   var image_order_by = jQuery("#image_order_by").val();
   var asc_or_desc = jQuery("#asc_or_desc").val();
+  var image_asc_or_desc = jQuery("#image_asc_or_desc").val();
+  // Set cookie for image ordering in admin.
+  document.cookie = 'bwg_image_asc_or_desc=' + image_asc_or_desc;
+  document.cookie = 'bwg_image_order_by=' + image_order_by;
   
   var image_current_id = jQuery("#image_current_id").val();
   ids_array = ids_string.split(",");
@@ -105,6 +110,7 @@ function spider_ajax_save(form_id, tr_group) {
   post_data["bwg_nonce"] = bwg_nonce;
   post_data["name"] = name;
   post_data["slug"] = slug;
+
   post_data["description"] = description;
   post_data["preview_image"] = preview_image;
   post_data["published"] = published;
@@ -113,6 +119,7 @@ function spider_ajax_save(form_id, tr_group) {
   post_data["page_number"] = page_number;
   post_data["image_order_by"] = image_order_by;
   post_data["asc_or_desc"] = asc_or_desc;
+  post_data["image_asc_or_desc"] = image_asc_or_desc;
   post_data["ids_string"] = ids_string;
   post_data["task"] = "ajax_search";
   post_data["ajax_task"] = ajax_task;
@@ -167,66 +174,73 @@ function spider_ajax_save(form_id, tr_group) {
     else {
       var str = jQuery(data).find('#images_table').html();
       jQuery('#images_table').html(str);
-      var str = jQuery(data).find('.tablenav').html();
-      jQuery('.tablenav').html(str);
+      var str = jQuery(data).find('.tablenav.top').html();
+      jQuery('.tablenav.top').html(str);
+      var str = jQuery(data).find('.tablenav.bottom').html();
+      jQuery('.tablenav.bottom').html(str);
       jQuery("#show_hide_weights").val("Hide order column");
       spider_show_hide_weights();
       spider_run_checkbox();
 
       if (ajax_task == 'ajax_apply') {
-        jQuery('#message_div').html("<strong><p>Items Succesfully Saved.</p></strong>");
+        jQuery('#message_div').html("<strong><p>" + bwg_objectL10B.saved + "</p></strong>");
         jQuery('#message_div').show();
       }
       else if (ajax_task == 'recover') {
-        jQuery('#draganddrop').html("<strong><p>Item Succesfully Recovered.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.recoverd + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_publish') {
-        jQuery('#draganddrop').html("<strong><p>Item Succesfully Published.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.published + ".</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_unpublish') {
-        jQuery('#draganddrop').html("<strong><p>Item Succesfully Unpublished.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.unpublished + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_delete') {
-        jQuery('#draganddrop').html("<strong><p>Item Succesfully Deleted.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.deleted + "</p></strong>");
         jQuery('#draganddrop').show();
       }
-      else if (!flag && ((ajax_task == 'image_publish_all') || (ajax_task == 'image_unpublish_all') || (ajax_task == 'image_delete_all') || (ajax_task == 'image_set_watermark') || (ajax_task == 'image_recover_all') || (ajax_task == 'image_resize'))) {
-        jQuery('#draganddrop').html("<strong><p>You must select at least one item.</p></strong>");
+      else if (!flag && ((ajax_task == 'image_publish_all') || (ajax_task == 'image_unpublish_all') || (ajax_task == 'image_delete_all') || (ajax_task == 'image_set_watermark') || (ajax_task == 'image_recover_all') || (ajax_task == 'image_resize') || (ajax_task == 'resize_image_thumb'))) {
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.one_item + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_publish_all') {
-        jQuery('#draganddrop').html("<strong><p>Items Succesfully Published.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.published + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_unpublish_all') {
-        jQuery('#draganddrop').html("<strong><p>Items Succesfully Unpublished.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.unpublished + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_delete_all') {
-        jQuery('#draganddrop').html("<strong><p>Items Succesfully Deleted.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.deleted + "</p></strong>");
+        jQuery('#draganddrop').show();
+      }
+      else if (ajax_task == 'resize_image_thumb') {
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.resized + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_set_watermark') {
-        jQuery('#draganddrop').html("<strong><p>Watermarks Succesfully Set.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.watermark_set + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_resize') {
-        jQuery('#draganddrop').html("<strong><p>Images Succesfully Resized.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.resized + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'image_recover_all') {
-        jQuery('#draganddrop').html("<strong><p>Items Succesfully Reset.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.reset + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       else if (ajax_task == 'search') {
         jQuery('#message_div').html("");
         jQuery('#message_div').hide();
+       
       }
       else {
-        jQuery('#draganddrop').html("<strong><p>Items Succesfully Saved.</p></strong>");
+        jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.saved + "</p></strong>");
         jQuery('#draganddrop').show();
       }
       if (ajax_task == "ajax_save") {
@@ -325,7 +339,7 @@ function spider_form_submit(event, form_id) {
 // Check if required field is empty.
 function spider_check_required(id, name) {
   if (jQuery('#' + id).val() == '') {
-    alert(name + '* field is required.');
+    alert(name + '* ' + bwg_objectL10B.bwg_field_required);
     jQuery('#' + id).attr('style', 'border-color: #FF0000;');
     jQuery('#' + id).focus();
     jQuery('html, body').animate({
@@ -340,12 +354,12 @@ function spider_check_required(id, name) {
 
 // Show/hide order column and drag and drop column.
 function spider_show_hide_weights() {
-  if (jQuery("#show_hide_weights").val() == 'Show order column') {
+  if (jQuery("#show_hide_weights").val() == bwg_objectL10B.bwg_show_order) {
     jQuery(".connectedSortable").css("cursor", "default");
     jQuery("#tbody_arr").find(".handle").hide(0);
     jQuery("#th_order").show(0);
     jQuery("#tbody_arr").find(".spider_order").show(0);
-    jQuery("#show_hide_weights").val("Hide order column");
+    jQuery("#show_hide_weights").val(bwg_objectL10B.bwg_hide_order);
     if (jQuery("#tbody_arr").sortable()) {
       jQuery("#tbody_arr").sortable("disable");
     }
@@ -378,7 +392,7 @@ function spider_show_hide_weights() {
     jQuery("#tbody_arr").find(".handle").attr('class', 'handle connectedSortable');
     jQuery("#th_order").hide(0);
     jQuery("#tbody_arr").find(".spider_order").hide(0);
-    jQuery("#show_hide_weights").val("Show order column");
+    jQuery("#show_hide_weights").val(bwg_objectL10B.bwg_show_order);
   }
 }
 
@@ -400,7 +414,7 @@ function spider_check_all_items_checkbox() {
     var items_count = added_items + saved_items;
     jQuery('#check_all_items').attr('checked', true);
     if (items_count) {
-      jQuery('#draganddrop').html("<strong><p>Selected " + items_count + " item" + (items_count > 1 ? "s" : "") + ".</p></strong>");
+      jQuery('#draganddrop').html("<strong><p>" + bwg_objectL10B.selected + ' ' + items_count + ' ' + bwg_objectL10B.item + (items_count > 1 ? "s" : "") + ".</p></strong>");
       jQuery('#draganddrop').show();
     }
   }
@@ -440,7 +454,7 @@ function spider_uploader(button_id, input_id, delete_id, img_id) {
             }
           }
           if (img_id != '') {
-            alert('You must select an image file.');
+            alert(bwg_objectL10B.bwg_select_image);
             tb_remove();
             return;
           }
@@ -451,7 +465,7 @@ function spider_uploader(button_id, input_id, delete_id, img_id) {
         }
         else {
           if (img_id == '') {
-            alert('You must select an audio file.');
+            alert(bwg_objectL10B.bwg_field_required);
             tb_remove();
             return;
           }
@@ -832,7 +846,7 @@ function bwg_built_in_watermark(watermark_type) {
 function bwg_change_option_type(type) {
   type = (type == '' ? 1 : type);
   document.getElementById('type').value = type;
-  for (var i = 1; i <= 9; i++) {
+  for (var i = 1; i <= 10; i++) {
     if (i == type) {
       document.getElementById('div_content_' + i).style.display = 'block';
       document.getElementById('div_' + i).style.background = '#C5C5C5';
@@ -904,6 +918,7 @@ function bwg_change_theme_type(type) {
   jQuery("#Masonry_album").hide();
   jQuery("#Image_browser").hide();
   jQuery("#Blog_style").hide();
+  jQuery("#Carousel").hide();
   jQuery("#Lightbox").hide();
   jQuery("#Navigation").hide();
   jQuery("#" + type).show();
@@ -920,6 +935,7 @@ function bwg_change_theme_type(type) {
   jQuery("#type_Masonry_album").attr("style", "background-color: #F4F4F4; opacity: 0.4; filter: Alpha(opacity=40);");
   jQuery("#type_Image_browser").attr("style", "background-color: #F4F4F4;");
   jQuery("#type_Blog_style").attr("style", "background-color: #F4F4F4; opacity: 0.4; filter: Alpha(opacity=40);");
+  jQuery("#type_Carousel").attr("style", "background-color: #F4F4F4; opacity: 0.4; filter: Alpha(opacity=40);");
   jQuery("#type_Lightbox").attr("style", "background-color: #F4F4F4;");
   jQuery("#type_Navigation").attr("style", "background-color: #F4F4F4;");
   jQuery("#type_" + type).attr("style", "background-color: #CFCBCB;");
@@ -932,17 +948,15 @@ function bwg_gallery_type() {
   return response;
 }
 
-
 /*returns false if user cancels or impossible to do.*/
 /*
-+   type_to_set:'' or 'instagram'
-+*/
+   type_to_set:'' or 'instagram'
+*/
 function bwg_change_gallery_type(type_to_set, warning_type) {
   
   warning_type = (typeof warning_type === "undefined") ? "default" : warning_type;
- 
- if(type_to_set == 'instagram'){
 
+  if(type_to_set == 'instagram'){
     jQuery('#gallery_type').val('instagram');
     jQuery('#tr_instagram_post_gallery').show();
     jQuery('#tr_gallery_source').show();
@@ -958,11 +972,8 @@ function bwg_change_gallery_type(type_to_set, warning_type) {
     jQuery('#content-add_media').hide();
     jQuery('#show_add_embed').hide();
     jQuery('#show_bulk_embed').hide();
-
+    
   }
-
-
-  
   else{
 
     var ids_string = jQuery("#ids_string").val();
@@ -984,15 +995,12 @@ function bwg_change_gallery_type(type_to_set, warning_type) {
         jQuery('#gallery_type').val('instagram');
         return false;
       }
-
-
-      }
+    }
   
     jQuery('#gallery_type').val('');
     jQuery('#tr_instagram_post_gallery').hide();
     jQuery('#tr_gallery_source').hide();
-    
-    
+
     jQuery('#tr_update_flag').hide();
     jQuery('#tr_autogallery_image_number').hide();
     jQuery('#tr_instagram_gallery_add_button').hide();
@@ -1009,8 +1017,6 @@ function bwg_change_gallery_type(type_to_set, warning_type) {
   }
   return true;
 }
-
-
 
 function bwg_is_instagram_gallery() {
 
@@ -1030,7 +1036,6 @@ function bwg_is_instagram_gallery() {
  *  @param message:bool true if to alert that not empty
  *  @return true if empty, false if not empty
  */
-
 
 function bwg_convert_seconds(seconds) {
   var sec_num = parseInt(seconds, 10);
@@ -1059,7 +1064,7 @@ function bwg_get_embed_info(input_id) {
 
   var url = encodeURI(jQuery("#" + input_id).val());  
   if (!url) {
-    alert('Please enter url to embed.');
+    alert(bwg_objectL10B.bwg_enter_url);
     return '';
   }
   var filesValid = [];
@@ -1072,14 +1077,10 @@ function bwg_get_embed_info(input_id) {
 
    // get from the server data for the url. Here we use the server as a proxy, since Cross-Origin Resource Sharing AJAX is forbidden.
   jQuery.post(ajax_url, data, function(response) {
-    
-    
     if(response == false){
-
-      alert('Error: cannot get response from the server.');
+      alert(bwg_objectL10B.bwg_cannot_response);
       jQuery('#opacity_div').hide();
       jQuery('#loading_div').hide();
-      
       return '';
     }
     else{  
@@ -1087,7 +1088,7 @@ function bwg_get_embed_info(input_id) {
       var index_start = response.indexOf("WD_delimiter_start");
       var index_end = response.indexOf("WD_delimiter_end");
       if(index_start == -1 || index_end == -1){
-        alert('Error: something wrong happened at the server.');
+        alert(bwg_objectL10B.bwg_something_wrong);
         jQuery('#opacity_div').hide();
         jQuery('#loading_div').hide();
       
@@ -1102,7 +1103,7 @@ function bwg_get_embed_info(input_id) {
       response_JSON = jQuery.parseJSON(response);
         /*if indexed array, it means there is error*/
       if(typeof response_JSON[0] !== 'undefined'){
-        alert('Error: ' + jQuery.parseJSON(response)[1]);
+        alert(bwg_objectL10B.bwg_error + jQuery.parseJSON(response)[1]);
         jQuery('#opacity_div').hide();
         jQuery('#loading_div').hide();
         return '';
@@ -1123,5 +1124,3 @@ function bwg_get_embed_info(input_id) {
   return 'ok'; 
    
 }
-
-

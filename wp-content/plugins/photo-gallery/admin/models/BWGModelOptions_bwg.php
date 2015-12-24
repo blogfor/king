@@ -39,7 +39,7 @@ class BWGModelOptions_bwg {
       $row->thumb_height = 90;
       $row->upload_thumb_width = 300;
       $row->upload_thumb_height = 300;
-	  $row->upload_img_width = 1200; 
+      $row->upload_img_width = 1200; 
       $row->upload_img_height = 1200;
       $row->image_enable_page = 1;
       $row->image_title_show_hover = 'none';
@@ -73,7 +73,7 @@ class BWGModelOptions_bwg {
       $row->slideshow_filmstrip_height = 90;
       $row->slideshow_enable_title = 0;
       $row->slideshow_title_position = 'top-right';
-	  $row->slideshow_title_full_width = 0;
+      $row->slideshow_title_full_width = 0;
       $row->slideshow_enable_description = 0;
       $row->slideshow_description_position = 'bottom-right';
       $row->slideshow_enable_music = 0;
@@ -104,7 +104,7 @@ class BWGModelOptions_bwg {
       $row->watermark_height = 90;
       $row->watermark_url = WD_BWG_URL . '/images/watermark.png';
       $row->watermark_text = 'web-dorado.com';
-      $row->watermark_link = 'http://web-dorado.com';
+      $row->watermark_link = 'https://web-dorado.com';
       $row->watermark_font_size = 20;
       $row->watermark_font = 'arial';
       $row->watermark_color = 'FFFFFF';
@@ -139,6 +139,8 @@ class BWGModelOptions_bwg {
       $row->comment_moderation = 0;
       $row->popup_hit_counter = 0;
       $row->enable_ML_import = 0;
+      $row->autoupdate_interval = 30;
+      $row->instagram_client_id = '';
       $row->showthumbs_name = 0;
       $row->show_album_name = 0;
       $row->show_image_counts = 0;
@@ -146,7 +148,31 @@ class BWGModelOptions_bwg {
       $row->show_masonry_thumb_description = 0;
       $row->popup_info_full_width = 0;
 			$row->show_sort_images = 0;
-      $row->description_tb = 0;
+			$row->enable_seo = 1;
+			$row->autohide_lightbox_navigation = 1;
+      $row->autohide_slideshow_navigation = 1;
+      $row->read_metadata = 0;
+      $row->enable_loop = 1;
+      $row->enable_addthis = 0;
+      $row->addthis_profile_id = '';
+
+      $row->carousel_interval = 5;
+      $row->carousel_width = 300;
+      $row->carousel_height = 300;
+      $row->carousel_image_column_number = 5;
+      $row->carousel_image_par = 0.75;
+      $row->carousel_enable_autoplay = 0;
+      $row->carousel_enable_title = 0;
+      $row->carousel_r_width = 800;
+      $row->carousel_fit_containerWidth = 1;
+      $row->carousel_prev_next_butt = 1;
+      $row->carousel_play_pause_butt = 1;
+      $row->permissions = 'manage_options';
+      $row->facebook_app_id = '';
+      $row->facebook_app_secret = '';
+      $row->show_tag_box = 0;
+      $row->show_hide_custom_post = 0;
+      $row->show_hide_post_meta = 0;
     }
     return $row;
   }

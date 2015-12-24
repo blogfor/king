@@ -18,9 +18,11 @@ function wppb_yim_handler( $output, $form_location, $field, $user_id, $field_che
 		if ( array_key_exists( $field['id'], $field_check_errors ) )
 			$error_mark = '<img src="'.WPPB_PLUGIN_URL.'assets/images/pencil_delete.png" title="'.wppb_required_field_error($field["field-title"]).'"/>';
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="yim">'.$item_title.$error_mark.'</label>
-			<input class="text-input" name="yim" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" class="default_field_yim" id="yim" value="'. esc_attr( wp_unslash( $input_value ) ) .'" />';
+			<input class="text-input" name="yim" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" class="default_field_yim" id="yim" value="'. esc_attr( wp_unslash( $input_value ) ) .'" '. $extra_attr .'/>';
         if( !empty( $item_description ) )
             $output .= '<span class="wppb-description-delimiter">'. $item_description .'</span>';
 
@@ -32,9 +34,12 @@ add_filter( 'wppb_output_form_field_default-yahoo-im', 'wppb_yim_handler', 10, 6
 
 
 /* handle field validation */
-function wppb_check_yim_value( $message, $field, $request_data, $form_location ){	
-	if ( ( isset( $request_data['yim'] ) && ( trim( $request_data['yim'] ) == '' ) ) && ( $field['required'] == 'Yes' ) )
-		return wppb_required_field_error($field["field-title"]);
+function wppb_check_yim_value( $message, $field, $request_data, $form_location ){
+    if( $field['required'] == 'Yes' ){
+        if( ( isset( $request_data['yim'] ) && ( trim( $request_data['yim'] ) == '' ) ) || !isset( $request_data['yim'] ) ){
+            return wppb_required_field_error($field["field-title"]);
+        }
+    }
 
     return $message;
 }

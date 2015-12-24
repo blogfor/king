@@ -60,14 +60,14 @@ class FilemanagerView {
       <script>
         var DS = "<?php echo addslashes('/'); ?>";
 
-        var errorLoadingFile = "<?php echo 'File loading failed'; ?>";
+        var errorLoadingFile = "<?php echo __('File loading failed', 'bwg_back'); ?>";
 
-        var warningRemoveItems = "<?php echo 'Are you sure you want to permanently remove selected items?'; ?>";
-        var warningCancelUploads = "<?php echo 'This will cancel uploads. Continue?'; ?>";
+        var warningRemoveItems = "<?php echo __('Are you sure you want to permanently remove selected items?', 'bwg_back'); ?>";
+        var warningCancelUploads = "<?php echo __('This will cancel uploads. Continue?', 'bwg_back'); ?>";
 
-        var messageEnterDirName = "<?php echo 'Enter directory name'; ?>";
-        var messageEnterNewName = "<?php echo 'Enter new name'; ?>";
-        var messageFilesUploadComplete = "<?php echo 'Files upload complete'; ?>";
+        var messageEnterDirName = "<?php echo __('Enter directory name', 'bwg_back'); ?>";
+        var messageEnterNewName = "<?php echo __('Enter new name', 'bwg_back'); ?>";
+        var messageFilesUploadComplete = "<?php echo __('Processing uploaded files...', 'bwg_back'); ?>";
 
         var root = "<?php echo addslashes($this->controller->get_uploads_dir()); ?>";
         var dir = "<?php echo (isset($_REQUEST['dir']) ? addslashes(esc_html($_REQUEST['dir'])) : ''); ?>";
@@ -75,6 +75,17 @@ class FilemanagerView {
         var callback = "<?php echo (isset($_REQUEST['callback']) ? esc_html($_REQUEST['callback']) : ''); ?>";
         var sortBy = "<?php echo $sort_by; ?>";
         var sortOrder = "<?php echo $sort_order; ?>";
+        jQuery(document).ready(function () {
+          jQuery("#search_by_name .search_by_name").on("input keyup", function() {
+            var search_by_name = jQuery(this).val();
+            jQuery("#explorer_body .explorer_item").each(function() {
+            jQuery(this).hide();
+            if (jQuery(this).find(".item_name").html().trim().toLowerCase().indexOf(search_by_name) !== -1) {
+              jQuery(this).show();
+            }
+            });
+          });
+        });
       </script>
       <script src="<?php echo WD_BWG_URL; ?>/filemanager/js/default.js?ver=<?php echo wd_bwg_version(); ?>"></script>
       <link href="<?php echo WD_BWG_URL; ?>/filemanager/css/default.css?ver=<?php echo wd_bwg_version(); ?>" type="text/css" rel="stylesheet">
@@ -95,7 +106,7 @@ class FilemanagerView {
       ?>
 
       <form id="adminForm" name="adminForm" action="" method="post">
-        <?php wp_nonce_field( '', 'bwg_nonce' ); ?>
+      <?php wp_nonce_field( '', 'bwg_nonce' ); ?>
         <div id="wrapper">
           <div id="opacity_div" style="background-color: rgba(0, 0, 0, 0.2); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99998;"></div>
           <div id="loading_div" style="text-align: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999;">
@@ -104,35 +115,39 @@ class FilemanagerView {
           <div id="file_manager">
             <div class="ctrls_bar ctrls_bar_header">
               <div class="ctrls_left">
-                <a class="ctrl_bar_btn btn_up" onclick="onBtnUpClick(event, this);" title="<?php echo 'Up'; ?>"></a>
-                <a class="ctrl_bar_btn btn_make_dir" onclick="onBtnMakeDirClick(event, this);" title="<?php echo 'Make a directory'; ?>"></a>
-                <a class="ctrl_bar_btn btn_rename_item" onclick="onBtnRenameItemClick(event, this);" title="<?php echo 'Rename item'; ?>"></a>
+                <a class="ctrl_bar_btn btn_up" onclick="onBtnUpClick(event, this);" title="<?php echo __('Up', 'bwg_back'); ?>"></a>
+                <a class="ctrl_bar_btn btn_make_dir" onclick="onBtnMakeDirClick(event, this);" title="<?php echo __('Make a directory', 'bwg_back'); ?>"></a>
+                <a class="ctrl_bar_btn btn_rename_item" onclick="onBtnRenameItemClick(event, this);" title="<?php echo __('Rename item', 'bwg_back'); ?>"></a>
                 <span class="ctrl_bar_divider"></span>
-                <a class="ctrl_bar_btn btn_copy" onclick="onBtnCopyClick(event, this);" title="<?php echo 'Copy'; ?>"></a>
-                <a class="ctrl_bar_btn btn_cut" onclick="onBtnCutClick(event, this);" title="<?php echo 'Cut'; ?>"></a>
-                <a class="ctrl_bar_btn btn_paste" onclick="onBtnPasteClick(event, this);" title="<?php echo 'Paste'; ?>"> </a>
-                <a class="ctrl_bar_btn btn_remove_items" onclick="onBtnRemoveItemsClick(event, this);" title="<?php echo 'Remove items'; ?>"></a>
+                <a class="ctrl_bar_btn btn_copy" onclick="onBtnCopyClick(event, this);" title="<?php echo __('Copy', 'bwg_back'); ?>"></a>
+                <a class="ctrl_bar_btn btn_cut" onclick="onBtnCutClick(event, this);" title="<?php echo __('Cut', 'bwg_back'); ?>"></a>
+                <a class="ctrl_bar_btn btn_paste" onclick="onBtnPasteClick(event, this);" title="<?php echo __('Paste', 'bwg_back'); ?>"> </a>
+                <a class="ctrl_bar_btn btn_remove_items" onclick="onBtnRemoveItemsClick(event, this);" title="<?php echo __('Remove items', 'bwg_back'); ?>"></a>
                 <span class="ctrl_bar_divider"></span>
                 <span class="ctrl_bar_btn btn_primary">
-                  <a class="ctrl_bar_btn btn_upload_files" onclick="onBtnShowUploaderClick(event, this);"><?php echo 'Upload files'; ?></a>
+                  <a class="ctrl_bar_btn btn_upload_files" onclick="onBtnShowUploaderClick(event, this);"><?php echo __('Upload files', 'bwg_back'); ?></a>
                 </span>
                 <?php if ($bwg_options->enable_ML_import) { ?>
                 <span class="ctrl_bar_divider"></span>
                 <span class="ctrl_bar_btn btn_primary">
-                  <a class="ctrl_bar_btn btn_import_files" onclick="onBtnShowImportClick(event, this);"><?php echo 'Media library'; ?></a>
+                  <a class="ctrl_bar_btn btn_import_files" onclick="onBtnShowImportClick(event, this);"><?php echo __('Media library', 'bwg_back'); ?></a>
                 </span>
                 <?php } ?>
+		<span class="ctrl_bar_divider"></span>
+                <span id="search_by_name" class="ctrl_bar_btn">
+                  <input type="search" placeholder="Search" class="ctrl_bar_btn search_by_name">
+                </span>
               </div>
               <div class="ctrls_right">
-                <a class="ctrl_bar_btn btn_view_thumbs" onclick="onBtnViewThumbsClick(event, this);" title="<?php echo 'View thumbs'; ?>"></a>
-                <a class="ctrl_bar_btn btn_view_list" onclick="onBtnViewListClick(event, this);" title="<?php echo 'View list'; ?>"></a>
+                <a class="ctrl_bar_btn btn_view_thumbs" onclick="onBtnViewThumbsClick(event, this);" title="<?php echo __('View thumbs', 'bwg_back'); ?>"></a>
+                <a class="ctrl_bar_btn btn_view_list" onclick="onBtnViewListClick(event, this);" title="<?php echo __('View list', 'bwg_back'); ?>"></a>
               </div>
             </div>
             <div id="path">
               <?php
               foreach ($file_manager_data['path_components'] as $key => $path_component) {
                 ?>
-                <a <?php echo ($key == 0) ? 'title="To change upload directory go to Options page."' : ''; ?> class="path_component path_dir"
+                <a <?php echo ($key == 0) ? 'title="'. __("To change upload directory go to Options page.", 'bwg_back').'"' : ''; ?> class="path_component path_dir"
                    onclick="onPathComponentClick(event, this, '<?php echo addslashes($path_component['path']); ?>');">
                     <?php echo $path_component['name']; ?></a>
                 <a class="path_component path_separator"><?php echo '/'; ?></a>
@@ -250,14 +265,14 @@ class FilemanagerView {
             </div>
             <div class="ctrls_bar ctrls_bar_footer">
               <div class="ctrls_left">
-                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnSelectAllClick();"><?php echo 'Select All'; ?></a>
+                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnSelectAllClick();"><?php echo __('Select All', 'bwg_back'); ?></a>
               </div>
               <div class="ctrls_right">
                 <span id="file_names_span">
                   <span>
                   </span>
                 </span>
-                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnOpenClick(event, this);"><?php echo ((isset($_REQUEST['callback']) && esc_html($_REQUEST['callback']) == 'bwg_add_image') ? 'Add selected images to gallery' : 'Add'); ?></a>
+                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnOpenClick(event, this);"><?php echo ((isset($_REQUEST['callback']) && esc_html($_REQUEST['callback']) == 'bwg_add_image') ? __('Add selected images to gallery', 'bwg_back') : __('Add', 'bwg_back')); ?></a>
                 <span class="ctrl_bar_empty_devider"></span>
                 <a class="ctrl_bar_btn btn_cancel btn_secondary none_select" onclick="onBtnCancelClick(event, this);"><?php echo 'Cancel'; ?></a>
               </div>
@@ -267,15 +282,15 @@ class FilemanagerView {
             <div id="importer_bg"></div>
             <div class="ctrls_bar ctrls_bar_header">
               <div class="ctrls_left upload_thumb">
-                Thumbnail Maximum Dimensions:
+                <?php echo __("Thumbnail Maximum Dimensions:", 'bwg_back'); ?>
                 <input type="text" class="upload_thumb_dim" name="importer_thumb_width" id="importer_thumb_width" value="<?php echo $bwg_options->upload_thumb_width; ?>" /> x 
                 <input type="text" class="upload_thumb_dim" name="importer_thumb_height" id="importer_thumb_height" value="<?php echo $bwg_options->upload_thumb_height; ?>" /> px
               </div>
               <div class="ctrls_right">
-                <a class="ctrl_bar_btn btn_back" onclick="onBtnBackClick(event, this);" title="<?php echo 'Back'; ?>"></a>
+                <a class="ctrl_bar_btn btn_back" onclick="onBtnBackClick(event, this);" title="<?php echo __('Back', 'bwg_back'); ?>"></a>
               </div>
               <div class="ctrls_right_img upload_thumb">
-                Image Maximum Dimensions:
+                <?php echo __("Image Maximum Dimensions:", 'bwg_back'); ?>
                 <input type="text" class="upload_thumb_dim" name="importer_img_width" id="importer_img_width" value="<?php echo $bwg_options->upload_img_width; ?>" /> x 
                 <input type="text" class="upload_thumb_dim" name="importer_img_height" id="importer_img_height" value="<?php echo $bwg_options->upload_img_height; ?>" /> px
               </div>
@@ -335,14 +350,14 @@ class FilemanagerView {
             </div>
             <div class="ctrls_bar ctrls_bar_footer">
               <div class="ctrls_left">
-                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnSelectAllMediLibraryClick();"><?php echo 'Select All'; ?></a>
+                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnSelectAllMediLibraryClick();"><?php echo __('Select All','bwg_back'); ?></a>
               </div>
               <div class="ctrls_right">
                 <span id="file_names_span">
                   <span>
                   </span>
                 </span>
-                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnImportClick(event, this);">Import selected images</a>
+                <a class="ctrl_bar_btn btn_open btn_primary none_select" onclick="onBtnImportClick(event, this);"><?php echo __("Import selected images", 'bwg_back'); ?></a>
               </div>
             </div>
           </div>
@@ -350,15 +365,15 @@ class FilemanagerView {
             <div id="uploader_bg"></div>
             <div class="ctrls_bar ctrls_bar_header">
               <div class="ctrls_left upload_thumb">
-                Thumbnail Maximum Dimensions:
+                <?php echo __("Thumbnail Maximum Dimensions:", 'bwg_back'); ?>
                 <input type="text" class="upload_thumb_dim" name="upload_thumb_width" id="upload_thumb_width" value="<?php echo $bwg_options->upload_thumb_width; ?>" /> x 
                 <input type="text" class="upload_thumb_dim" name="upload_thumb_height" id="upload_thumb_height" value="<?php echo $bwg_options->upload_thumb_height; ?>" /> px
               </div>
               <div class="ctrls_right">
-                <a class="ctrl_bar_btn btn_back" onclick="onBtnBackClick(event, this);" title="<?php echo 'Back'; ?>"></a>
+                <a class="ctrl_bar_btn btn_back" onclick="onBtnBackClick(event, this);" title="<?php echo __('Back', 'bwg_back'); ?>"></a>
               </div>
               <div class="ctrls_right_img upload_thumb">
-                Image Maximum Dimensions:
+                <?php echo __("Image Maximum Dimensions:", 'bwg_back'); ?>
                 <input type="text" class="upload_thumb_dim" name="upload_img_width" id="upload_img_width" value="<?php echo $bwg_options->upload_img_width; ?>" /> x 
                 <input type="text" class="upload_thumb_dim" name="upload_img_height" id="upload_img_height" value="<?php echo $bwg_options->upload_img_height; ?>" /> px
               </div>
@@ -366,13 +381,17 @@ class FilemanagerView {
             <label for="jQueryUploader">
               <div id="uploader_hitter">
                 <div id="drag_message">
-                  <span><?php echo 'Drag files here or click the button below' . '<br />' . 'to upload files' ?></span>
+                  <span><?php echo __('Drag files here or click the button below','bwg_back') . '<br />' . __('to upload files','bwg_back')?></span>
                 </div>
                 <div id="btnBrowseContainer">
                 <?php
                 $query_url = wp_nonce_url( admin_url('admin-ajax.php'), 'bwg_UploadHandler', 'bwg_nonce' );
                 $query_url = add_query_arg(array('action' => 'bwg_UploadHandler', 'dir' => $this->controller->get_uploads_dir() . '/' . (isset($_REQUEST['dir']) ? esc_html($_REQUEST['dir']) : '') . '/'), $query_url);
+                
+
                 ?>
+
+
                   <input id="jQueryUploader" type="file" name="files[]"
                          data-url="<?php echo $query_url; ?>"
                          multiple>
@@ -396,13 +415,15 @@ class FilemanagerView {
                           jQuery("#uploader_progress_text").text(messageFilesUploadComplete);
                           jQuery("#uploader_progress_text").addClass("uploader_text");
                         });
+                        jQuery("#opacity_div").show();
+                        jQuery("#loading_div").show();
                       }
                     },
                     stop: function (e, data) {
                       onBtnBackClick();
                     },
                     done: function (e, data) {
-                      jQuery.each(data.result.files, function (index, file) {
+                      jQuery.each(data.files, function (index, file) {
                         if (file.error) {
                           alert(errorLoadingFile + ' :: ' + file.error);
                         }
@@ -413,6 +434,8 @@ class FilemanagerView {
                           jQuery("#uploaded_files ul").prepend(jQuery("<li class=uploaded_item>" + file.name + " (<?php echo 'Uploaded' ?>)" + "</li>"));
                         }
                       });
+                      jQuery("#opacity_div").hide();
+                      jQuery("#loading_div").hide();
                     }
                   });
                   jQuery(window).load(function () {
@@ -430,7 +453,7 @@ class FilemanagerView {
                 <div></div>
               </div>
               <span id="uploader_progress_text" class="uploader_text">
-                <?php echo 'No files to upload'; ?>
+                <?php echo __('No files to upload', 'bwg_back'); ?>
               </span>
             </div>
           </div>

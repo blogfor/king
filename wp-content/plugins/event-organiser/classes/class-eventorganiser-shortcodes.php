@@ -306,17 +306,19 @@ class EventOrganiser_Shortcodes {
 
 				break;
 			case 'event_duration':
-				$start = eo_get_the_start(DATETIMEOBJ);
-				$end = eo_get_the_end(DATETIMEOBJ);
-				if( eo_is_all_day() )
-					$end->modify('+1 minute');
-
-				if( !function_exists('date_diff') ){
-					$duration = date_diff($start,$end);
-					$replacement = $duration->format($matches[2]);
-				}else{
-					$replacement = eo_date_interval($start,$end,$matches[2]);
+				$start = eo_get_the_start( DATETIMEOBJ );
+				$end   = clone eo_get_the_end( DATETIMEOBJ );
+				if( eo_is_all_day() ){
+					$end->modify( '+1 minute' );
 				}
+
+				if( function_exists( 'date_diff' ) ){
+					$duration = date_diff( $start, $end );
+					$replacement = $duration->format( $matches[2] );
+				}else{
+					$replacement = eo_date_interval( $start,$end, $matches[2] );
+				}
+				$replacement = false;
 				break;
 
 			case 'event_tags':
@@ -415,15 +417,13 @@ class EventOrganiser_Shortcodes {
 	}
  
 	static function print_script() {
-		global $wp_locale;
-		if ( ! self::$add_script ) return;
-		
-		$_terms = get_terms( 'event-category', array('hide_empty' => 0));
-		$terms = array();
-		while ( $term = array_shift( $_terms ) ){
-			$terms[$term->term_id] = $term;
+
+		if ( ! self::$add_script ) {
+			return;
 		}
-		
+
+		$terms = get_terms( 'event-category', array( 'hide_empty' => 0 ) );
+
 		$fullcal = (empty(self::$calendars) ? array() : array(
 			'firstDay'=>intval(get_option('start_of_week')),
 			'venues' => get_terms( 'event-venue', array('hide_empty' => 0)),

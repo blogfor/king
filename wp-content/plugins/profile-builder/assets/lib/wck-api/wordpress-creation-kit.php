@@ -334,7 +334,7 @@ class Wordpress_Creation_Kit_PB{
 				?>
                 <?php if( ! $this->args['single'] || $this->args['context'] == 'option' ){ ?>
                     <li style="overflow:visible;" class="add-entry-button">
-                        <a href="javascript:void(0)" class="button-primary" onclick="addMeta('<?php echo esc_js($meta); ?>', '<?php echo esc_js( $post_id ); ?>', '<?php echo esc_js($nonce); ?>')"><span><?php if( $this->args['single'] ) echo apply_filters( 'wck_add_entry_button', __( 'Save', 'wck' ), $meta, $post ); else echo apply_filters( 'wck_add_entry_button', __( 'Add Entry', 'wck' ), $meta, $post ); ?></span></a>
+                        <a href="javascript:void(0)" class="button-primary" onclick="addMeta('<?php echo esc_js($meta); ?>', '<?php echo esc_js( $post_id ); ?>', '<?php echo esc_js($nonce); ?>')"><span><?php if( $this->args['single'] ) echo apply_filters( 'wck_add_entry_button', __( 'Save', 'profile-builder' ), $meta, $post ); else echo apply_filters( 'wck_add_entry_button', __( 'Add Entry', 'wck' ), $meta, $post ); ?></span></a>
                     </li>
                 <?php }elseif($this->args['single'] && $this->args['context'] == 'post_meta' ){ ?>
                     <input type="hidden" name="_wckmetaname_<?php echo $meta ?>#wck" value="true">
@@ -376,7 +376,7 @@ class Wordpress_Creation_Kit_PB{
 			if( !empty( $fields ) ){
 				foreach( $fields as $field ){				
 					$details = $field;
-					if( !empty( $results[$element_id][Wordpress_Creation_Kit_PB::wck_generate_slug( $details['title'], $details )] ) )
+					if( isset( $results[$element_id][Wordpress_Creation_Kit_PB::wck_generate_slug( $details['title'], $details )] ) )
 						$value = $results[$element_id][Wordpress_Creation_Kit_PB::wck_generate_slug( $details['title'], $details )];
 					else 
 						$value = '';
@@ -395,8 +395,8 @@ class Wordpress_Creation_Kit_PB{
 				}
 			}
 			$form .= '<li style="overflow:visible;">';
-			$form .= '<a href="javascript:void(0)" class="button-primary" onclick=\'updateMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($update_nonce).'")\'><span>'. __( apply_filters( 'wck_save_changes_button', 'Save Changes', $meta ), 'wck' ) .'</span></a>';
-			$form .= '<a href="javascript:void(0)" class="button-secondary" style="margin-left:10px;" onclick=\'removeUpdateForm("'. esc_js( 'update_container_'.$meta.'_'.$element_id ). '" )\'><span>'. __( apply_filters( 'wck_cancel_button', 'Cancel', $meta ), 'wck' ) .'</span></a>';
+			$form .= '<a href="javascript:void(0)" class="button-primary" onclick=\'updateMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($update_nonce).'")\'><span>'. __( apply_filters( 'wck_save_changes_button', 'Save Changes', $meta ), 'profile-builder' ) .'</span></a>';
+			$form .= '<a href="javascript:void(0)" class="button-secondary" style="margin-left:10px;" onclick=\'removeUpdateForm("'. esc_js( 'update_container_'.$meta.'_'.$element_id ). '" )\'><span>'. __( apply_filters( 'wck_cancel_button', 'Cancel', $meta ), 'profile-builder' ) .'</span></a>';
 			$form .= '</li>';			
 			
 			$form .= '</ul>';
@@ -437,7 +437,7 @@ class Wordpress_Creation_Kit_PB{
 		
 		
 		if( !empty( $results ) ){
-			$list .= apply_filters( 'wck_metabox_content_header_'.$meta , '<thead><tr><th class="wck-number">#</th><th class="wck-content">'. __( 'Content', 'wck' ) .'</th><th class="wck-edit">'. __( 'Edit', 'wck' ) .'</th><th class="wck-delete">'. __( 'Delete', 'wck' ) .'</th></tr></thead>' );
+			$list .= apply_filters( 'wck_metabox_content_header_'.$meta , '<thead><tr><th class="wck-number">#</th><th class="wck-content">'. __( 'Content', 'profile-builder' ) .'</th><th class="wck-edit">'. __( 'Edit', 'wck' ) .'</th><th class="wck-delete">'. __( 'Delete', 'wck' ) .'</th></tr></thead>' );
 			$i=0;
 			foreach ($results as $result){			
 				
@@ -479,7 +479,7 @@ class Wordpress_Creation_Kit_PB{
 					
 				/* filter display value */			
 				$value = apply_filters( "wck_displayed_value_{$meta}_element_{$j}", $value );
-				
+
 				/* display it differently based on field type*/
 				if( $details['type'] == 'upload' ){	
 					$display_value = self::wck_get_entry_field_upload($value);
@@ -489,13 +489,15 @@ class Wordpress_Creation_Kit_PB{
 					$display_value = self::wck_get_entry_field_cpt_select( $value ) . '</pre>';
                 } elseif ( $details['type'] == 'checkbox' && is_array( $value ) ){
                     $display_value = implode( ', ', $value );
+				} elseif ( $details['type'] == 'select' ){
+						$display_value = '<pre>' . __(self::wck_get_entry_field_select( $value, $details ), 'profilebuilder') . '</pre>';
                 } else {
 					$display_value = '<pre>'.htmlspecialchars( $value ) . '</pre>';
 				}
 
                 $display_value = apply_filters( "wck_pre_displayed_value_{$meta}_element_{$field['slug']}", $display_value );
 
-				$list = apply_filters( "wck_before_listed_{$meta}_element_{$j}", $list, $element_id, $value );		
+				$list = apply_filters( "wck_before_listed_{$meta}_element_{$j}", $list, $element_id, $value );
 				/*check for nested repeater type and set it acordingly */
 							if( strpos( $details['type'], 'CFC-') === 0 )
 									$details['type'] = 'nested-repeater';
@@ -503,9 +505,9 @@ class Wordpress_Creation_Kit_PB{
 				$list .= '<li class="row-'. esc_attr( Wordpress_Creation_Kit_PB::wck_generate_slug( $details['title'], $details ) ) .'" data-type="'.$details['type'].'"><strong>'.$details['title'].': </strong>'.$display_value.' </li>' . "\r\n";
 				
 				$list = apply_filters( "wck_after_listed_{$meta}_element_{$j}", $list, $element_id, $value );
-				
-				$j++;	
-				
+
+				$j++;
+
 				/* In CFC/OPC we need the field title. Find it out and output it if found */
 				if ($meta == 'wck_cfc_fields') {
 					if( !empty( $results[$element_id][Wordpress_Creation_Kit_PB::wck_generate_slug( $details['title'], $details )] ) ){
@@ -517,21 +519,43 @@ class Wordpress_Creation_Kit_PB{
 			}
 		}
 		$list .= '</ul>';
-		
+
 		/* check if we have nested repeaters */
 		if( function_exists( 'wck_nr_check_for_nested_repeaters' ) ){
 			if( wck_nr_check_for_nested_repeaters( $fields ) === true ){
 				$list .= wck_nr_handle_repeaters( $meta, $id, $fields, $results, $element_id );
 			}
 		}
-		
+
 		$list .= '</td>';				
-		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-edit"><a href="javascript:void(0)" class="button-secondary"  onclick=\'showUpdateFormMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($edit_nonce).'")\' title="'. __( 'Edit this item', 'wck' ) .'">'. apply_filters( 'wck_edit_button', __('Edit','wck'), $meta ) .'</a></td>';
-		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-delete"><a href="javascript:void(0)" class="mbdelete" onclick=\'removeMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($delete_nonce).'")\' title="'. __( 'Delete this item', 'wck' ) .'">'. apply_filters( 'wck_delete_button', __( 'Delete', 'wck' ), $meta) .'</a></td>';
-			
+		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-edit"><a href="javascript:void(0)" class="button-secondary"  onclick=\'showUpdateFormMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($edit_nonce).'")\' title="'. __( 'Edit this item', 'profile-builder' ) .'">'. apply_filters( 'wck_edit_button', __('Edit','wck'), $meta ) .'</a></td>';
+		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-delete"><a href="javascript:void(0)" class="mbdelete" onclick=\'removeMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($delete_nonce).'")\' title="'. __( 'Delete this item', 'profile-builder' ) .'">'. apply_filters( 'wck_delete_button', __( 'Delete', 'wck' ), $meta) .'</a></td>';
+
 		$list .= "</tr> \r\n";
-	
+
 		return $list;
+	}
+
+	/* function to generate the output for the select field */
+	function wck_get_entry_field_select( $value, $field_details ){
+		if ( (!is_array( $field_details ) && !isset( $field_details['options']) ) || empty( $value )){
+			return $value;
+		}
+		foreach( $field_details['options'] as $option ){
+			if ( strpos( $option, $value ) !== false ){
+				if( strpos( $option, '%' ) === false ){
+					return $value;
+				} else {
+					$option_parts = explode( '%', $option );
+					if( !empty( $option_parts ) ){
+						if( empty( $option_parts[0] ) && count( $option_parts ) == 3 ){
+							$label = $option_parts[1];
+							return $label;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/* function to generate output for upload field */
@@ -646,6 +670,11 @@ class Wordpress_Creation_Kit_PB{
 		//datepicker
 		wp_enqueue_script('jquery-ui-datepicker');		
 		wp_enqueue_style( 'jquery-style', plugins_url( '/assets/datepicker/datepicker.css', __FILE__ ) );
+
+
+        /* media upload */
+        wp_enqueue_media();
+        wp_enqueue_script('wck-upload-field', plugins_url('/fields/upload.js', __FILE__), array('jquery') );
 
 	}	
 
@@ -779,7 +808,7 @@ class Wordpress_Creation_Kit_PB{
 		$results[$element_id] = $values;
 		
 		do_action( 'wck_before_update_meta', $meta, $id, $values, $element_id );
-		
+
 		if( $this->args['context'] == 'post_meta' )
 			update_post_meta($id, $meta, $results);
 		else if ( $this->args['context'] == 'option' )
@@ -940,7 +969,7 @@ class Wordpress_Creation_Kit_PB{
 				}
 			}
 		}
-		
+
 		exit;
 	}
 
@@ -1030,7 +1059,7 @@ class Wordpress_Creation_Kit_PB{
                             foreach ($this->args['meta_array'] as $meta_field){
                                 /* in the $_POST the names for the fields are prefixed with the meta_name for the single metaboxes in case there are multiple metaboxes that contain fields wit hthe same name */
                                 $single_field_name = $this->args['meta_name'] .'_'. Wordpress_Creation_Kit_PB::wck_generate_slug( $meta_field['title'],$meta_field );
-                                if (!empty($_POST[$single_field_name])) {
+                                if (isset($_POST[$single_field_name])) {
                                     /* checkbox needs to be stored as string not array */
                                     if( $meta_field['type'] == 'checkbox' )
                                         $_POST[$single_field_name] = implode( ', ', $_POST[$single_field_name] );
@@ -1087,7 +1116,7 @@ class Wordpress_Creation_Kit_PB{
                 $error_messages .= $wck_single_forms_error['error'];
                 $error_fields .= implode( ',', $wck_single_forms_error['errorfields'] ).',';
             }
-            wp_redirect( add_query_arg( array( 'wckerrormessages' => base64_encode( urlencode( $error_messages ) ), 'wckerrorfields' => base64_encode( urlencode( $error_fields ) ) ), $_SERVER["HTTP_REFERER"] ) );
+            wp_safe_redirect( add_query_arg( array( 'wckerrormessages' => base64_encode( urlencode( $error_messages ) ), 'wckerrorfields' => base64_encode( urlencode( $error_fields ) ) ), $_SERVER["HTTP_REFERER"] ) );
             exit;
         }
     }
@@ -1111,14 +1140,14 @@ class Wordpress_Creation_Kit_PB{
             echo '<script type="text/javascript">';
             $field_names = explode( ',', urldecode( base64_decode( $_GET['wckerrorfields'] ) ) );
             foreach( $field_names as $field_name ){
-                echo "jQuery( '.field-label[for=\"". $field_name ."\"]' ).addClass('error');";
+                echo "jQuery( '.field-label[for=\"". esc_js( $field_name ) ."\"]' ).addClass('error');";
             }
             echo '</script>';
         }
 
         /* alert the error messages */
         if( isset( $_GET['wckerrormessages'] ) ){
-            echo '<script type="text/javascript">alert("'. urldecode( str_replace( '%0A', '\n', base64_decode( $_GET['wckerrormessages'] ) ) ) .'")</script>';
+            echo '<script type="text/javascript">alert("'.  str_replace( '%0A', '\n', esc_js( urldecode( base64_decode( $_GET['wckerrormessages'] ) ) ) ) .'")</script>';
         }
     }
 
@@ -1147,7 +1176,7 @@ class Wordpress_Creation_Kit_PB{
 			}
 			
 			if($has_wck_with_unserialize_fields){
-				add_meta_box( 'wck_sync_translation', __( 'Syncronize WCK', 'wck' ), array( &$this, 'wck_add_sync_box' ), $post->post_type, 'side', 'low' );
+				add_meta_box( 'wck_sync_translation', __( 'Syncronize WCK', 'profile-builder' ), array( &$this, 'wck_add_sync_box' ), $post->post_type, 'side', 'low' );
 			}
 			
 		}			
@@ -1159,7 +1188,7 @@ class Wordpress_Creation_Kit_PB{
 	function wck_add_sync_box(){
 		global $post;
 		?>	
-		<span id="wck_sync" class="button" onclick="wckSyncTranslation(<?php echo $post->ID; ?>)"><?php _e( 'Syncronize WCK Translation', 'wck' ) ?></span>
+		<span id="wck_sync" class="button" onclick="wckSyncTranslation(<?php echo $post->ID; ?>)"><?php _e( 'Syncronize WCK Translation', 'profile-builder' ) ?></span>
 		<?php 
 	}
 

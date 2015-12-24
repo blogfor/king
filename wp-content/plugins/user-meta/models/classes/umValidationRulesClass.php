@@ -1,4 +1,8 @@
 <?php
+/**
+ * Validate single rule.
+ * Find $regex for $rule and validate it.
+ */
 
 if ( ! class_exists( "umValidationRule" ) ) :
 class umValidationRule {

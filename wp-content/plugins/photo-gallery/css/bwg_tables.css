@@ -1,3 +1,10 @@
+.bwg_form h2 {
+  font-size: 23px;
+  font-weight: normal;
+  line-height: 29px;
+  padding: 9px 15px 4px 0;
+}
+
 .spider_ajax_loading {
   border: none !important;
   -webkit-animation: spin 2.5s infinite linear;
@@ -47,10 +54,13 @@
   }
 }
 
-#TB_window,
+#TB_window{
+ width: 800px !important;
+ height: 500px !important;
+}
 #TB_iframeContent {
-  width: 800px !important;
-  height: 500px !important;
+ width: 800px !important;
+ height: 470px !important;
 }
 
 #TB_window {
@@ -295,8 +305,8 @@
 }
 
 .spider_label_galleries {
- font-weight: bold;
- width: 180px;
+	font-weight: bold;
+	width: 180px;
 }
 
 .spider_fieldset .spider_label {
@@ -503,7 +513,6 @@
 .spider_order {
   display: none;
 }
-
 #add_embed_help {
   height: 200px;
   width: 672px;

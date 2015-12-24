@@ -20,7 +20,15 @@ class BWGModelImage_browser {
   ////////////////////////////////////////////////////////////////////////////////////////
   public function get_theme_row_data($id) {
     global $wpdb;
-    $row = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'bwg_theme WHERE id="%d"', $id));
+    if ($id) {
+      $row = $wpdb->get_row($wpdb->prepare('SELECT * FROM ' . $wpdb->prefix . 'bwg_theme WHERE id="%d"', $id));
+    }
+    else {      
+      $row = $wpdb->get_row('SELECT * FROM ' . $wpdb->prefix . 'bwg_theme WHERE default_theme=1');
+    }
+    if (isset($row->options)) {
+      $row = (object) array_merge((array) $row, (array) json_decode($row->options));
+    }
     return $row;
   }
 
@@ -39,14 +47,17 @@ class BWGModelImage_browser {
     else {
       $where = '';
     }
-    if ($sort_by == 'size' || $sort_by == 'resolution' || $sort_by == 'filename') {
+    if ($sort_by == 'size' || $sort_by == 'resolution') {
       $sort_by = ' CAST(' . $sort_by . ' AS SIGNED) ';
     }
-    elseif (($sort_by != 'alt') && ($sort_by != 'date') && ($sort_by != 'filetype')) {
+    elseif ($sort_by == 'random') {
+      $sort_by = 'RAND()';
+    }
+    elseif (($sort_by != 'alt') && ($sort_by != 'date') && ($sort_by != 'filetype') && ($sort_by != 'filename')) {
       $sort_by = '`order`';
     }
-    if (isset($_POST['page_number_' . $bwg]) && $_POST['page_number_' . $bwg]) {
-      $limit = ((int) $_POST['page_number_' . $bwg] - 1) * $images_per_page;
+    if (isset($_REQUEST['page_number_' . $bwg]) && $_REQUEST['page_number_' . $bwg]) {
+      $limit = ((int) $_REQUEST['page_number_' . $bwg] - 1) * $images_per_page;
     }
     else {
       $limit = 0;
@@ -78,8 +89,8 @@ class BWGModelImage_browser {
     }
     $total = $wpdb->get_var($wpdb->prepare('SELECT COUNT(*) FROM ' . $wpdb->prefix . 'bwg_image WHERE published=1 ' . $where . ' AND gallery_id="%d"', $id));
     $page_nav['total'] = $total;
-    if (isset($_POST['page_number_' . $bwg]) && $_POST['page_number_' . $bwg]) {
-      $limit = ((int) $_POST['page_number_' . $bwg] - 1) * $images_per_page;
+    if (isset($_REQUEST['page_number_' . $bwg]) && $_REQUEST['page_number_' . $bwg]) {
+      $limit = ((int) $_REQUEST['page_number_' . $bwg] - 1) * $images_per_page;
     }
     else {
       $limit = 0;

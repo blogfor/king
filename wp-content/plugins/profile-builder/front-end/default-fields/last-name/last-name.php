@@ -18,9 +18,11 @@ function wppb_last_name_handler( $output, $form_location, $field, $user_id, $fie
 		if ( array_key_exists( $field['id'], $field_check_errors ) )
 			$error_mark = '<img src="'.WPPB_PLUGIN_URL.'assets/images/pencil_delete.png" title="'.wppb_required_field_error($field["field-title"]).'"/>';
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="last_name">'.$item_title.$error_mark.'</label>
-			<input class="text-input default_field_lastname" name="last_name" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="last_name" value="'. esc_attr( wp_unslash( $input_value ) ) .'" />';
+			<input class="text-input default_field_lastname" name="last_name" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="last_name" value="'. esc_attr( wp_unslash( $input_value ) ) .'" '. $extra_attr .'/>';
             if( !empty( $item_description ) )
                 $output .= '<span class="wppb-description-delimiter">'. $item_description .'</span>';
 	}
@@ -31,9 +33,12 @@ add_filter( 'wppb_output_form_field_default-last-name', 'wppb_last_name_handler'
 
 
 /* handle field validation */
-function wppb_check_last_name_value( $message, $field, $request_data, $form_location ){	
-	if ( ( isset( $request_data['last_name'] ) && ( trim( $request_data['last_name'] ) == '' ) ) && ( $field['required'] == 'Yes' ) )
-		return wppb_required_field_error($field["field-title"]);
+function wppb_check_last_name_value( $message, $field, $request_data, $form_location ){
+    if( $field['required'] == 'Yes' ){
+        if( ( isset( $request_data['last_name'] ) && ( trim( $request_data['last_name'] ) == '' ) ) || !isset( $request_data['last_name'] ) ){
+            return wppb_required_field_error($field["field-title"]);
+        }
+    }
 
     return $message;
 }

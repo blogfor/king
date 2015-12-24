@@ -18,9 +18,11 @@ function wppb_email_handler( $output, $form_location, $field, $user_id, $field_c
 		if ( array_key_exists( $field['id'], $field_check_errors ) )
 			$error_mark = '<img src="'.WPPB_PLUGIN_URL.'assets/images/pencil_delete.png" title="'.wppb_required_field_error($field["field-title"]).'"/>';
 
+		$extra_attr = apply_filters( 'wppb_extra_attribute', '', $field );
+
         $output = '
 			<label for="email">'.$item_title.$error_mark.'</label>
-			<input class="text-input default_field_email" name="email" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="email" value="'. esc_attr( $input_value ) .'" />';
+			<input class="text-input default_field_email" name="email" maxlength="'. apply_filters( 'wppb_maximum_character_length', 70 ) .'" type="text" id="email" value="'. esc_attr( $input_value ) .'" '. $extra_attr .' />';
         if( !empty( $item_description ) )
             $output .= '<span class="wppb-description-delimiter">'. $item_description .'</span>';
 
@@ -39,25 +41,28 @@ function wppb_check_email_value( $message, $field, $request_data, $form_location
 		return wppb_required_field_error($field["field-title"]);
 
     if ( isset( $request_data['email'] ) && !is_email( trim( $request_data['email'] ) ) ){
-        return __( 'The email you entered is not a valid email address.', 'profilebuilder' );
+        return __( 'The email you entered is not a valid email address.', 'profile-builder' );
     }
 
 	if ( empty( $request_data['email'] ) ) {
-		return __( 'You must enter a valid email address.', 'profilebuilder' );
+		return __( 'You must enter a valid email address.', 'profile-builder' );
 	}
 
     $wppb_generalSettings = get_option( 'wppb_general_settings' );
-	if ( is_multisite() || ( !is_multisite() && ( isset( $wppb_generalSettings['emailConfirmation'] ) && ( $wppb_generalSettings['emailConfirmation'] == 'yes' ) ) ) ){
-		$user_signup = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM ".$wpdb->base_prefix."signups WHERE user_email = %s", $request_data['email'] ) );
+	if ( isset( $wppb_generalSettings['emailConfirmation'] ) && ( $wppb_generalSettings['emailConfirmation'] == 'yes' ) ){
+		$user_signup = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM ".$wpdb->base_prefix."signups WHERE user_email = %s AND active=0", $request_data['email'] ) );
 
         if ( !empty( $user_signup ) ){
             if ( $form_location == 'register' ){
-                    return __( 'This email is already reserved to be used soon.', 'profilebuilder' ) .'<br/>'. __( 'Please try a different one!', 'profilebuilder' );
+                    return __( 'This email is already reserved to be used soon.', 'profile-builder' ) .'<br/>'. __( 'Please try a different one!', 'profile-builder' );
             }
             else if ( $form_location == 'edit_profile' ){
                 $current_user = wp_get_current_user();
-                if ( $current_user->user_email != $request_data['email'] )
-                    return __( 'This email is already reserved to be used soon.', 'profilebuilder' ) .'<br/>'. __( 'Please try a different one!', 'profilebuilder' );
+
+				if( ! current_user_can( 'edit_users' ) ) {
+					if ( $current_user->user_email != $request_data['email'] )
+						return __( 'This email is already reserved to be used soon.', 'profile-builder' ) .'<br/>'. __( 'Please try a different one!', 'profile-builder' );
+				}
             }
         }
 	}
@@ -65,7 +70,7 @@ function wppb_check_email_value( $message, $field, $request_data, $form_location
 	$users = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->users} WHERE user_email = %s", $request_data['email'] ) );
 	if ( !empty( $users ) ){
 		if ( $form_location == 'register' )
-			return __( 'This email is already in use.', 'profilebuilder' ) .'<br/>'. __( 'Please try a different one!', 'profilebuilder' );
+			return __( 'This email is already in use.', 'profile-builder' ) .'<br/>'. __( 'Please try a different one!', 'profile-builder' );
 		
 		if ( $form_location == 'edit_profile' ){
             if( isset( $_GET['edit_user'] ) && ! empty( $_GET['edit_user'] ) )
@@ -76,7 +81,7 @@ function wppb_check_email_value( $message, $field, $request_data, $form_location
             }
 			foreach ( $users as $user )
 				if ( $user->ID != $current_user_id )
-					return __( 'This email is already in use.', 'profilebuilder' ) .'<br/>'. __( 'Please try a different one!', 'profilebuilder' );
+					return __( 'This email is already in use.', 'profile-builder' ) .'<br/>'. __( 'Please try a different one!', 'profile-builder' );
 		}
 	}
 

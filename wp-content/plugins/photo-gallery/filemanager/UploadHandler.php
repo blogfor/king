@@ -104,13 +104,7 @@ class UploadHandler {
         'image_versions' => array(
           // Uncomment the following version to restrict the size of
           // uploaded images:
-          /*
-          '' => array(
-            'max_width' => 1920,
-            'max_height' => 1200,
-            'jpeg_quality' => 95
-          ),
-          */
+          
           // Uncomment the following to create medium sized images:
           /*
           'medium' => array(
@@ -120,10 +114,17 @@ class UploadHandler {
           ),
           */
           '.original' => array(
+            'max_width' => NULL,
+            'max_height' => NULL,
+            'jpeg_quality' => 100
+          ),
+          
+          '' => array(
             'max_width' => $this->options['max_width'],
             'max_height' => $this->options['max_height'],
             'jpeg_quality' => 100
           ),
+          
           'thumb' => array(
             'max_width' => ((isset($_REQUEST['file_namesML']) && esc_html($_REQUEST['file_namesML'])) ? (isset($_REQUEST['importer_thumb_width']) ? (int) $_REQUEST['importer_thumb_width'] : 300) : ((isset($_POST['upload_thumb_width']) && (int) $_POST['upload_thumb_width']) ? (int) $_POST['upload_thumb_width'] : 300)),
             'max_height' => ((isset($_REQUEST['file_namesML']) && esc_html($_REQUEST['file_namesML'])) ? (isset($_REQUEST['importer_thumb_height']) ? (int) $_REQUEST['importer_thumb_height'] : 300) : ((isset($_POST['upload_thumb_height']) && (int) $_POST['upload_thumb_height']) ? (int) $_POST['upload_thumb_height'] : 300)),
@@ -131,6 +132,8 @@ class UploadHandler {
           ),
         )
       );
+      $this->options['max_width'] = NULL;
+      $this->options['max_height'] = NULL;
       if ($options) {
         $this->options = array_merge($this->options, $options);
       }
@@ -315,7 +318,7 @@ class UploadHandler {
         $max_width / $img_width,
         $max_height / $img_height
       );
-      ini_set('memory_limit', '-1');
+      @ini_set('memory_limit', '-1');
       if (($scale >= 1) || (($max_width == NULL) && ($max_height == NULL))) {
         if ($file_path !== $new_file_path) {
           return copy($file_path, $new_file_path);
@@ -385,7 +388,7 @@ class UploadHandler {
       // Free up memory (imagedestroy does not delete files):
       @imagedestroy($src_img);
       @imagedestroy($new_img);
-      ini_restore('memory_limit');
+      @ini_restore('memory_limit');
       return $success;
     }
 
@@ -541,7 +544,7 @@ class UploadHandler {
       if (!in_array($orientation, array(3, 6, 8))) {
         return false;
       }
-      ini_set('memory_limit', '-1');
+      @ini_set('memory_limit', '-1');
       $image = @imagecreatefromjpeg($file_path);
       switch ($orientation) {
         case 3:
@@ -559,7 +562,7 @@ class UploadHandler {
       $success = imagejpeg($image, $file_path);
       // Free up memory (imagedestroy does not delete files):
       @imagedestroy($image);
-      ini_restore('memory_limit');
+      @ini_restore('memory_limit');
       return $success;
     }
 

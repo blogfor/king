@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Event Organiser\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-19 12:56+0000\n"
-"PO-Revision-Date: 2014-06-09 19:27:10+0000\n"
-"Last-Translator: Daniele Piccoli <daniepi@gmail.com>\n"
+"POT-Creation-Date: 2015-12-09 22:54+0000\n"
+"PO-Revision-Date: 2015-09-26 08:16:24+0000\n"
+"Last-Translator: stephenharris <stephenh1988@gmail.com>\n"
 "Language-Team: \n"
 "Language: Italian (Italy)\n"
 "MIME-Version: 1.0\n"
@@ -44,12 +44,10 @@ msgid "Month"
 msgstr "Mese"
 
 #: classes/class-eo-agenda-widget.php:47
-#, fuzzy
 msgid "Group date format"
 msgstr "Formato data del gruppo"
 
 #: classes/class-eo-agenda-widget.php:51
-#, fuzzy
 msgid "Event date/time format"
 msgstr "Formato data/ora dell'evento"
 
@@ -112,7 +110,7 @@ msgid "Displays a list of events"
 msgstr "Mostra la lista degli eventi"
 
 #: classes/class-eo-event-list-widget.php:23 event-organiser-venues.php:482
-#: event-organiser.php:136 includes/event-organiser-cpt.php:217
+#: event-organiser.php:139 includes/event-organiser-cpt.php:217
 #: includes/event-organiser-cpt.php:229
 #: includes/event-organiser-install.php:96 templates/archive-event.php:42
 msgid "Events"
@@ -171,17 +169,17 @@ msgstr ""
 msgid "'No events' message"
 msgstr "Messaggio 'Nessun evento'"
 
-#: classes/class-eo-venue-list-table.php:72 templates/single-event.php:71
+#: classes/class-eo-venue-list-table.php:75 templates/single-event.php:71
 msgid "Edit"
 msgstr "Modifica"
 
-#: classes/class-eo-venue-list-table.php:73
-#: classes/class-eo-venue-list-table.php:128
+#: classes/class-eo-venue-list-table.php:80
+#: classes/class-eo-venue-list-table.php:142
 msgid "Delete"
 msgstr "Elimina"
 
-#: classes/class-eo-venue-list-table.php:74
-#: includes/event-organiser-ajax.php:674
+#: classes/class-eo-venue-list-table.php:85
+#: includes/event-organiser-ajax.php:691
 msgid "View"
 msgstr "Visualizza"
 
@@ -196,7 +194,7 @@ msgstr "Categorie degli eventi"
 
 #: classes/class-eo-widget-categories.php:28 event-organiser-manage.php:35
 #: includes/event-organiser-cpt.php:103
-#: includes/event-organiser-event-functions.php:1512
+#: includes/event-organiser-event-functions.php:1466
 #: templates/event-meta-event-single.php:69
 msgid "Categories"
 msgstr "Categorie"
@@ -236,7 +234,7 @@ msgstr "Luoghi"
 msgid "Select Venue"
 msgstr "Seleziona il luogo"
 
-#: classes/class-eventorganiser-shortcodes.php:391
+#: classes/class-eventorganiser-shortcodes.php:393
 msgid "There is no excerpt because this is a protected post."
 msgstr "Errore, il post selezionato e protetto"
 
@@ -304,7 +302,6 @@ msgid "Occurrence deleted."
 msgstr "Occorrenza eliminata."
 
 #: event-organiser-calendar.php:220
-#, fuzzy
 msgid "Calendar options"
 msgstr "Opzioni calendario"
 
@@ -313,7 +310,7 @@ msgid "24 hour time"
 msgstr "24 ore"
 
 #: event-organiser-calendar.php:249
-#: includes/event-organiser-event-functions.php:1457
+#: includes/event-organiser-event-functions.php:1411
 msgid "Loading&#8230;"
 msgstr "Caricamento&#8230;"
 
@@ -333,7 +330,7 @@ msgstr "Quando"
 msgid "Event Title"
 msgstr "Titolo evento"
 
-#: event-organiser-calendar.php:277 includes/event-organiser-ajax.php:397
+#: event-organiser-calendar.php:277 includes/event-organiser-ajax.php:410
 msgid "Where"
 msgstr "Dove"
 
@@ -444,15 +441,17 @@ msgid "unknown"
 msgstr "sconosciuto"
 
 #: event-organiser-edit.php:31 event-organiser-manage.php:23
-#: event-organiser-settings.php:142 includes/event-organiser-ajax.php:384
+#: event-organiser-settings.php:142 includes/event-organiser-ajax.php:397
 msgid "Organiser"
 msgstr "Agenda"
 
 #: event-organiser-edit.php:75
+#, fuzzy
 msgid "This is a reoccurring event"
-msgstr "Questo &egrave; un evento ricorrente"
+msgstr "Questo evento è stato interrotto da un errore ripetuto\n"
 
 #: event-organiser-edit.php:76
+#, fuzzy
 msgid "Check to edit this event and its reoccurrences"
 msgstr "Seleziona per modificare l'evento e riprogrammarlo"
 
@@ -479,12 +478,13 @@ msgid "All day"
 msgstr "Giornata intera"
 
 #: event-organiser-edit.php:139
+#, fuzzy
 msgid "Reoccurence:"
-msgstr "Ricorrenza:"
+msgstr "Ricorrenza"
 
 #: event-organiser-edit.php:141
-msgid "once"
-msgstr "una sola volta"
+msgid "none"
+msgstr ""
 
 #: event-organiser-edit.php:141
 msgid "daily"
@@ -516,6 +516,7 @@ msgid "on"
 msgstr "il"
 
 #: event-organiser-edit.php:176
+#, fuzzy
 msgid "day of month"
 msgstr "giorno del mese"
 
@@ -530,6 +531,7 @@ msgid "until"
 msgstr "fino a"
 
 #: event-organiser-edit.php:195
+#, fuzzy
 msgid "Include/Exclude occurrences"
 msgstr "Includi/Escludi eventi"
 
@@ -543,11 +545,10 @@ msgid "Select a venue"
 msgstr "Seleziona un luogo"
 
 #: event-organiser-edit.php:240
-#, fuzzy
 msgid "Venue Name"
 msgstr "Nome del luogo"
 
-#: event-organiser-edit.php:415
+#: event-organiser-edit.php:416
 msgid "Event dates were not saved."
 msgstr "Le date dell'evento non sono state salvate"
 
@@ -624,48 +625,49 @@ msgid "Event"
 msgstr "Evento"
 
 #: event-organiser-manage.php:38
+#, fuzzy
 msgid "Reoccurrence"
 msgstr "Ricorrenza"
 
-#: event-organiser-manage.php:152
+#: event-organiser-manage.php:163
 msgid "View all events"
 msgstr "Visualizza tutti gli eventi"
 
-#: event-organiser-manage.php:153
+#: event-organiser-manage.php:164
 msgid "Future events"
 msgstr "Eventi futuri"
 
-#: event-organiser-manage.php:154
+#: event-organiser-manage.php:165
 msgid "Expired events"
 msgstr "Eventi passati"
 
-#: event-organiser-manage.php:155
+#: event-organiser-manage.php:166
 msgid "Events within 24 hours"
 msgstr "Eventi entro 24 ore"
 
-#: event-organiser-manage.php:156
+#: event-organiser-manage.php:167
 msgid "Events within 1 week"
 msgstr "Eventi entro una settimana"
 
-#: event-organiser-manage.php:157
+#: event-organiser-manage.php:168
 #, php-format
 msgid "Events within %d weeks"
 msgstr "Eventi entro %d settimane"
 
-#: event-organiser-manage.php:158
+#: event-organiser-manage.php:169
 msgid "Events within 1 month"
 msgstr "Eventi entro un mese"
 
-#: event-organiser-manage.php:159
+#: event-organiser-manage.php:170
 #, php-format
 msgid "Events within %d months"
 msgstr "Eventi entro %d mesi"
 
-#: event-organiser-manage.php:160
+#: event-organiser-manage.php:171
 msgid "Events within 1 year"
 msgstr "Eventi nell'anno"
 
-#: event-organiser-manage.php:211
+#: event-organiser-manage.php:222
 msgid "&mdash; No Change &mdash;"
 msgstr "&mdash; Nessun Cambio &mdash;"
 
@@ -697,42 +699,42 @@ msgstr "Impostazioni del calendario eventi"
 msgid "Event Organiser"
 msgstr "Event Organiser"
 
-#: event-organiser-settings.php:46 event-organiser.php:109
+#: event-organiser-settings.php:46 event-organiser.php:112
 #: includes/event-organiser-install.php:112
 msgid "Edit Events"
 msgstr "Modifica eventi"
 
-#: event-organiser-settings.php:47 event-organiser.php:110
+#: event-organiser-settings.php:47 event-organiser.php:113
 #: includes/event-organiser-install.php:113
 msgid "Publish Events"
 msgstr "Pubblica eventi"
 
-#: event-organiser-settings.php:48 event-organiser.php:111
+#: event-organiser-settings.php:48 event-organiser.php:114
 #: includes/event-organiser-install.php:114
 msgid "Delete Events"
 msgstr "Cancella eventi"
 
-#: event-organiser-settings.php:49 event-organiser.php:112
+#: event-organiser-settings.php:49 event-organiser.php:115
 #: includes/event-organiser-install.php:115
 msgid "Edit Others' Events"
 msgstr "Modifica gli eventi di altri"
 
-#: event-organiser-settings.php:50 event-organiser.php:113
+#: event-organiser-settings.php:50 event-organiser.php:116
 #: includes/event-organiser-install.php:116
 msgid "Delete Other's Events"
 msgstr "Cancella gli eventi di altri"
 
-#: event-organiser-settings.php:51 event-organiser.php:114
+#: event-organiser-settings.php:51 event-organiser.php:117
 #: includes/event-organiser-install.php:117
 msgid "Read Private Events"
 msgstr "Leggi eventi privati"
 
-#: event-organiser-settings.php:52 event-organiser.php:115
+#: event-organiser-settings.php:52 event-organiser.php:118
 #: includes/event-organiser-install.php:118
 msgid "Manage Venues"
 msgstr "Modifica luogo"
 
-#: event-organiser-settings.php:53 event-organiser.php:116
+#: event-organiser-settings.php:53 event-organiser.php:119
 #: includes/event-organiser-install.php:119
 msgid "Manage Event Categories & Tags"
 msgstr "Modifica le categorie e i tag degli eventi"
@@ -742,7 +744,6 @@ msgid "Add-on Licence keys"
 msgstr "Chiavi di licenza dell'add-on"
 
 #: event-organiser-settings.php:75
-#, fuzzy
 msgid "Templates"
 msgstr "Template"
 
@@ -817,7 +818,6 @@ msgid "This alters the default format for inputting dates."
 msgstr "Altera il formato standard delle date."
 
 #: event-organiser-settings.php:195
-#, fuzzy
 msgid ""
 "If selected only one occurrence of an event will be displayed on event lists "
 "and archives (this can be over-ridden by shortcode attributes and widget "
@@ -867,8 +867,9 @@ msgid "Exclude events from searches:"
 msgstr "Escludi l'evento dalla ricerca"
 
 #: event-organiser-settings.php:236
+#, fuzzy
 msgid "Enable templates:"
-msgstr "Abilita templates"
+msgstr "Template"
 
 #: event-organiser-settings.php:242
 msgid ""
@@ -878,12 +879,6 @@ msgid ""
 "it will use its own default template. To prevent this, uncheck this option. "
 "WordPress will then decide which template from your theme's folder to use."
 msgstr ""
-"Per ogni pagina viene usato un template. Per usare un template "
-"personalizzato basta usare lo stesso nome e inserirlo nella cartella del "
-"tema. Il default, se Event Organiser non trova un template nella directory "
-"del tema, &egrave; usare il template rilasciato con il plugin. Per evitarlo "
-"deselezionare questa opzione. Sar&agrave; Wordpress a decidere quale "
-"template del tema usare."
 
 #: event-organiser-settings.php:248
 msgid "Events archives:"
@@ -933,7 +928,6 @@ msgid ""
 msgstr "Se hai attivato i permalink, selezionali per gli eventi."
 
 #: event-organiser-settings.php:284
-#, fuzzy
 msgid "Event (single)"
 msgstr "Evento (singolo)"
 
@@ -1014,7 +1008,6 @@ msgid "You do not have permission to edit this venue."
 msgstr "Non hai i permessi per modificare questo luogo."
 
 #: event-organiser-venues.php:61
-#, fuzzy
 msgid "Venue <strong>was not</strong> updated"
 msgstr "Il luogo <strong>non </strong> &egrave; stato aggiornato"
 
@@ -1105,9 +1098,9 @@ msgid "[Line %1$d]"
 msgstr "[Riga %1$d]"
 
 #: includes/class-eo-ical-parser.php:952
-#, fuzzy, php-format
+#, php-format
 msgid "Invalid date \"%s\". Date expected in YYYYMMDD format."
-msgstr "Data non valida. La data deve essere nel formato YYYYMMDD."
+msgstr "Data non valida \"%s\". La data deve essere nel formato YYYYMMDD."
 
 #: includes/class-eo-ical-parser.php:990
 #, php-format
@@ -1128,7 +1121,6 @@ msgid "No file detected."
 msgstr "Nessun file."
 
 #: includes/class-event-organiser-im-export.php:71
-#, fuzzy
 msgid ""
 "Invalid file uploaded. The file must be a ics calendar file of type 'text/"
 "calendar', no larger than 2MB."
@@ -1220,69 +1212,70 @@ msgstr "è stata creata 1 categoria"
 msgid "%d categories were created"
 msgstr "sono state create %d categorie"
 
-#: includes/event-organiser-ajax.php:347
+#: includes/event-organiser-ajax.php:360
 msgid "Protected"
 msgstr "Protetto"
 
-#: includes/event-organiser-ajax.php:349
+#: includes/event-organiser-ajax.php:362
 msgid "Private"
 msgstr "Privato"
 
-#: includes/event-organiser-ajax.php:351
+#: includes/event-organiser-ajax.php:364
 msgid "Draft"
 msgstr "Bozza"
 
-#: includes/event-organiser-ajax.php:381
+#: includes/event-organiser-ajax.php:394
 #: templates/event-meta-event-single.php:58
 msgid "Start"
 msgstr "Inizio"
 
-#: includes/event-organiser-ajax.php:382
+#: includes/event-organiser-ajax.php:395
 msgid "End"
 msgstr "Fine"
 
-#: includes/event-organiser-ajax.php:423
+#: includes/event-organiser-ajax.php:436
+#, fuzzy
 msgid "This event reoccurs"
 msgstr "Questo evento si ripete"
 
-#: includes/event-organiser-ajax.php:429 includes/event-organiser-cpt.php:221
+#: includes/event-organiser-ajax.php:442 includes/event-organiser-cpt.php:221
 msgid "Edit Event"
 msgstr "Modifica evento"
 
-#: includes/event-organiser-ajax.php:448
+#: includes/event-organiser-ajax.php:462
 msgid "Delete this occurrence"
 msgstr "Cancella questa ricorrenza"
 
-#: includes/event-organiser-ajax.php:462
+#: includes/event-organiser-ajax.php:479
 msgid "Break this series"
 msgstr "Spezza questa serie"
 
-#: includes/event-organiser-ajax.php:670
-#: includes/event-organiser-event-functions.php:1409
+#: includes/event-organiser-ajax.php:687
+#: includes/event-organiser-event-functions.php:1363
 msgid "All Day"
 msgstr "Tutta la giornata"
 
-#: includes/event-organiser-ajax.php:675
+#: includes/event-organiser-ajax.php:692
 msgid "Add To Google Calendar"
 msgstr "Aggiungi a Google Calendar"
 
-#: includes/event-organiser-ajax.php:786
+#: includes/event-organiser-ajax.php:803
 msgid "Event not found"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:798
+#: includes/event-organiser-ajax.php:815
 msgid "Events are not editable via the admin calendar"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:808
+#: includes/event-organiser-ajax.php:825
 msgid "Are you sure you want to do this?"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:818
+#: includes/event-organiser-ajax.php:835
 msgid "You do not have permission to edit this event"
 msgstr ""
 
-#: includes/event-organiser-ajax.php:840
+#: includes/event-organiser-ajax.php:857
 #, php-format
 msgid "Event not created: %s"
 msgstr ""
@@ -1426,7 +1419,7 @@ msgid "Choose from the most used tags"
 msgstr "Scegli fra i tag pi&ugrave; utilizzati"
 
 #: includes/event-organiser-cpt.php:157
-#: includes/event-organiser-event-functions.php:1520
+#: includes/event-organiser-event-functions.php:1474
 #: templates/event-meta-event-single.php:74
 msgid "Tags"
 msgstr "Tag"
@@ -1482,12 +1475,14 @@ msgid "Event updated. <a href=\"%s\">View event</a>"
 msgstr "Evento aggiornato. <a href=\"%s\">Vedi evento</a>"
 
 #: includes/event-organiser-cpt.php:311
+#, fuzzy
 msgid "Custom field updated."
-msgstr "Campo personalizzato aggiornato."
+msgstr "Campi personalizzati"
 
 #: includes/event-organiser-cpt.php:312
+#, fuzzy
 msgid "Custom field deleted."
-msgstr "Campo personalizzato eliminato."
+msgstr "Nessun file."
 
 #: includes/event-organiser-cpt.php:313
 msgid "Event updated."
@@ -1545,6 +1540,7 @@ msgid "Creating events:"
 msgstr "Eventi creati:"
 
 #: includes/event-organiser-cpt.php:519
+#, fuzzy
 msgid ""
 "The start date is the date the event starts. If the event is a reoccuring "
 "event, this is the start date of the first occurrence."
@@ -1554,6 +1550,7 @@ msgstr ""
 "prima ricorrenza."
 
 #: includes/event-organiser-cpt.php:520
+#, fuzzy
 msgid ""
 "The end date is the date the event finishes. If the event is a reoccuring "
 "event, this is the end date of the first occurrence."
@@ -1575,6 +1572,7 @@ msgid "Repeating events"
 msgstr "Eventi ripetuti"
 
 #: includes/event-organiser-cpt.php:527
+#, fuzzy
 msgid ""
 "To repeat an event according to some regular pattern, use the reoccurrence "
 "dropdown menu to select how the event is to repeat. Further options then "
@@ -1589,6 +1587,7 @@ msgid "Specify how regularly the event should repeat (default 1)"
 msgstr "Specifica quale regola l'evento deve ripetere (default 1)"
 
 #: includes/event-organiser-cpt.php:530
+#, fuzzy
 msgid ""
 "Choose the reoccurrence end date. No further occurrences are added after "
 "this date, but an occurrence that starts before may finish after this date."
@@ -1598,6 +1597,7 @@ msgstr ""
 "finire dopo."
 
 #: includes/event-organiser-cpt.php:531
+#, fuzzy
 msgid ""
 "If monthly reoccurrence is selected, select whether this should repeat on "
 "that date of the month (e.g. on the 24th) or on the day of the month (e.g. "
@@ -1607,6 +1607,7 @@ msgstr ""
 "avviene l'evento (es. il 24) o il giorno del mese (es. il terzo Martedì) "
 
 #: includes/event-organiser-cpt.php:532
+#, fuzzy
 msgid ""
 "If weekly reoccurrence is selected, select which days of the week the event "
 "should be repeated. If no days are selected, the day of the start date is "
@@ -1637,6 +1638,7 @@ msgid "Overview"
 msgstr "Panoramica"
 
 #: includes/event-organiser-cpt.php:552
+#, fuzzy
 msgid ""
 "This is the list of all saved events. Note that <strong> reoccurring events "
 "appear as a single row </strong> in the table and the start and end date "
@@ -1864,7 +1866,6 @@ msgid "This event will repeat"
 msgstr "Questo evento si ripeter&agrave;"
 
 #: includes/event-organiser-register.php:365
-#, fuzzy
 msgid "Settings"
 msgstr "Impostazioni"
 
@@ -1876,10 +1877,6 @@ msgid ""
 "href='%s'>attempt to auto-fill them</a>. You can always manually change the "
 "details aftewards."
 msgstr ""
-"<h4>Aggiunti i campi Città & Stato</h4>I campi Città e Stato / Provincia dei "
-"luoghi sono stati ora aggiunti. </br>Se vuoi, Event Organiser può <a "
-"href='%s'>cercare di riempirli automaticamente</a>. Puoi sempre cambiare i "
-"dettagli manualmente in un secondo momento."
 
 #: includes/event-organiser-register.php:675
 msgid ""
@@ -1922,35 +1919,35 @@ msgstr "CAP"
 msgid "Country"
 msgstr "Nazione"
 
-#: includes/event.php:549
+#: includes/event.php:615
 msgid "Schedule not recognised."
 msgstr "Programma non riconosciuto."
 
-#: includes/event.php:558
+#: includes/event.php:624
 msgid "Start date not provided."
 msgstr "Data di inizio non fornita."
 
-#: includes/event.php:576
+#: includes/event.php:642
 msgid "Start date occurs after end date."
 msgstr "La data di inizio programma è dopo la data di fine."
 
-#: includes/event.php:579
+#: includes/event.php:645
 msgid "Schedule end date is before is before the start date."
 msgstr "La data di fine programma è prima della data di inizio."
 
-#: includes/event.php:662
+#: includes/event.php:727
 msgid "Invalid monthly schedule (invalid ordinal)"
 msgstr "Programma mensile non valido (numero non valido)"
 
-#: includes/event.php:782
+#: includes/event.php:861
 msgid "Event does not contain any dates."
 msgstr "L'evento non prevede nessuna data."
 
-#: includes/event.php:923
+#: includes/event.php:1004
 msgid "Occurrence not deleted. Occurrence not found."
 msgstr "Occorrenza non cancellata. Occorrenza non trovata."
 
-#: includes/event.php:984
+#: includes/event.php:1065
 msgid "There is already an occurrence on this date"
 msgstr ""
 
@@ -2033,22 +2030,28 @@ msgstr ""
 "bookmark."
 
 #: templates/taxonomy-event-category.php:31
-#, php-format
+#, fuzzy, php-format
 msgid "Event Category Archives: %s"
-msgstr "Archivi delle categorie eventi: %s"
+msgstr "Categorie degli eventi"
 
 #: templates/taxonomy-event-category.php:120
+#, fuzzy
 msgid "Apologies, but no events were found for the requested category. "
-msgstr "Non c'&egrave; alcun evento per la categoria selezionata"
+msgstr ""
+"Spiacente, ma nessun risultato &egrave; stato trovato per l'archivio "
+"richiesto"
 
 #: templates/taxonomy-event-tag.php:31
-#, php-format
+#, fuzzy, php-format
 msgid "Event Tag Archives: %s"
-msgstr "Archivi dei Tag Evento: %s"
+msgstr "Archivio eventi:"
 
 #: templates/taxonomy-event-tag.php:120
+#, fuzzy
 msgid "Apologies, but no events were found for the requested tag. "
-msgstr "Non c'&egrave; alcun evento con il tag cercato"
+msgstr ""
+"Spiacente, ma nessun risultato &egrave; stato trovato per l'archivio "
+"richiesto"
 
 #: templates/taxonomy-event-venue.php:31
 #, php-format
@@ -2056,5 +2059,31 @@ msgid "Events at: %s"
 msgstr "Eventi al: %s"
 
 #: templates/taxonomy-event-venue.php:118
+#, fuzzy
 msgid "Apologies, but no events were found for the requested venue. "
-msgstr "Non c'&egrave; alcun evento per il luogo cercato"
+msgstr ""
+"Spiacente, ma nessun risultato &egrave; stato trovato per l'archivio "
+"richiesto"
+
+#~ msgid "End Date"
+#~ msgstr "Data fine"
+
+#~ msgid "End Time"
+#~ msgstr "Ora fine"
+
+#, fuzzy
+#~ msgid "Enter date in %s format"
+#~ msgstr "Formato data/ora dell'evento"
+
+#, fuzzy
+#~ msgid "Recurrence frequency"
+#~ msgstr "Ricorrenza"
+
+#~ msgid "Repeat on days of week:"
+#~ msgstr "giorno della settimana"
+
+#~ msgid "Start Date"
+#~ msgstr "Data inizio"
+
+#~ msgid "Start Time"
+#~ msgstr "Ora inizio"

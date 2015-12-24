@@ -43,11 +43,11 @@ function wppb_activate_signup( $key ) {
 	$signup = ( is_multisite() ? $wpdb->get_row( $wpdb->prepare("SELECT * FROM $wpdb->signups WHERE activation_key = %s", $key) ) : $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".$wpdb->base_prefix."signups WHERE activation_key = %s", $key ) ) );
 	
 	if ( empty( $signup ) )
-		return apply_filters( 'wppb_register_activate_user_error_message1', '<p class="error">'.__( 'Invalid activation key!', 'profilebuilder' ).'</p>');
+		return apply_filters( 'wppb_register_activate_user_error_message1', '<p class="error">'.__( 'Invalid activation key!', 'profile-builder' ).'</p>');
 
 	if ( $signup->active )
 		if ( empty( $signup->domain ) )
-			return apply_filters( 'wppb_register_activate_user_error_message2', '<p class="error">'.__( 'This username is now active!', 'profilebuilder' ).'</p>' );
+			return apply_filters( 'wppb_register_activate_user_error_message2', '<p class="error">'.__( 'This username is now active!', 'profile-builder' ).'</p>' );
 
 	$meta = unserialize( $signup->meta );
 	
@@ -65,10 +65,10 @@ function wppb_activate_signup( $key ) {
 		$user_already_exists = true;
 
 	if ( ! $user_id )
-		return apply_filters( 'wppb_register_activate_user_error_message4', '<p class="error">'.__('Could not create user!', 'profilebuilder').'</p>' );
+		return apply_filters( 'wppb_register_activate_user_error_message4', '<p class="error">'.__('Could not create user!', 'profile-builder').'</p>' );
 		
 	elseif ( isset( $user_already_exists ) && ( $user_already_exists == true ) )
-		return apply_filters( 'wppb_register_activate_user_error_message5', '<p class="error">'.__( 'This username is already activated!', 'profilebuilder' ).'</p>' );
+		return apply_filters( 'wppb_register_activate_user_error_message5', '<p class="error">'.__( 'This username is already activated!', 'profile-builder' ).'</p>' );
 	
 	else{
 		$inserted_user = ( is_multisite() ? $wpdb->update( $wpdb->signups, array( 'active' => 1, 'activated' => current_time( 'mysql', true ) ), array( 'activation_key' => $key ) ) : $wpdb->update( $wpdb->base_prefix.'signups', array( 'active' => 1, 'activated' => current_time( 'mysql', true ) ), array( 'activation_key' => $key ) ) );
@@ -77,9 +77,22 @@ function wppb_activate_signup( $key ) {
 		
 		// if admin approval is activated, then block the user untill he gets approved
 		$wppb_generalSettings = get_option('wppb_general_settings');
-		if ( isset( $wppb_generalSettings['adminApproval'] ) && ( $wppb_generalSettings['adminApproval'] == 'yes' ) ){
-			wp_set_object_terms( $user_id, array( 'unapproved' ), 'user_status', false );
-			clean_object_term_cache( $user_id, 'user_status' );
+		if( isset( $wppb_generalSettings['adminApproval'] ) && ( $wppb_generalSettings['adminApproval'] == 'yes' ) ){
+			$user_data = get_userdata( $user_id );
+
+			if( $wppb_generalSettings != 'not_found' && ! empty( $wppb_generalSettings['adminApprovalOnUserRole'] ) ) {
+				foreach( $user_data->roles as $role ) {
+					if( in_array( $role, $wppb_generalSettings['adminApprovalOnUserRole'] ) ) {
+						wp_set_object_terms( $user_id, array( 'unapproved' ), 'user_status', false);
+						clean_object_term_cache( $user_id, 'user_status' );
+					} else {
+						add_filter( 'wppb_register_success_message', 'wppb_noAdminApproval_successMessage' );
+					}
+				}
+			} else {
+				wp_set_object_terms( $user_id, array( 'unapproved' ), 'user_status', false);
+				clean_object_term_cache( $user_id, 'user_status' );
+			}
 		}
 
         if ( !isset( $wppb_generalSettings['adminApproval'] ) )
@@ -93,33 +106,68 @@ function wppb_activate_signup( $key ) {
 
             $wpdb->update( $wpdb->users, array('user_pass' => $meta['user_pass'] ), array('ID' => $user_id) );
         }
-		
+
 		wppb_notify_user_registration_email($bloginfo, $user_login, $user_email, 'sending', $password, $wppb_generalSettings['adminApproval']);
-		
+
 		do_action( 'wppb_activate_user', $user_id, $password, $meta );
-		
+
 		if ( $inserted_user ){
-			$success_message = apply_filters('wppb_success_email_confirmation', '<p class="wppb-success">'. __('Your email was successfully confirmed.', 'profilebuilder') .'</p><!-- .success -->');
-            $admin_approval_message = apply_filters('wppb_email_confirmation_with_admin_approval', '<p class="alert">'. __('Before you can access your account, an administrator needs to approve it. You will be notified via email.', 'profilebuilder') . '</p>' );
+			$redirect_url = NULL;
+			if( PROFILE_BUILDER == 'Profile Builder Pro' ) {
+				$wppb_module_settings = get_option( 'wppb_module_settings' );
+
+				if( isset( $wppb_module_settings['wppb_customRedirect'] ) && $wppb_module_settings['wppb_customRedirect'] == 'show' && function_exists( 'wppb_custom_redirect_url' ) ) {
+					$redirect_url = wppb_custom_redirect_url( 'after_success_email_confirmation', '', $user_login );
+				}
+			}
+			$redirect_url = apply_filters( 'wppb_success_email_confirmation_redirect_url', $redirect_url );
+			$wppb_cr_delay = apply_filters( 'wppb_success_email_confirmation_redirect_delay', $wppb_cr_delay = 5 );
+
+			$success_message = apply_filters( 'wppb_success_email_confirmation', '<p class="wppb-success">' . __( 'Your email was successfully confirmed.', 'profile-builder' ) . '</p><!-- .success -->' );
+            $admin_approval_message = apply_filters( 'wppb_email_confirmation_with_admin_approval', '<p class="alert">' . __('Before you can access your account, an administrator needs to approve it. You will be notified via email.', 'profile-builder' ) . '</p>' );
+
+			if( ! empty( $redirect_url ) ) {
+				$wppb_cr_success_message = apply_filters( 'wppb_success_email_confirmation_redirect_message', '<p class="wppb-success">' . __( 'You will soon be redirected automatically.', 'profile-builder' ) . '</p>' ) . '<meta http-equiv="Refresh" content="'.$wppb_cr_delay.';url='.$redirect_url.'" />';
+			}
 
             $wppb_general_settings = get_option( 'wppb_general_settings', 'false' );
+
             if ( !empty( $wppb_general_settings['adminApproval'] ) && $wppb_general_settings['adminApproval'] == 'yes' ){
-                return $success_message . $admin_approval_message;
+				$user_data = get_userdata( $user_id );
+
+				if( $wppb_general_settings != 'not_found' && ! empty( $wppb_general_settings['adminApprovalOnUserRole'] ) ) {
+					foreach( $user_data->roles as $role ) {
+						if( in_array( $role, $wppb_general_settings['adminApprovalOnUserRole'] ) ) {
+							return $success_message . $admin_approval_message. ( ! empty ( $wppb_cr_success_message ) ? $wppb_cr_success_message : '' );
+						} else {
+							wp_set_object_terms( $user_id, NULL, 'user_status' );
+							clean_object_term_cache( $user_id, 'user_status' );
+
+							return $success_message. ( ! empty ( $wppb_cr_success_message ) ? $wppb_cr_success_message : '' );
+						}
+					}
+				} else {
+					return $success_message . $admin_approval_message. ( ! empty ( $wppb_cr_success_message ) ? $wppb_cr_success_message : '' );
+				}
             } else {
-                return $success_message;
+				wp_set_object_terms( $user_id, NULL, 'user_status' );
+				clean_object_term_cache( $user_id, 'user_status' );
+
+                return $success_message. ( ! empty ( $wppb_cr_success_message ) ? $wppb_cr_success_message : '' );
             }
         } else {
-			return apply_filters('wppb_register_failed_user_activation', '<p class="error">'. __('There was an error while trying to activate the user.', 'profilebuilder') .'</p><!-- .error -->');
+			return apply_filters('wppb_register_failed_user_activation', '<p class="error">'. __('There was an error while trying to activate the user.', 'profile-builder') .'</p><!-- .error -->');
         }
 	}		
 }
 
 //function to display the registration page
 function wppb_front_end_register( $atts ){
-	extract( shortcode_atts( array( 'role' => get_option( 'default_role' ), 'form_name' => 'unspecified', 'redirect_url' => '' ), $atts, 'wppb-register' ) );
+	extract( shortcode_atts( array( 'role' => get_option( 'default_role' ), 'form_name' => 'unspecified', 'redirect_url' => '', 'redirect_priority' => 'normal' ), $atts, 'wppb-register' ) );
+	
 	global $$form_name;
 
-    $$form_name = new Profile_Builder_Form_Creator( array( 'form_type' => 'register', 'form_name' => $form_name, 'role' => ( is_object( get_role( $role ) ) ? $role : get_option( 'default_role' ) ) , 'redirect_url' => $redirect_url ) );
+    $$form_name = new Profile_Builder_Form_Creator( array( 'form_type' => 'register', 'form_name' => $form_name, 'role' => ( is_object( get_role( $role ) ) ? $role : get_option( 'default_role' ) ) , 'redirect_url' => $redirect_url, 'redirect_priority' => $redirect_priority ) );
 
     return $$form_name;
 }

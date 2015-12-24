@@ -1,12 +1,13 @@
 ﻿=== Profile Builder - front-end user registration, login and edit profile === 
-
-Contributors: reflectionmedia, barinagabriel, sareiodata, cozmoslabs, adispiac, madalin.ungureanu
+Contributors: cozmoslabs, reflectionmedia, sareiodata, adispiac, madalin.ungureanu, iova.mihai, barinagabriel
 Donate link: http://www.cozmoslabs.com/wordpress-profile-builder/
-Tags: registration, user profile, user registration, custom field registration, customize profile, user fields, extra user fields, builder, profile builder, custom user profile, user profile page, edit profile, custom registration, custom registration form, custom registration page, registration page, user custom fields, user listing, front-end user listing, user login, user registration form, front-end login, login redirect, login widget, front-end register, front-end registration, front-end edit profile, front-end user registration, custom redirects, user email, avatar upload, email confirmation, user approval, customize registration email, minimum password length, minimum password strength, password strength meter, multiple registration forms, register, register form, member directory
+Tags: registration, user profile, user registration, custom field registration, customize profile, user fields, extra user fields, builder, profile builder, custom user profile, user profile page, edit profile, custom registration, custom registration form, custom registration page, registration page, user custom fields, user listing, front-end user listing, user login, user registration form, front-end login, login redirect, login widget, front-end register, front-end registration, front-end edit profile, front-end user registration, custom redirects, user email, avatar upload, email confirmation, user approval, customize registration email, minimum password length, minimum password strength, password strength meter, multiple registration forms, register, register form, register user, register users, login form, member directory, redirect user
 
 Requires at least: 3.1
-Tested up to: 4.1.1
-Stable tag: 2.1.3
+Tested up to: 4.3.1
+Stable tag: 2.2.7
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Simple to use profile plugin allowing front-end login, user registration and edit profile by using shortcodes.
  
@@ -15,7 +16,7 @@ Simple to use profile plugin allowing front-end login, user registration and edi
 **Profile Builder is WordPress user registration done right.**
 
 It lets you customize your website by adding a front-end menu for all your users, 
-giving them a more flexible way to modify their user profile or register new users (front-end user registration). 
+giving them a more flexible way to modify their user profile or register users (front-end user registration).
 Users with administrator rights can customize basic user fields or add custom user fields to the front-end forms.
 
 To achieve this, simply create a new page and give it an intuitive name(i.e. Edit Profile).
@@ -25,10 +26,10 @@ Publish the page and you are done!
 = Front-end User Registration, Login, Edit Profile and Password Recovery Shortcodes =
 You can use the following shortcode list:
 
-* **[wppb-edit-profile]** - to grant users front-end access to their profile (requires user to be logged in).
+* **[wppb-edit-profile]** - to grant users front-end access to their user profile (requires user to be logged in).
 * **[wppb-login]** - to add a front-end login form.
 * **[wppb-logout]** - to add logout functionality.
-* **[wppb-register]** - to add a front-end register form.
+* **[wppb-register]** - register users via a front-end register form.
 * **[wppb-recover-password]** - to add a password recovery form.
 
 Users with administrator rights have access to the following features:
@@ -40,7 +41,7 @@ Users with administrator rights have access to the following features:
 * assign users a specific role at registration (using **[wppb-register role="desired_role"]** shortcode argument for the register form)
 * redirect users after login, register and edit-profile using redirect_url shortcode argument ( e.g **[wppb-login redirect_url="www.example.com"]** )
 * add register and lost password links below the login form (using **[wppb-login register_url="www.example.com" lostpassword_url="www.example.com"]** shortcode arguments)
-* customizable login widget
+* customizable user login widget
 * add a custom stylesheet/inherit values from the current theme or use the default one built into this plugin.
 * chose which user roles view the admin bar in the front-end of the website (Admin Bar Settings page).
 * select which profile fields users can see/modify.
@@ -114,9 +115,83 @@ This plugin adds/removes user fields in the front-end. Both default and extra pr
 10. Profile Builder Login Widget
 
 == Changelog ==
+= 2.2.7 =
+* Translation Updates
+
+= 2.2.6 =
+* Email Confirmation can now be disabled on WordPress multisite
+
+= 2.2.5 =
+* Fixed issue that prevented  the value 0 to be set as default value
+* Fixed xss vulnerability
+* Fixed issue that was preventing to change back to original email address in edit-profile, after changing to a new one
+* Removed default value option from PB Password and Repeat Password fields
+* Changed name of japanese translation file
+* Fixed updating edit-profile form without email field, when allowing users to login only with email
+
+= 2.2.4 =
+* Translation Updates
+
+= 2.2.3 =
+* Fixed website field not saving on registering with email confirmation
+* Fixed a potential security vulnerability
+* Removed condition in edit-users dropdown to allow custom ones
+
+= 2.2.2 =
+* Fixed notice that was thrown in WordPress 4.3 related to WP_Widget constructor being deprecated in login widget.
+
+= 2.2.1 =
+* Changed recover password link from using username to using the user-nicename
+* We no longer strip spaces from usernames on singele-site registration when Email Confirmation is on and we also do not allow usernames with spaces on multisite installs
+* Changed message in Manage Fields sidebar
+* Fixed issue that prevented sometimes 0 values to be saved
+
+= 2.1.9 =
+* Add attribute filter to each Profile Builder form input: apply_filters( 'wppb_extra_attribute', '', $field )
+* Added Japanese translation
+* Updated translation files
+
+= 2.1.8 =
+* Added filter to wppb_curpageurl() function to easily modify returned URL: apply_filters('wppb_curpageurl', $pageURL)
+* Fixed a issue with default fields not having labels and descriptions localized sometimes
+* Removed link to author page in logged in user shortcode
+* Shortcodes on Basic Info page should no longer be translated
+* Replaced home_url with site_url in login.php
+* Fixed an error when admin was editing another user from the front end sometimes we got 'This email is already reserved to be used soon.'
+* Select a User to edit (as admin) adds HTML special char (&amp;) in URL when should not
+* Added filters that can be used to stop emails being sent to users or admins
+* Redirect registration form after login to same page. Also added a filter on the url
+
+
+= 2.1.7 =
+* Added reCaptcha support for default login, register and lost password forms as well as PB forms + our own login widget
+* Added RTL support for Profile Buider Forms
+* Fixed a problem regarding required fields
+* Added filter on add custom field values on user signup 'wppb_add_to_user_signup_form_meta'
+* Fixed issue where username was sent instead of email when Login with Email was set in the user emails
+
+= 2.1.6 =
+* Updated translation files.
+* Bulk approve email in Email Confirmation now functions as expected
+* Now the Addons Page in Profile Builder is compatible with Multisite.
+* Added filter to add extra css classes directly on the fields input: apply_filters( 'wppb_fields_extra_css_class', '', $field )
+* The Show Meta button in the Email Confirmation admin screen no longer throws js errors when site in other language.
+* Fixed bug that was preventing Checkboxes, Selects and Radios to not save correctly if they had special chars in their values
+
+= 2.1.5 =
+* Added compatibility with "Captcha" plugin
+* Fixed issue on Add-Ons Page that prevented addons to be activated right after install
+* Fixed issue on multisite where Adminstrator roles were able to edit other users from frontend
+* Added filters to edit other users dropdown:'wppb_display_edit_other_users_dropdown' and 'wppb_edit_profile_user_dropdown_role'
+
+= 2.1.4 =
+* Fixed vulnerability regarding activating/deactivationg addons through ajax. We added nonces and permission checks.
+* Added a filter in which we can change the classes on the li element for fields: 'wppb_field_css_class'
+* Fixed automatic login on registration when filtering the random username generated when login with email is active
+
 = 2.1.3 =
 * Fixed bug that prevented non-administrator roles to save fields in their profile on the admin area
-* Added Spanish translation thanks to Andrew Kurtis at http://www.webhostinghub.com/
+* Added Spanish translation
 * Styled the alerts and errors in registration/edit profile, above the forms
 * Added line in footer that asks users to leave a review if they enjoyed the plugin
 * Fixed bug in registration forms that allowed users to create accounts even when they removed the email box from the DOM
@@ -428,3 +503,7 @@ Changes to the ReadMe File
 = 1.0 =
 Added the posibility of displaying/hiding default WordPress information-fields, and to modify basic layout.
 
+== Upgrade Notice ==
+
+= 2.0.0 =
+Plugin overhaul. Introduces new interface. Please upgrade.
