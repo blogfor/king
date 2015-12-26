@@ -9,12 +9,6 @@
  * @since Twenty Fifteen 1.0
  */
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
     <head>
@@ -100,7 +94,7 @@
                                 'link_after'      => '',
                                 'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                                 'depth'           => 0,
-                                'walker'          => ''
+                                'walker'          => new themeslug_walker_nav_menu
                         );
 
                         wp_nav_menu( $defaults );

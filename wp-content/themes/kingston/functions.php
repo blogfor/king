@@ -331,3 +331,150 @@ require get_template_directory() . '/inc/template-tags.php';
  * @since Twenty Fifteen 1.0
  */
 require get_template_directory() . '/inc/customizer.php';
+add_filter('show_admin_bar', '__return_false');
+
+
+/* ------------------- Clean Hedaer tag ------------------------- */
+
+remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
+
+remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
+
+remove_action('wp_head', 'rsd_link'); // Display the link to the Really Simple Discovery service endpoint, EditURI link
+
+remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows Live Writer manifest file.
+
+remove_action('wp_head', 'index_rel_link'); // index link
+
+remove_action('wp_head', 'parent_post_rel_link', 10, 0); // prev link
+
+remove_action('wp_head', 'start_post_rel_link', 10, 0); // start link
+
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0); // Display relational links for the posts adjacent to the current post.
+
+remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
+
+add_theme_support('automatic-feed-links');
+
+
+
+/*
+
+ * Disabled all updates
+
+ */
+
+
+
+function remove_core_updates() {
+
+    global $wp_version;
+
+    return(object) array('last_checked' => time(), 'version_checked' => $wp_version,);
+
+}
+
+
+
+add_filter('pre_site_transient_update_core', 'remove_core_updates');
+
+add_filter('pre_site_transient_update_plugins', 'remove_core_updates');
+
+add_filter('pre_site_transient_update_themes', 'remove_core_updates');
+
+
+
+
+
+
+
+# get rid of dashboard junk
+
+function example_remove_dashboard_widgets() {
+
+	// Globalize the metaboxes array, this holds all the widgets for wp-admin
+
+	global $wp_meta_boxes;
+
+
+
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+
+        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+
+        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+
+        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+
+
+
+} 
+
+
+
+// Hook into the 'wp_dashboard_setup' action to register our function
+
+add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' );
+
+
+class themeslug_walker_nav_menu extends Walker_Nav_Menu {
+// add classes to ul sub-menus
+function start_lvl( &$output, $depth ) {
+    // depth dependent classes
+    $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
+    $display_depth = ( $depth + 1); // because it counts the first submenu as 0
+    $classes = array(
+        'dropdown-menu',
+        ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
+        ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
+        'menu-depth-' . $display_depth
+        );
+    $class_names = implode( ' ', $classes );
+  
+    // build html
+    $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
+}
+  
+// add main/sub classes to li's and links
+ function start_el( &$output, $item, $depth, $args ) {
+    global $wp_query;
+    $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
+  
+    // depth dependent classes
+    $depth_classes = array(
+        ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
+        ( $depth >=2 ? 'sub-sub-menu-item' : '' ),
+        ( $depth % 2 ? 'menu-item-odd' : 'menu-item-even' ),
+        'menu-item-depth-' . $depth
+    );
+    $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
+  
+    // passed classes
+    $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+    $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+  
+    // build html
+    $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
+  
+    // link attributes
+    $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+    $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+    $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+    $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+    $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
+  
+    $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+        $args->before,
+        $attributes,
+        $args->link_before,
+        apply_filters( 'the_title', $item->title, $item->ID ),
+        $args->link_after,
+        $args->after
+    );
+  
+    // build html
+    $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+}
+}
