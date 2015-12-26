@@ -8,9 +8,10 @@
  */
 
 get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<section id="primary" class="content-area">
+  <main id="main" class="site-main" role="main">
+	<div class="container">
+ 	 <div class="col-md-9 blog-holder">
 
 		<?php
 		// Start the loop.
@@ -42,7 +43,10 @@ get_header(); ?>
 		endwhile;
 		?>
 
-		</main><!-- .site-main -->
+		</div><!-- .site-main -->
+		<?php get_sidebar(); ?>
 	</div><!-- .content-area -->
+ </main>
+</section>
 
 <?php get_footer(); ?>

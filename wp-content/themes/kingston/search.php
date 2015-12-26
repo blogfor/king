@@ -9,13 +9,13 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div class="container">
+ 		<div class="col-md-9">
 
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h1>
+				<div class="row abt-us"><h2><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h2></div>
 			</header><!-- .page-header -->
 
 			<?php
@@ -47,7 +47,8 @@ get_header(); ?>
 		endif;
 		?>
 
-		</main><!-- .site-main -->
-	</section><!-- .content-area -->
+		</div>
+		<?php get_sidebar(); ?>
+	 </div>
 
 <?php get_footer(); ?>

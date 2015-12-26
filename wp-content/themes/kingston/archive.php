@@ -20,12 +20,13 @@ get_header(); ?>
 
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
+			<div class="container">
+ 				<div class="col-md-9 blog-holder">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
 				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
+					the_archive_title( '<div class="row abt-us"><h2>', '</h2></div>' );
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
@@ -57,7 +58,9 @@ get_header(); ?>
 
 		endif;
 		?>
-
+			</div>
+			<?php get_sidebar(); ?>
+			</div>
 		</main><!-- .site-main -->
 	</section><!-- .content-area -->
 

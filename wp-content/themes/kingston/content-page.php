@@ -15,7 +15,7 @@
 	?>
 
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title( '<div class="row abt-us"><h2>', '</h2></div>' ); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

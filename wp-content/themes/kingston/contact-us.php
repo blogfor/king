@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: BLOG PAGE
+ * Template Name: Conatct Us
  *
  */
 
@@ -14,7 +14,7 @@ get_header(); ?>
 
 			<?php if ( is_home() && ! is_front_page() ) : ?>
 				<header>
-					<div class="row abt-us"><h2><?php single_post_title(); ?></h2></div>
+					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
 			<?php endif; ?>
 

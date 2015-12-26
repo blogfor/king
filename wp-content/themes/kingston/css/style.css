@@ -1356,3 +1356,21 @@ body#home .map {margin-top:15px !important;}
 
 .iso p{margin-top: 1px !important;}
 .navbar-nav>li>.dropdown-menu{z-index:999999;}
+
+.search-field {
+	height: 30px;
+    border-radius: 4px;
+    border: none;
+    padding: 2px;
+}
+
+.search-submit {
+	border: none;
+    background-color: #75aed4;
+    padding: 3px;
+    color: #FFF;
+    border-radius: 4px;
+}
+.margin-footer {
+	height:40px;
+}

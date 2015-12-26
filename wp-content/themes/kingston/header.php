@@ -103,3 +103,5 @@
                     </div>
                 </div>
             </nav>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery-latest.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/unslider.js"></script>

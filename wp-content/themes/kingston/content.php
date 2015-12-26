@@ -19,9 +19,9 @@
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
+				the_title( '<div class="row abt-us"><h2>', '</h2></div>' );
 			else :
-				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+				the_title( sprintf( '<div class="row abt-us"><h2><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2></div>' );
 			endif;
 		?>
 	</header><!-- .entry-header -->
