@@ -4,7 +4,9 @@
  *
  */
 
-get_header(); ?>
+get_header(); 
+query_posts('post_type=post' );
+?>
 <section id="primary" class="content-area">
   <main id="main" class="site-main" role="main">
 	<div class="container">
@@ -46,7 +48,7 @@ get_header(); ?>
 		endif;
 		?>
 
-		</div>><!-- .site-main -->
+		</div><!-- .site-main -->
 		<?php get_sidebar(); ?>
 	</div><!-- .content-area -->
    </main>
