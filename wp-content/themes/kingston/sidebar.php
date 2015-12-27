@@ -29,7 +29,9 @@
 
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="map"><h2>WHERE WE ARE</h2>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/map.jpg" width="270" height="218"></div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.4082897255228!2d88.41423239882693!3d22.623323599467565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89f417450d265%3A0xa875f457f8457a71!2sKingston+Educational+Institute!5e0!3m2!1sen!2sin!4v1451239549427" width="320px" height="268px" frameborder="0" style="border:0" allowfullscreen></iframe>
+				
+				</div>
         </div>
 
     </div><!-- 2nd row--> 
@@ -67,43 +69,6 @@
                 </div>
             </div>
         </div>
-        <?php if (has_nav_menu('primary') || has_nav_menu('social') || is_active_sidebar('sidebar-1')) : ?>
-            <div id="secondary" class="secondary">
-
-                <?php if (has_nav_menu('primary')) : ?>
-                    <nav id="site-navigation" class="main-navigation" role="navigation">
-                        <?php
-                        // Primary navigation menu.
-                        wp_nav_menu(array(
-                            'menu_class' => 'nav-menu',
-                            'theme_location' => 'primary',
-                        ));
-                        ?>
-                    </nav><!-- .main-navigation -->
-                <?php endif; ?>
-
-                <?php if (has_nav_menu('social')) : ?>
-                    <nav id="social-navigation" class="social-navigation" role="navigation">
-                        <?php
-                        // Social links navigation menu.
-                        wp_nav_menu(array(
-                            'theme_location' => 'social',
-                            'depth' => 1,
-                            'link_before' => '<span class="screen-reader-text">',
-                            'link_after' => '</span>',
-                        ));
-                        ?>
-                    </nav><!-- .social-navigation -->
-                <?php endif; ?>
-
-                <?php if (is_active_sidebar('sidebar-1')) : ?>
-                    <div id="widget-area" class="widget-area" role="complementary">
-                        <?php dynamic_sidebar('sidebar-1'); ?>
-                    </div><!-- .widget-area -->
-                <?php endif; ?>
-
-            </div><!-- .secondary -->
-
-        <?php endif; ?>
+       
     </div><!-- 3rd row--> 
 </div><!--right-->

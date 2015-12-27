@@ -14,11 +14,14 @@ query_posts('post_type=post' );
 
 		<?php if ( have_posts() ) : ?>
 
-			<?php if ( is_home() && ! is_front_page() ) : ?>
+			
 				<header>
-					<div class="row abt-us"><h2><?php single_post_title(); ?></h2></div>
+				<?php if ( is_home() && ! is_front_page() ) { ?>
+					<div class="abt-us"><h2><?php single_post_title(); ?></h2></div>
+					<?php } else ?>
+					<?php the_title( '<div class="abt-us"><h2>', '</h2></div>' ); ?>
 				</header>
-			<?php endif; ?>
+			
 
 			<?php
 			// Start the loop.

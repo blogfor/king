@@ -10,23 +10,28 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="post-lst">
 	<?php
 		// Post thumbnail.
 		twentyfifteen_post_thumbnail();
 	?>
 
-	<header class="entry-header">
+	<header class="entry-header blog-header">
+		<div class="abt-us">
+		<h2>
 		<?php
 			if ( is_single() ) :
-				the_title( '<div class="row abt-us"><h2>', '</h2></div>' );
+				the_title();
 			else :
-				the_title( sprintf( '<div class="row abt-us"><h2><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2></div>' );
+				the_title( sprintf( '<a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a>' );
 			endif;
 		?>
+		</h2>
+		<?php twentyfifteen_entry_meta(); ?>
+		</div>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
+	<div class="entry-content blog-content">
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
@@ -53,7 +58,7 @@
 	?>
 
 	<footer class="entry-footer">
-		<?php twentyfifteen_entry_meta(); ?>
+		
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 

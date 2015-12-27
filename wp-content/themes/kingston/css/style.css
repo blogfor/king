@@ -340,6 +340,9 @@ ul {
 
 .blog-holder{background:#fff;}
 .blog-thum{background:none !important; border:0;}
+.blog-holder .post-thumbnail img { width:100%; }
+.blog-holder .blog-content { padding:0 10px; }
+.blog-header .abt-us h2 { margin-bottom:5px; }
 .post-lst p.post-info span{color:#23527c; font-weight:bold;}
 .post-lst p.post-info{color:#525252; padding:5px 0 6px;}
 .post-lst{padding-bottom:2%; border-bottom:1px solid #ccc; margin-bottom:2%;}
