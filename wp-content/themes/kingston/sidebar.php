@@ -7,6 +7,7 @@
  * @since Twenty Fifteen 1.0
  */
 ?>
+<div class="col-sm-1">&nbsp;</div>
 <div class="col-lg-3 col-md-3 col-sm-12" >
     <div class="row">
 

@@ -141,6 +141,25 @@ function twentyfifteen_widgets_init() {
 }
 add_action( 'widgets_init', 'twentyfifteen_widgets_init' );
 
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+function home_top_gallery() {
+
+	register_sidebar( array(
+		'name'          => 'Home Top Gallery',
+		'id'            => 'home_top_gallery',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	) );
+
+}
+add_action( 'widgets_init', 'home_top_gallery' );
+
+
 if ( ! function_exists( 'twentyfifteen_fonts_url' ) ) :
 /**
  * Register Google fonts for Twenty Fifteen.

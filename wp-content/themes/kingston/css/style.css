@@ -29,6 +29,9 @@ ul {
     clear:both;
     line-height:0;
     font-size:0;}
+.clr {
+	clear:both;
+}
 /*=========================================*/
 /*----------brand----------*/
 .list_carousel ul {
@@ -343,7 +346,7 @@ ul {
 .map img{width:100%; height:auto;}
 
 /*aboutus page*/
-.abt-us{
+.abt-us, .content-area {
     padding:10px;}
 .abt-us h2{font-family:'Open Sans', sans-serif;
            font-weight:700;
@@ -351,17 +354,59 @@ ul {
            color:#207dba;
            margin-bottom:20px;
 }
-.abt-us p{
-    font:normal 14px/16px Arial, Helvetica, sans-serif;
+.abt-us p, .content-area  p{
+    font:normal 14px/20px Arial, Helvetica, sans-serif;
     color:#000;
     text-align:justify;}
 
-.abt-us h3{
+.abt-us h3, .content-area  h3{
     font-family:'Open Sans', sans-serif;
     font-weight:600;
     font-size:20px;
     color:#207dba;
     margin-bottom:10px;}
+.content-area  h3{
+	margin:15px 0 10px;
+}
+.content-area  h3.big{
+	
+	font-weight:bold;
+}
+
+.content-area .col-sm-6,.content-area .col-sm-12  {
+	margin:10px 0;
+}
+.content-area .col-lg-1, .content-area .col-lg-10, .content-area .col-lg-11, .content-area .col-lg-12, .content-area .col-lg-2, .content-area .col-lg-3, .content-area .col-lg-4, .content-area .col-lg-5, .content-area .col-lg-6, .content-area .col-lg-7, .content-area .col-lg-8, .content-area .col-lg-9, .content-area .col-md-1, .content-area .col-md-10, .content-area .col-md-11, .content-area .col-md-12, .content-area .col-md-2, .content-area .col-md-3, .content-area .col-md-4, .content-area .col-md-5, .content-area .col-md-6, .content-area .col-md-7, .content-area .col-md-8, .content-area .col-md-9, .content-area .col-sm-1, .content-area .col-sm-10, .content-area .col-sm-11, .content-area .col-sm-12, .content-area .col-sm-2, .content-area .col-sm-3, .content-area .col-sm-4, .content-area .col-sm-5, .content-area .col-sm-6, .content-area .col-sm-7, .content-area .col-sm-8, .content-area .col-sm-9, .content-area .col-xs-1, .content-area .col-xs-10, .content-area .col-xs-11, .content-area .col-xs-12, .content-area .col-xs-2, .content-area .col-xs-3, .content-area .col-xs-4, .content-area .col-xs-5, .content-area .col-xs-6, .content-area .col-xs-7, .content-area .col-xs-8, .content-area .col-xs-9 {
+   
+   padding:0;
+   
+}
+.col-sm-12  ul li{
+	font: normal 12px/14px Arial, Helvetica, sans-serif;
+}
+
+.content-area  h2 {
+	color:#207dba;
+}
+.content-area ul {
+	font:normal 14px/20px Arial, Helvetica, sans-serif;
+	margin:0 0 0 15px;	
+}
+.content-area .tab {
+	margin-left:100px;
+}
+.content-area ul li:before {
+	content: "";
+    border-color: transparent #207dba;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+}
 
 .abt-us1{padding:0px 0 0 10px;}
 .abt-us1 h3{font-family:'Open Sans', sans-serif;

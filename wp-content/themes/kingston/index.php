@@ -185,7 +185,7 @@ get_header();
             'category' => '',
             'category_name' => '',
             'orderby' => 'date',
-            'order' => 'DESC',
+            'order' => 'ASC',
             'include' => '',
             'exclude' => '',
             'meta_key' => '',
@@ -205,7 +205,7 @@ get_header();
         foreach ($posts_array as $post) : setup_postdata($post);
             ?>
 
-                <?php if ($i % 3 == 0) { ?>
+                <?php if ($i % 2 == 0) { ?>
                 </div>
                 <div class="row">
     <?php } ?>
