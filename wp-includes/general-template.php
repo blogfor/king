@@ -223,13 +223,15 @@ function get_search_form( $echo = true ) {
 		$form = ob_get_clean();
 	} else {
 		if ( 'html5' == $format ) {
-			$form = '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">
-				<label>
-					<span class="screen-reader-text">' . _x( 'Search for:', 'label' ) . '</span>
-					<input type="search" class="search-field" placeholder="' . esc_attr_x( 'Search &hellip;', 'placeholder' ) . '" value="' . get_search_query() . '" name="s" title="' . esc_attr_x( 'Search for:', 'label' ) . '" />
-				</label>
-				<input type="submit" class="search-submit" value="'. esc_attr_x( 'Search', 'submit button' ) .'" />
-			</form>';
+			$form ='
+			<form method="get" id="s-form" class="s-form" action="' . esc_url( home_url( '/' ) ) . '">
+				<fieldset> 					
+					<input type="search" class="s_text"  placeholder="' . esc_attr_x( 'Search &hellip;', 'placeholder' ) . '" value="' . get_search_query() . '" name="s" title="' . esc_attr_x( 'Search for:', 'label' ) . '" />
+					<input type="submit" class="s_button" value="'. esc_attr_x( 'Search', 'submit button' ) .'" id="searchsubmit" /> 
+				</fieldset>
+				
+			</form>
+			';
 		} else {
 			$form = '<form role="search" method="get" id="searchform" class="searchform" action="' . esc_url( home_url( '/' ) ) . '">
 				<div>

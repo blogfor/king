@@ -10,14 +10,14 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="post-lst">
 	<?php twentyfifteen_post_thumbnail(); ?>
 
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+	<header class="entry-header blog-header">
+		<?php the_title( sprintf( '<div class="abt-us"><h2><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2></div>' ); ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-summary">
+	<div class="entry-content blog-content">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
