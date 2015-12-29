@@ -297,17 +297,17 @@ function sp_forum_footer() {
 	# wait for page load and run JS inits
 	?>
 	<script type='text/javascript'>
-		var jspf = jQuery.noConflict();
-		jspf(document).ready(function() {
+		
+		$(document).ready(function() {
 			<?php
 			# Quicklinks selects
 			?>
-			jspf("#spQuickLinksForumSelect, #spQuickLinksTopicSelect").msDropDown();
-			jspf('#spQuickLinksForum').show();
-			jspf('#spQuickLinksTopic').show();
+			$("#spQuickLinksForumSelect, #spQuickLinksTopicSelect").msDropDown();
+			$('#spQuickLinksForum').show();
+			$('#spQuickLinksTopic').show();
 
 			if (sp_platform_vars.device == 'desktop' && sp_platform_vars.tooltips == true) {
-				jspf(document).tooltip( {
+				$(document).tooltip( {
 					tooltipClass: "ttip",
 					position: {
 						my: "left+20 top",
@@ -315,7 +315,7 @@ function sp_forum_footer() {
 					},
 					track: false,
 					content: function() {
-						var element = jspf(this);
+						var element = $(this);
 						if (element.prop("nodeName") == "IFRAME") {
 							return '';
 						} else {
@@ -328,9 +328,9 @@ function sp_forum_footer() {
 			<?php
 			# if fragment postID and head padding add padding
 			?>
-			var hash = jspf(location).attr('hash');
+			var hash = $(location).attr('hash');
 			if (hash && sp_platform_vars.headpadding > 0) {
-				jspf('html, body').animate({ scrollTop: (Math.round(jspf(hash).offset().top) - parseInt(sp_platform_vars.headpadding)) }, 'fast');
+				$('html, body').animate({ scrollTop: (Math.round($(hash).offset().top) - parseInt(sp_platform_vars.headpadding)) }, 'fast');
 			}
 
 			<?php
@@ -346,9 +346,9 @@ function sp_forum_footer() {
 
 			# check if this is a redirect from a failed save
 			if ($spVars['pageview'] == 'topic' || $spVars['pageview'] == 'forum') { ?>
-				if (jspf('#spPostNotifications').html() != null) {
-					if (jspf('#spPostNotifications').html() != '') {
-						jspf('#spPostNotifications').show();
+				if ($('#spPostNotifications').html() != null) {
+					if ($('#spPostNotifications').html() != '') {
+						$('#spPostNotifications').show();
 						spjOpenEditor('spPostForm', 'post');
 					}
 				}
@@ -375,8 +375,8 @@ function sp_forum_footer() {
 			# fix for Bootstrap stealing button object from jQuery UI
 			?>
 			try {
-				var btn = jspf.fn.button.noConflict() // reverts $.fn.button to jqueryui btn
-				jspf.fn.btn = btn // assigns bootstrap button functionality to $.fn.btn
+				var btn = $.fn.button.noConflict() // reverts $.fn.button to jqueryui btn
+				$.fn.btn = btn // assigns bootstrap button functionality to $.fn.btn
 			} catch (e) { }
 
 			<?php
@@ -386,13 +386,13 @@ function sp_forum_footer() {
 				var edContent = '';
 				window.onbeforeunload = confirmExit;
 				<?php if($spGlobals['editor'] != 1) { ?>
-					jspf('#postitem').keyup(function() {
+					$('#postitem').keyup(function() {
 						showConfirm = true;
 					});
 				<?php } ?>
 
 				function confirmExit() {
-					if(sp_platform_vars.saveprocess == 0 && jspf('#spPostForm').css('display') == 'block') {
+					if(sp_platform_vars.saveprocess == 0 && $('#spPostForm').css('display') == 'block') {
 						<?php if($spGlobals['editor'] == 1) { ?>
 						edContent = tinymce.activeEditor.getContent();
 						<?php } ?>
@@ -407,8 +407,8 @@ function sp_forum_footer() {
 
 <?php
 if(isset($_GET['test'])) { ?>
-	jspf("a").removeAttr("href");
-	jspf("a").removeAttr("onclick");
+	$("a").removeAttr("href");
+	$("a").removeAttr("onclick");
 <?php } ?>
 
 

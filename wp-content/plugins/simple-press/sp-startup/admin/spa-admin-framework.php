@@ -187,10 +187,10 @@ function spa_admin_init_scripts() {
 		if ($spAPage != 'notice') {
 ?>
 			<script type="text/javascript">
-				var jspf = jQuery.noConflict();
-				jspf(document).ready(function() {
+				
+				$(document).ready(function() {
 
-					jspf("#sfadminmenu").accordion({
+					$("#sfadminmenu").accordion({
 						autoHeight: false,
 						heightStyle: 'content',
 						clearStyle: true,
@@ -199,7 +199,7 @@ function spa_admin_init_scripts() {
 					});
 
 					if (sp_platform_vars.device == 'desktop' && sp_platform_vars.tooltips == true) {
-						jspf(document).tooltip( {
+						$(document).tooltip( {
 							tooltipClass: "ttip",
 							position: {
 								my: "left+20 top",
