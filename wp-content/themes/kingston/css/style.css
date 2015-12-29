@@ -34,7 +34,7 @@ ul {
 }
 /*=========================================*/
 /*----------brand----------*/
-.list_carousel ul {
+.content-area .list_carousel ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -398,7 +398,7 @@ ul {
 .content-area .tab {
 	margin-left:100px;
 }
-.content-area ul li:before {
+.content-area .type-page ul li:before,.content-area .type-post ul li:before  {
 	content: "";
     border-color: transparent #207dba;
     border-style: solid;
