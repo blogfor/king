@@ -35,98 +35,71 @@ get_header();
     });
 </script>
 
-<div>
-
-    <div style="overflow: hidden; width: 100%; height: 415px;" class="banner has-dots">
-        <ul style="width: 400%; position: relative; left: -300%; height: 415px;">
-            <li style="width: 25%;">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/A.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
-
-
-            </li>
-
-            <li style="width: 25%;">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/B.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
-            </li>
-
-            <li style="width: 25%;">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/C.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
-            </li>
-
-            <li style="width: 25%;">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/D.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
-            </li>
-            <li style="width: 25%;">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/E.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
-            </li>
-            <li style="width: 25%;">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/F.jpg" width="100%" height="auto" alt="banner" class="img-responsive">
-            </li>
-        </ul>
-
-    </div>
-
-
-    
-    <script>
-        if (window.chrome) {
-            $('.banner li').css('background-size', '100% 100%');
-        }
-
-        $('.banner').unslider({
-            fluid: true,
-            dots: true,
-            speed: 500
-        });
-
-        //  Find any element starting with a # in the URL
-        //  And listen to any click events it fires
-        $('a[href^="#"]').click(function() {
-            //  Find the target element
-            var target = $($(this).attr('href'));
-
-            //  And get its position
-            var pos = target.offset(); // fallback to scrolling to top || {left: 0, top: 0};
-
-            //  jQuery will return false if there's no element
-            //  and your code will throw errors if it tries to do .offset().left;
-            if (pos) {
-                //  Scroll the page
-                $('html, body').animate({
-                    scrollTop: pos.top,
-                    scrollLeft: pos.left
-                }, 1000);
-            }
-
-            //  Don't let them visit the url, we'll scroll you there
-            return false;
-        });
-
-        var GoSquared = {acct: 'GSN-396664-U'};
-    </script>
-
-
-
-</div>
+<?php if ( is_active_sidebar( 'home_top_gallery' ) ) : ?>			
+<?php dynamic_sidebar( 'home_top_gallery' ); ?>		
+<?php endif; ?>   
 
 
 
 <div class="container">
     <div class="col-md-9">
         <div class="row">
+			
+			 <?php
+			$args = array(
+				'posts_per_page' => 99999,
+				'offset' => 0,
+				'category' => '',
+				'category_name' => '',
+				'orderby' => 'date',
+				'order' => 'ASC',
+				'include' => '',
+				'exclude' => '',
+				'meta_key' => '',
+				'meta_value' => '',
+				'post_type' => 'homemiddlecontent',
+				'post_mime_type' => '',
+				'post_parent' => '',
+				'author' => '',
+				'post_status' => 'publish',
+				'suppress_filters' => true
+			);
+			$posts_array = get_posts($args);
+			
+			
+			?>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 bg"><div class="heading-box thumbnail"> <img src="<?php echo get_template_directory_uri(); ?>/images/training-icon.png" width="41" height="48"> 
+		     <?php
+			foreach ($posts_array as $post) : setup_postdata($post);
+			?>
+			
+			
+   			<div class="col-lg-4 col-md-4 col-sm-4 bg">
+				<div class="heading-box thumbnail"> 
+					 <?php the_content(); ?>
+				</div>
+			</div>
+			
+        	
+			<?php
+			endforeach;
+       	 	wp_reset_postdata();
+			?>
+
+
+             <!--   <div class="col-lg-4 col-md-4 col-sm-4 bg"><div class="heading-box thumbnail"> 
+			<img src="<?php echo get_template_directory_uri(); ?>/images/training-icon.png" width="41" height="48"> 
 
                     <h2>Notice</h2>
                     <p>The cell looks beyond the academic curriculum and adopts every step to inculcate among students the required skill sets that are vital for their... </p>
                 </div>
-            </div>
+        </div>
             <div class="col-lg-4 col-md-4 col-sm-4 bg"><div class="heading-box thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/images/placement-icon.png" width="71" height="48">  
                     <h2>Achievements</h2>
                     <p>The Placement Cell actively looks after student's placement and helps them in finding proper job exposure after course completion. They interact with companies</p></div></div>
             <div class="col-lg-4 col-md-4 col-sm-4 bg"><div class="heading-box thumbnail"><img  src="<?php echo get_template_directory_uri(); ?>/images/computer_lab-icon.png" width="42" height="48">  
                     <h2>Announcements</h2>
-                    <p>In the separate Computer Laboratories, adequate computers have been installed.  Dedicated internet connection for 24 Hours, in the internet lab.</p></div> </div>    
+                    <p>In the separate Computer Laboratories, adequate computers have been installed.  Dedicated internet connection for 24 Hours, in the internet lab.</p></div> </div>    -->
 
 
         </div><!-- 1st row-->
@@ -143,22 +116,10 @@ get_header();
                 <div class="col-md-12">
 
                     <div class="list_carousel responsive">
-                        <ul id="foo5">
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/1.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/2.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/3.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/4.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/5.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/6.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/7.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/8.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/9.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/10.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/11.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/12.jpg"></li>
-                            <li><img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/13.jpg"></li>
-
-                        </ul>
+                       
+						 <?php if ( is_active_sidebar( 'home_top_gallery' ) ) : ?>			
+						<?php dynamic_sidebar( 'home_bottom_gallery' ); ?>		
+						<?php endif; ?> 
                         <div class="clearfix"></div>
                     </div>
 

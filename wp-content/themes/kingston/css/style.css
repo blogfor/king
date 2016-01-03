@@ -170,8 +170,9 @@ ul {
     text-align:justify;
 
 }
-.heading-box img{
-    float:right;
+
+.heading-box p img, .heading-box img{
+    float:right !important;
     margin:0px 10px 0 0px;}
 
 

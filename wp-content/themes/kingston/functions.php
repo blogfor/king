@@ -159,6 +159,20 @@ function home_top_gallery() {
 }
 add_action( 'widgets_init', 'home_top_gallery' );
 
+function home_bottom_gallery() {
+
+	register_sidebar( array(
+		'name'          => 'Home Bottom Gallery',
+		'id'            => 'home_bottom_gallery',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	) );
+
+}
+add_action( 'widgets_init', 'home_bottom_gallery' );
+
 
 if ( ! function_exists( 'twentyfifteen_fonts_url' ) ) :
 /**
