@@ -511,3 +511,23 @@ function start_lvl( &$output, $depth ) {
     $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 }
 }
+
+// Master slider extended SHORT CODE [ms-custom-slider id="3"]
+function get_custom_msslider($atts){
+	$upload_dir = wp_upload_dir(); 
+	$slider_id=$atts['id'];
+	$ms_db = new MSP_DB;
+	$slider=$ms_db->get_slider($slider_id);
+	$parser = msp_get_parser();
+	$parser->set_data($slider['params'], $slider_id );
+	$results = $parser->get_results();
+	$all_slides=$results['slides'];
+	$str='<ul id="foo5">';
+	for($i=0; $i<=count($all_slides)-1; $i++){
+		;
+		$str.=' <li><img class="img-responsive" src="'.$upload_dir['baseurl'].$all_slides[$i]['src'].'"></li>';
+	}
+	$str.='</ul>';	
+	echo $str;	
+}
+add_shortcode('ms-custom-slider', 'get_custom_msslider');

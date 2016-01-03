@@ -63,48 +63,35 @@ function msp_masterslider_wrapper_shortcode( $atts, $content = null ) {
 					'uid'           => '',      // an unique and temporary id
 					'class'         => '',      // a class that adds to slider wrapper
 					'margin'        => 0,
-
 					'inline_style'  => '',
 					'bg_color'      => '',
 					'bg_image'      => '',
-
 					'slider_type'   => 'custom',   // values: custom, flickr, facebook, post
-
 					'width'         => 300,     // base width of slides. It helps the slider to resize in correct ratio.
 					'height'        => 150,     // base height of slides, It helps the slider to resize in correct ratio.
 					'min_height' 	=> 0,
-
 					'start'         => 1,
 					'space'         => 0,
-
 					'grab_cursor'   => 'true',  // Whether the slider uses grab mouse cursor
 					'swipe'         => 'true',  // Whether the drag/swipe navigation is enabled
-
 					'wheel'         => 'false', // Enables mouse scroll wheel navigation
 					'mouse'         => 'true',  // Whether the user can use mouse drag navigation
-
 					'crop' 			 => 'false', // Automatically crop slide images?
-
 					'autoplay'      => 'false', // Enables the autoplay slideshow
 					'loop'          => 'false', //
 					'shuffle'       => 'false', // Enables the shuffle slide order
 					'preload'       =>  0,
-
 					'wrapper_width' => '',
 	        		'wrapper_width_unit' => 'px',
-
 					'fullwidth'     => 'false', // It enables the slider to adapt width to its parent element
 					'fullheight'    => 'false', // It enables the slider to adapt height to its parent element
 					'autofill'      => 'false', // It enables the slider to adapt width and height to its parent element
 
 					'layout'        => 'fillwidth',
-
 					'fullscreen_margin' => 0,
-
 					'height_limit'  => 'false', // It force the slide to use max height value as its base specified height value.
 					'auto_height'   => 'false',
 					'smooth_height' => 'true',
-
 					'end_pause'     => 'false',
 					'over_pause'    => 'false',
 
@@ -621,6 +608,7 @@ function msp_masterslider_wrapper_shortcode( $atts, $content = null ) {
 <?php
 	 return apply_filters( "masterslider_ms_slider_shortcode", ob_get_clean(), $mixed );
 }
+
 
 
 /*-----------------------------------------------------------------------------------*/
