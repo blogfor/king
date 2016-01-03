@@ -10,28 +10,24 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
-
 get_header(); ?>
-<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-			<div class="container">
-			 <div class="col-md-8">
-<?php
-		// Start the loop.
-		while ( have_posts() ) : the_post();
-
-			// Include the page content template.
-			get_template_part( 'content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			
-
-		// End the loop.
-		endwhile;
-		?>
- </div><!--left-->
- <?php get_sidebar(); ?>
- </div>
-  </main>
-</section>
+    <div class="container">        
+     <div class="col-md-9">
+    <?php
+    // Start the loop.
+    while ( have_posts() ) : the_post();
+    
+    // Include the page content template.
+    get_template_part( 'content', 'page' );
+    
+    // If comments are open or we have at least one comment, load up the comment template.
+    
+    
+    // End the loop.
+    endwhile;
+    ?>
+    </div><!--left-->
+    
+    <?php get_sidebar(); ?>
+    </div>
 <?php get_footer(); ?>

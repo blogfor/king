@@ -8,17 +8,17 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div class="row abt-us" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
 		// Post thumbnail.
 		twentyfifteen_post_thumbnail();
 	?>
 
-	<header class="entry-header">
-		<?php the_title( '<div class="row abt-us"><h2>', '</h2></div>' ); ?>
-	</header><!-- .entry-header -->
+	
+	<?php the_title( '<div class="row abt-us"><h2>', '</h2></div>' ); ?>
+	
 
-	<div class="entry-content">
+
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
@@ -30,8 +30,8 @@
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 		?>
-	</div><!-- .entry-content -->
+	
 
 	<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
 
-</article><!-- #post-## -->
+</div><!-- #post-## -->
