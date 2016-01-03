@@ -338,7 +338,8 @@ ul {
     color:#fff;
     text-align:center;}
 
-.blog-holder{background:#fff;}
+.blog-holder{background:#fff;    margin-top: 13px;}
+.blog-holder .post-thumbnail{ margin-top: 13px;}
 .blog-thum{background:none !important; border:0;}
 .blog-holder .post-thumbnail img { width:100%; }
 .blog-holder .blog-content { padding:0 10px; }

@@ -11,18 +11,8 @@
 <div class="col-lg-3 col-md-3 col-sm-12" >
     <div class="row">
 
-        <div class="col-lg-12 col-md-12 col-sm-12 ">
-            <div class="adm-bg">
-                <div class="adm_form">
-                    <div class="adm_head"><h3>ADMISSION QUERY</h3></div>
-                    <div class="form1"><input name="Name" type="text" value="Name...">
-                        <input name="Email" type="text" value="Email..">
-                        <input name="Subject" type="text" value="Subject">
-                        <input name="Contact No." type="text" value="Contact No."></div>
-                    <div class="form_message"><textarea cols="" rows="" >Message...</textarea></div>
-                    <div class="btn"><input name="" type="button" value="Send message"></div></div>
-            </div>
-        </div>
+        <?php  echo do_shortcode( '[contact-form-7 id="160" title="Admission Query"]' ); ?>
+		
 
     </div><!-- 1st row--> 
     <div class="row">
@@ -43,26 +33,9 @@
                     <h2>OUR CAMPUS DRIVE</h2>
                 </div>
                 <div class="tie-up1">
+					 <?php dynamic_sidebar( 'home_top_gallery' ); ?>
 
-
-                    <div class="list_carousel responsive">
-                        <ul id="foo4">
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/ibm.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/ibm.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/ibm.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/ibm.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                            <li><img src="<?php echo get_template_directory_uri(); ?>/images/avery.png" ></li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
+                    
 
 
 
