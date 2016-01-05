@@ -433,7 +433,9 @@ ul {
     font-weight:600;
     font-size:14px;
     color:#000;}
-
+.top150 {
+margin-top:150px;
+}
 body#home .adm_form{top:-70px !important;}
 body#home .map {margin-top:15px !important;}
 .required { color:#F00; }
