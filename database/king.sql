@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 03, 2016 at 06:31 PM
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Generation Time: Jan 05, 2016 at 06:51 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -25,6 +26,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `wp_bg_links`
 --
 
+DROP TABLE IF EXISTS `wp_bg_links`;
 CREATE TABLE IF NOT EXISTS `wp_bg_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` longtext,
@@ -33,17 +35,13 @@ CREATE TABLE IF NOT EXISTS `wp_bg_links` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bg_links`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_album`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_album`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_album` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -57,17 +55,13 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_album` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bwg_album`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_album_gallery`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_album_gallery`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_album_gallery` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `album_id` bigint(20) NOT NULL,
@@ -77,17 +71,13 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_album_gallery` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bwg_album_gallery`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_gallery`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_gallery`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_gallery` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -106,17 +96,13 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_gallery` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bwg_gallery`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_image`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_image`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_image` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `gallery_id` bigint(20) NOT NULL,
@@ -141,17 +127,13 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_image` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bwg_image`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_image_comment`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_image_comment`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_image_comment` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `image_id` bigint(20) NOT NULL,
@@ -164,17 +146,13 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_image_comment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bwg_image_comment`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_image_rate`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_image_rate`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_image_rate` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `image_id` bigint(20) NOT NULL,
@@ -184,17 +162,13 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_image_rate` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bwg_image_rate`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_image_tag`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_image_tag`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_image_tag` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tag_id` bigint(20) NOT NULL,
@@ -203,17 +177,13 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_image_tag` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_bwg_image_tag`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_bwg_option`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_option`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_option` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `images_directory` mediumtext NOT NULL,
@@ -369,16 +339,12 @@ INSERT INTO `wp_bwg_option` (`id`, `images_directory`, `masonry`, `mosaic`, `res
 -- Table structure for table `wp_bwg_shortcode`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_shortcode`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_shortcode` (
   `id` bigint(20) NOT NULL,
   `tagtext` mediumtext NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `wp_bwg_shortcode`
---
-
 
 -- --------------------------------------------------------
 
@@ -386,6 +352,7 @@ CREATE TABLE IF NOT EXISTS `wp_bwg_shortcode` (
 -- Table structure for table `wp_bwg_theme`
 --
 
+DROP TABLE IF EXISTS `wp_bwg_theme`;
 CREATE TABLE IF NOT EXISTS `wp_bwg_theme` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -408,6 +375,7 @@ INSERT INTO `wp_bwg_theme` (`id`, `name`, `options`, `default_theme`) VALUES
 -- Table structure for table `wp_commentmeta`
 --
 
+DROP TABLE IF EXISTS `wp_commentmeta`;
 CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -418,17 +386,13 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_commentmeta`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_comments`
 --
 
+DROP TABLE IF EXISTS `wp_comments`;
 CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -466,6 +430,7 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- Table structure for table `wp_eo_events`
 --
 
+DROP TABLE IF EXISTS `wp_eo_events`;
 CREATE TABLE IF NOT EXISTS `wp_eo_events` (
   `event_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `post_id` bigint(20) NOT NULL,
@@ -479,17 +444,13 @@ CREATE TABLE IF NOT EXISTS `wp_eo_events` (
   KEY `EndDate` (`EndDate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_eo_events`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_eo_venuemeta`
 --
 
+DROP TABLE IF EXISTS `wp_eo_venuemeta`;
 CREATE TABLE IF NOT EXISTS `wp_eo_venuemeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `eo_venue_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -500,17 +461,13 @@ CREATE TABLE IF NOT EXISTS `wp_eo_venuemeta` (
   KEY `meta_key` (`meta_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_eo_venuemeta`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_huge_itgallery_gallerys`
 --
 
+DROP TABLE IF EXISTS `wp_huge_itgallery_gallerys`;
 CREATE TABLE IF NOT EXISTS `wp_huge_itgallery_gallerys` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
@@ -544,6 +501,7 @@ INSERT INTO `wp_huge_itgallery_gallerys` (`id`, `name`, `sl_height`, `sl_width`,
 -- Table structure for table `wp_huge_itgallery_images`
 --
 
+DROP TABLE IF EXISTS `wp_huge_itgallery_images`;
 CREATE TABLE IF NOT EXISTS `wp_huge_itgallery_images` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
@@ -583,6 +541,7 @@ INSERT INTO `wp_huge_itgallery_images` (`id`, `name`, `gallery_id`, `description
 -- Table structure for table `wp_huge_itgallery_like_dislike`
 --
 
+DROP TABLE IF EXISTS `wp_huge_itgallery_like_dislike`;
 CREATE TABLE IF NOT EXISTS `wp_huge_itgallery_like_dislike` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `image_id` int(11) NOT NULL,
@@ -593,17 +552,13 @@ CREATE TABLE IF NOT EXISTS `wp_huge_itgallery_like_dislike` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
---
--- Dumping data for table `wp_huge_itgallery_like_dislike`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_links`
 --
 
+DROP TABLE IF EXISTS `wp_links`;
 CREATE TABLE IF NOT EXISTS `wp_links` (
   `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -622,17 +577,13 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
   KEY `link_visible` (`link_visible`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_links`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_masterslider_options`
 --
 
+DROP TABLE IF EXISTS `wp_masterslider_options`;
 CREATE TABLE IF NOT EXISTS `wp_masterslider_options` (
   `ID` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `option_name` varchar(120) NOT NULL,
@@ -654,6 +605,7 @@ INSERT INTO `wp_masterslider_options` (`ID`, `option_name`, `option_value`) VALU
 -- Table structure for table `wp_masterslider_sliders`
 --
 
+DROP TABLE IF EXISTS `wp_masterslider_sliders`;
 CREATE TABLE IF NOT EXISTS `wp_masterslider_sliders` (
   `ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -684,6 +636,7 @@ INSERT INTO `wp_masterslider_sliders` (`ID`, `title`, `type`, `slides_num`, `dat
 -- Table structure for table `wp_options`
 --
 
+DROP TABLE IF EXISTS `wp_options`;
 CREATE TABLE IF NOT EXISTS `wp_options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `option_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -691,7 +644,7 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
   `autoload` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=416 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=433 ;
 
 --
 -- Dumping data for table `wp_options`
@@ -792,7 +745,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (93, 'widget_archives', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
 (94, 'widget_meta', 'a:1:{s:12:"_multiwidget";i:1;}', 'yes'),
 (95, 'sidebars_widgets', 'a:5:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:3:{i:0;s:6:"text-2";i:1;s:6:"text-3";i:2;s:6:"text-4";}s:16:"home_top_gallery";a:1:{i:0;s:6:"text-5";}s:19:"home_bottom_gallery";a:1:{i:0;s:6:"text-6";}s:13:"array_version";i:3;}', 'yes'),
-(97, 'cron', 'a:10:{i:1451849262;a:1:{s:14:"sph_stats_cron";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1451849460;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1451874858;a:1:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1451874859;a:2:{s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1451874901;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1451922940;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1451923769;a:1:{s:24:"user_meta_schedule_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1451928461;a:1:{s:26:"sph_transient_cleanup_cron";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1452017197;a:1:{s:13:"sph_news_cron";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:16:"sp_news_interval";s:4:"args";a:0:{}s:8:"interval";i:604800;}}}s:7:"version";i:2;}', 'yes'),
+(97, 'cron', 'a:10:{i:1451975262;a:1:{s:14:"sph_stats_cron";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1451979060;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1452004458;a:1:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1452004459;a:2:{s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1452009340;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1452010169;a:1:{s:24:"user_meta_schedule_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1452014861;a:1:{s:26:"sph_transient_cleanup_cron";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1452017197;a:1:{s:13:"sph_news_cron";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:16:"sp_news_interval";s:4:"args";a:0:{}s:8:"interval";i:604800;}}}i:1452047701;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (109, '_transient_random_seed', '9aaa6da56b708b86aa73ede372fe8871', 'yes'),
 (217, 'theme_mods_twentyfifteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1450920655;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}}}}', 'yes'),
 (218, 'current_theme', '', 'yes'),
@@ -847,11 +800,11 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (193, 'db_upgraded', '', 'yes'),
 (195, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:57:"https://downloads.wordpress.org/release/wordpress-4.4.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:57:"https://downloads.wordpress.org/release/wordpress-4.4.zip";s:10:"no_content";s:68:"https://downloads.wordpress.org/release/wordpress-4.4-no-content.zip";s:11:"new_bundled";s:69:"https://downloads.wordpress.org/release/wordpress-4.4-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:3:"4.4";s:7:"version";s:3:"4.4";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.4";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1451115076;s:15:"version_checked";s:3:"4.4";s:12:"translations";a:0:{}}', 'yes'),
 (211, 'can_compress_scripts', '1', 'yes'),
-(410, '_site_transient_timeout_theme_roots', '1451841845', 'yes'),
-(411, '_site_transient_theme_roots', 'a:3:{s:3:"iit";s:7:"/themes";s:8:"kingston";s:7:"/themes";s:13:"twentyfifteen";s:7:"/themes";}', 'yes'),
-(307, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1451840038;s:8:"response";a:0:{}s:12:"translations";a:0:{}s:9:"no_update";a:8:{s:30:"advanced-custom-fields/acf.php";O:8:"stdClass":6:{s:2:"id";s:5:"21367";s:4:"slug";s:22:"advanced-custom-fields";s:6:"plugin";s:30:"advanced-custom-fields/acf.php";s:11:"new_version";s:5:"4.4.4";s:3:"url";s:53:"https://wordpress.org/plugins/advanced-custom-fields/";s:7:"package";s:71:"https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.4.zip";}s:36:"contact-form-7/wp-contact-form-7.php";O:8:"stdClass":6:{s:2:"id";s:3:"790";s:4:"slug";s:14:"contact-form-7";s:6:"plugin";s:36:"contact-form-7/wp-contact-form-7.php";s:11:"new_version";s:5:"4.3.1";s:3:"url";s:45:"https://wordpress.org/plugins/contact-form-7/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/contact-form-7.4.3.1.zip";}s:43:"custom-post-type-ui/custom-post-type-ui.php";O:8:"stdClass":7:{s:2:"id";s:5:"13183";s:4:"slug";s:19:"custom-post-type-ui";s:6:"plugin";s:43:"custom-post-type-ui/custom-post-type-ui.php";s:11:"new_version";s:5:"1.1.3";s:3:"url";s:50:"https://wordpress.org/plugins/custom-post-type-ui/";s:7:"package";s:68:"https://downloads.wordpress.org/plugin/custom-post-type-ui.1.1.3.zip";s:14:"upgrade_notice";s:72:"Bumping WordPress compatibility version only. No other changes involved.";}s:35:"event-organiser/event-organiser.php";O:8:"stdClass":7:{s:2:"id";s:5:"27828";s:4:"slug";s:15:"event-organiser";s:6:"plugin";s:35:"event-organiser/event-organiser.php";s:11:"new_version";s:6:"2.13.7";s:3:"url";s:46:"https://wordpress.org/plugins/event-organiser/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/event-organiser.2.13.7.zip";s:14:"upgrade_notice";s:143:"This fixes a bug with the event list widget on WordPress 4.4\nAdvance notice: As of 3.0.0 Event Organiser shall require WordPress 3.8 or better.";}s:31:"master-slider/master-slider.php";O:8:"stdClass":7:{s:2:"id";s:5:"51874";s:4:"slug";s:13:"master-slider";s:6:"plugin";s:31:"master-slider/master-slider.php";s:11:"new_version";s:5:"2.7.1";s:3:"url";s:44:"https://wordpress.org/plugins/master-slider/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/master-slider.zip";s:14:"upgrade_notice";s:51:"[Fix]: Minor issue with an undefined variable fixed";}s:38:"php-execution-plugin/php_execution.php";O:8:"stdClass":6:{s:2:"id";s:4:"6984";s:4:"slug";s:20:"php-execution-plugin";s:6:"plugin";s:38:"php-execution-plugin/php_execution.php";s:11:"new_version";s:5:"1.0.0";s:3:"url";s:51:"https://wordpress.org/plugins/php-execution-plugin/";s:7:"package";s:69:"https://downloads.wordpress.org/plugin/php-execution-plugin.1.0.1.zip";}s:25:"profile-builder/index.php";O:8:"stdClass":6:{s:2:"id";s:5:"21897";s:4:"slug";s:15:"profile-builder";s:6:"plugin";s:25:"profile-builder/index.php";s:11:"new_version";s:5:"2.2.7";s:3:"url";s:46:"https://wordpress.org/plugins/profile-builder/";s:7:"package";s:64:"https://downloads.wordpress.org/plugin/profile-builder.2.2.7.zip";}s:23:"user-meta/user-meta.php";O:8:"stdClass":6:{s:2:"id";s:5:"23902";s:4:"slug";s:9:"user-meta";s:6:"plugin";s:23:"user-meta/user-meta.php";s:11:"new_version";s:5:"1.1.7";s:3:"url";s:40:"https://wordpress.org/plugins/user-meta/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/user-meta.1.1.7.zip";}}}', 'yes'),
+(431, '_site_transient_timeout_theme_roots', '1451973959', 'yes'),
+(432, '_site_transient_theme_roots', 'a:3:{s:3:"iit";s:7:"/themes";s:8:"kingston";s:7:"/themes";s:13:"twentyfifteen";s:7:"/themes";}', 'yes'),
+(307, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1451972155;s:8:"response";a:0:{}s:12:"translations";a:0:{}s:9:"no_update";a:8:{s:30:"advanced-custom-fields/acf.php";O:8:"stdClass":6:{s:2:"id";s:5:"21367";s:4:"slug";s:22:"advanced-custom-fields";s:6:"plugin";s:30:"advanced-custom-fields/acf.php";s:11:"new_version";s:5:"4.4.4";s:3:"url";s:53:"https://wordpress.org/plugins/advanced-custom-fields/";s:7:"package";s:70:"http://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.4.zip";}s:36:"contact-form-7/wp-contact-form-7.php";O:8:"stdClass":6:{s:2:"id";s:3:"790";s:4:"slug";s:14:"contact-form-7";s:6:"plugin";s:36:"contact-form-7/wp-contact-form-7.php";s:11:"new_version";s:5:"4.3.1";s:3:"url";s:45:"https://wordpress.org/plugins/contact-form-7/";s:7:"package";s:62:"http://downloads.wordpress.org/plugin/contact-form-7.4.3.1.zip";}s:43:"custom-post-type-ui/custom-post-type-ui.php";O:8:"stdClass":7:{s:2:"id";s:5:"13183";s:4:"slug";s:19:"custom-post-type-ui";s:6:"plugin";s:43:"custom-post-type-ui/custom-post-type-ui.php";s:11:"new_version";s:5:"1.1.3";s:3:"url";s:50:"https://wordpress.org/plugins/custom-post-type-ui/";s:7:"package";s:67:"http://downloads.wordpress.org/plugin/custom-post-type-ui.1.1.3.zip";s:14:"upgrade_notice";s:72:"Bumping WordPress compatibility version only. No other changes involved.";}s:35:"event-organiser/event-organiser.php";O:8:"stdClass":7:{s:2:"id";s:5:"27828";s:4:"slug";s:15:"event-organiser";s:6:"plugin";s:35:"event-organiser/event-organiser.php";s:11:"new_version";s:6:"2.13.7";s:3:"url";s:46:"https://wordpress.org/plugins/event-organiser/";s:7:"package";s:64:"http://downloads.wordpress.org/plugin/event-organiser.2.13.7.zip";s:14:"upgrade_notice";s:143:"This fixes a bug with the event list widget on WordPress 4.4\nAdvance notice: As of 3.0.0 Event Organiser shall require WordPress 3.8 or better.";}s:31:"master-slider/master-slider.php";O:8:"stdClass":7:{s:2:"id";s:5:"51874";s:4:"slug";s:13:"master-slider";s:6:"plugin";s:31:"master-slider/master-slider.php";s:11:"new_version";s:5:"2.7.1";s:3:"url";s:44:"https://wordpress.org/plugins/master-slider/";s:7:"package";s:55:"http://downloads.wordpress.org/plugin/master-slider.zip";s:14:"upgrade_notice";s:51:"[Fix]: Minor issue with an undefined variable fixed";}s:38:"php-execution-plugin/php_execution.php";O:8:"stdClass":6:{s:2:"id";s:4:"6984";s:4:"slug";s:20:"php-execution-plugin";s:6:"plugin";s:38:"php-execution-plugin/php_execution.php";s:11:"new_version";s:5:"1.0.0";s:3:"url";s:51:"https://wordpress.org/plugins/php-execution-plugin/";s:7:"package";s:68:"http://downloads.wordpress.org/plugin/php-execution-plugin.1.0.1.zip";}s:25:"profile-builder/index.php";O:8:"stdClass":6:{s:2:"id";s:5:"21897";s:4:"slug";s:15:"profile-builder";s:6:"plugin";s:25:"profile-builder/index.php";s:11:"new_version";s:5:"2.2.7";s:3:"url";s:46:"https://wordpress.org/plugins/profile-builder/";s:7:"package";s:63:"http://downloads.wordpress.org/plugin/profile-builder.2.2.7.zip";}s:23:"user-meta/user-meta.php";O:8:"stdClass":6:{s:2:"id";s:5:"23902";s:4:"slug";s:9:"user-meta";s:6:"plugin";s:23:"user-meta/user-meta.php";s:11:"new_version";s:5:"1.1.7";s:3:"url";s:40:"https://wordpress.org/plugins/user-meta/";s:7:"package";s:57:"http://downloads.wordpress.org/plugin/user-meta.1.1.7.zip";}}}', 'yes'),
 (279, 'acf_version', '4.4.4', 'yes'),
-(317, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1451840047;s:7:"checked";a:3:{s:3:"iit";s:3:"1.0";s:8:"kingston";s:3:"1.0";s:13:"twentyfifteen";s:3:"1.0";}s:8:"response";a:1:{s:13:"twentyfifteen";a:4:{s:5:"theme";s:13:"twentyfifteen";s:11:"new_version";s:3:"1.4";s:3:"url";s:43:"https://wordpress.org/themes/twentyfifteen/";s:7:"package";s:59:"https://downloads.wordpress.org/theme/twentyfifteen.1.4.zip";}}s:12:"translations";a:0:{}}', 'yes'),
+(317, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1451972160;s:7:"checked";a:3:{s:3:"iit";s:3:"1.0";s:8:"kingston";s:3:"1.0";s:13:"twentyfifteen";s:3:"1.0";}s:8:"response";a:1:{s:13:"twentyfifteen";a:4:{s:5:"theme";s:13:"twentyfifteen";s:11:"new_version";s:3:"1.4";s:3:"url";s:43:"https://wordpress.org/themes/twentyfifteen/";s:7:"package";s:58:"http://downloads.wordpress.org/theme/twentyfifteen.1.4.zip";}}s:12:"translations";a:0:{}}', 'yes'),
 (248, 'eventorganiser_admin_notices', 'a:2:{i:0;s:15:"autofillvenue17";i:1;s:17:"changedtemplate17";}', 'yes'),
 (220, 'theme_switched', '', 'yes'),
 (407, 'rewrite_rules', 'a:146:{s:11:"^wp-json/?$";s:22:"index.php?rest_route=/";s:14:"^wp-json/(.*)?";s:33:"index.php?rest_route=/$matches[1]";s:15:"events/event/?$";s:25:"index.php?post_type=event";s:45:"events/event/feed/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?post_type=event&feed=$matches[1]";s:40:"events/event/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?post_type=event&feed=$matches[1]";s:32:"events/event/page/([0-9]{1,})/?$";s:43:"index.php?post_type=event&paged=$matches[1]";s:57:"category/(.+?)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:52:"category/(.+?)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:35:"category/(.+?)/page/?([0-9]{1,})/?$";s:53:"index.php?category_name=$matches[1]&paged=$matches[2]";s:17:"category/(.+?)/?$";s:35:"index.php?category_name=$matches[1]";s:54:"tag/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:49:"tag/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:32:"tag/([^/]+)/page/?([0-9]{1,})/?$";s:43:"index.php?tag=$matches[1]&paged=$matches[2]";s:14:"tag/([^/]+)/?$";s:25:"index.php?tag=$matches[1]";s:55:"type/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:50:"type/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:33:"type/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?post_format=$matches[1]&paged=$matches[2]";s:15:"type/([^/]+)/?$";s:33:"index.php?post_format=$matches[1]";s:64:"events/venues/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:50:"index.php?event-venue=$matches[1]&feed=$matches[2]";s:59:"events/venues/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:50:"index.php?event-venue=$matches[1]&feed=$matches[2]";s:42:"events/venues/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?event-venue=$matches[1]&paged=$matches[2]";s:24:"events/venues/([^/]+)/?$";s:33:"index.php?event-venue=$matches[1]";s:66:"events/category/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:53:"index.php?event-category=$matches[1]&feed=$matches[2]";s:61:"events/category/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:53:"index.php?event-category=$matches[1]&feed=$matches[2]";s:44:"events/category/([^/]+)/page/?([0-9]{1,})/?$";s:54:"index.php?event-category=$matches[1]&paged=$matches[2]";s:26:"events/category/([^/]+)/?$";s:36:"index.php?event-category=$matches[1]";s:61:"events/tag/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:48:"index.php?event-tag=$matches[1]&feed=$matches[2]";s:56:"events/tag/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:48:"index.php?event-tag=$matches[1]&feed=$matches[2]";s:39:"events/tag/([^/]+)/page/?([0-9]{1,})/?$";s:49:"index.php?event-tag=$matches[1]&paged=$matches[2]";s:21:"events/tag/([^/]+)/?$";s:31:"index.php?event-tag=$matches[1]";s:37:"highlight/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:47:"highlight/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:77:"highlight/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:72:"highlight/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"highlight/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:43:"highlight/[^/]+/attachment/([^/]+)/embed/?$";s:43:"index.php?attachment=$matches[1]&embed=true";s:26:"highlight/([^/]+)/embed/?$";s:42:"index.php?highlight=$matches[1]&embed=true";s:30:"highlight/([^/]+)/trackback/?$";s:36:"index.php?highlight=$matches[1]&tb=1";s:38:"highlight/([^/]+)/page/?([0-9]{1,})/?$";s:49:"index.php?highlight=$matches[1]&paged=$matches[2]";s:45:"highlight/([^/]+)/comment-page-([0-9]{1,})/?$";s:49:"index.php?highlight=$matches[1]&cpage=$matches[2]";s:34:"highlight/([^/]+)(?:/([0-9]+))?/?$";s:48:"index.php?highlight=$matches[1]&page=$matches[2]";s:26:"highlight/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:36:"highlight/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:66:"highlight/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:61:"highlight/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"highlight/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:32:"highlight/[^/]+/([^/]+)/embed/?$";s:43:"index.php?attachment=$matches[1]&embed=true";s:97:"events/event/on/([0-9]{4}(?:/[0-9]{2}(?:/[0-9]{2})?)?)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:61:"index.php?post_type=event&ondate=$matches[1]&feed=$matches[2]";s:92:"events/event/on/([0-9]{4}(?:/[0-9]{2}(?:/[0-9]{2})?)?)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:61:"index.php?post_type=event&ondate=$matches[1]&feed=$matches[2]";s:75:"events/event/on/([0-9]{4}(?:/[0-9]{2}(?:/[0-9]{2})?)?)/page/?([0-9]{1,})/?$";s:62:"index.php?post_type=event&ondate=$matches[1]&paged=$matches[2]";s:57:"events/event/on/([0-9]{4}(?:/[0-9]{2}(?:/[0-9]{2})?)?)/?$";s:44:"index.php?post_type=event&ondate=$matches[1]";s:40:"events/event/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:50:"events/event/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:80:"events/event/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:75:"events/event/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:65:"events/event/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:46:"events/event/[^/]+/attachment/([^/]+)/embed/?$";s:43:"index.php?attachment=$matches[1]&embed=true";s:29:"events/event/([^/]+)/embed/?$";s:38:"index.php?event=$matches[1]&embed=true";s:33:"events/event/([^/]+)/trackback/?$";s:32:"index.php?event=$matches[1]&tb=1";s:63:"events/event/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:44:"index.php?event=$matches[1]&feed=$matches[2]";s:58:"events/event/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:44:"index.php?event=$matches[1]&feed=$matches[2]";s:41:"events/event/([^/]+)/page/?([0-9]{1,})/?$";s:45:"index.php?event=$matches[1]&paged=$matches[2]";s:48:"events/event/([^/]+)/comment-page-([0-9]{1,})/?$";s:45:"index.php?event=$matches[1]&cpage=$matches[2]";s:37:"events/event/([^/]+)(?:/([0-9]+))?/?$";s:44:"index.php?event=$matches[1]&page=$matches[2]";s:29:"events/event/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:39:"events/event/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:69:"events/event/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:64:"events/event/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:54:"events/event/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:35:"events/event/[^/]+/([^/]+)/embed/?$";s:43:"index.php?attachment=$matches[1]&embed=true";s:48:".*wp-(atom|rdf|rss|rss2|feed|commentsrss2)\\.php$";s:18:"index.php?feed=old";s:20:".*wp-app\\.php(/.*)?$";s:19:"index.php?error=403";s:18:".*wp-register.php$";s:23:"index.php?register=true";s:42:"feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:27:"index.php?&feed=$matches[1]";s:37:"(feed|rdf|rss|rss2|atom|eo-events)/?$";s:27:"index.php?&feed=$matches[1]";s:20:"page/?([0-9]{1,})/?$";s:28:"index.php?&paged=$matches[1]";s:51:"comments/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:46:"comments/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:54:"search/(.+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:49:"search/(.+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:32:"search/(.+)/page/?([0-9]{1,})/?$";s:41:"index.php?s=$matches[1]&paged=$matches[2]";s:14:"search/(.+)/?$";s:23:"index.php?s=$matches[1]";s:57:"author/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:52:"author/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:35:"author/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?author_name=$matches[1]&paged=$matches[2]";s:17:"author/([^/]+)/?$";s:33:"index.php?author_name=$matches[1]";s:79:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:74:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:57:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:81:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]";s:39:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$";s:63:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]";s:66:"([0-9]{4})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:61:"([0-9]{4})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:44:"([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:65:"index.php?year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]";s:26:"([0-9]{4})/([0-9]{1,2})/?$";s:47:"index.php?year=$matches[1]&monthnum=$matches[2]";s:53:"([0-9]{4})/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:48:"([0-9]{4})/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:31:"([0-9]{4})/page/?([0-9]{1,})/?$";s:44:"index.php?year=$matches[1]&paged=$matches[2]";s:13:"([0-9]{4})/?$";s:26:"index.php?year=$matches[1]";s:17:"forum/newposts/?$";s:40:"index.php?pagename=forum&sf_newposts=all";s:16:"forum/members/?$";s:40:"index.php?pagename=forum&sf_members=list";s:30:"forum/members/page-([0-9]+)/?$";s:60:"index.php?pagename=forum&sf_members=list&sf_page=$matches[1]";s:16:"forum/profile/?$";s:40:"index.php?pagename=forum&sf_profile=edit";s:24:"forum/profile/([^/]+)/?$";s:62:"index.php?pagename=forum&sf_profile=show&sf_member=$matches[1]";s:29:"forum/profile/([^/]+)/edit/?$";s:62:"index.php?pagename=forum&sf_profile=edit&sf_member=$matches[1]";s:12:"forum/rss/?$";s:36:"index.php?pagename=forum&sf_feed=all";s:20:"forum/rss/([^/]+)/?$";s:59:"index.php?pagename=forum&sf_feed=all&sf_feedkey=$matches[1]";s:16:"forum/([^/]+)/?$";s:45:"index.php?pagename=forum&sf_forum=$matches[1]";s:30:"forum/([^/]+)/page-([0-9]+)/?$";s:65:"index.php?pagename=forum&sf_forum=$matches[1]&sf_page=$matches[2]";s:20:"forum/([^/]+)/rss/?$";s:59:"index.php?pagename=forum&sf_forum=$matches[1]&sf_feed=forum";s:28:"forum/([^/]+)/rss/([^/]+)/?$";s:82:"index.php?pagename=forum&sf_forum=$matches[1]&sf_feed=forum&sf_feedkey=$matches[2]";s:24:"forum/([^/]+)/([^/]+)/?$";s:66:"index.php?pagename=forum&sf_forum=$matches[1]&sf_topic=$matches[2]";s:38:"forum/([^/]+)/([^/]+)/page-([0-9]+)/?$";s:86:"index.php?pagename=forum&sf_forum=$matches[1]&sf_topic=$matches[2]&sf_page=$matches[3]";s:28:"forum/([^/]+)/([^/]+)/rss/?$";s:80:"index.php?pagename=forum&sf_forum=$matches[1]&sf_topic=$matches[2]&sf_feed=topic";s:36:"forum/([^/]+)/([^/]+)/rss/([^/]+)/?$";s:103:"index.php?pagename=forum&sf_forum=$matches[1]&sf_topic=$matches[2]&sf_feed=topic&sf_feedkey=$matches[3]";s:27:".?.+?/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:".?.+?/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:67:".?.+?/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:".?.+?/attachment/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:".?.+?/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:33:".?.+?/attachment/([^/]+)/embed/?$";s:43:"index.php?attachment=$matches[1]&embed=true";s:16:"(.?.+?)/embed/?$";s:41:"index.php?pagename=$matches[1]&embed=true";s:20:"(.?.+?)/trackback/?$";s:35:"index.php?pagename=$matches[1]&tb=1";s:50:"(.?.+?)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:45:"(.?.+?)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:28:"(.?.+?)/page/?([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&paged=$matches[2]";s:35:"(.?.+?)/comment-page-([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&cpage=$matches[2]";s:24:"(.?.+?)(?:/([0-9]+))?/?$";s:47:"index.php?pagename=$matches[1]&page=$matches[2]";s:27:"[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:"[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:67:"[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:33:"[^/]+/attachment/([^/]+)/embed/?$";s:43:"index.php?attachment=$matches[1]&embed=true";s:16:"([^/]+)/embed/?$";s:37:"index.php?name=$matches[1]&embed=true";s:20:"([^/]+)/trackback/?$";s:31:"index.php?name=$matches[1]&tb=1";s:50:"([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:43:"index.php?name=$matches[1]&feed=$matches[2]";s:45:"([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:43:"index.php?name=$matches[1]&feed=$matches[2]";s:28:"([^/]+)/page/?([0-9]{1,})/?$";s:44:"index.php?name=$matches[1]&paged=$matches[2]";s:35:"([^/]+)/comment-page-([0-9]{1,})/?$";s:44:"index.php?name=$matches[1]&cpage=$matches[2]";s:24:"([^/]+)(?:/([0-9]+))?/?$";s:43:"index.php?name=$matches[1]&page=$matches[2]";s:16:"[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:26:"[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:56:"[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom|eo-events)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:41:"[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:22:"[^/]+/([^/]+)/embed/?$";s:43:"index.php?attachment=$matches[1]&embed=true";}', 'yes'),
@@ -881,7 +834,9 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (281, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:"auto_add";a:0:{}}', 'yes'),
 (390, '_site_transient_sp_update_themes', 'O:8:"stdClass":1:{s:8:"response";a:2:{s:8:"css-only";O:8:"stdClass":5:{s:4:"slug";s:8:"css-only";s:10:"stylesheet";s:12:"css-only.css";s:11:"new_version";s:6:"1.2.18";s:3:"url";s:23:"http://simple-press.com";s:7:"package";s:62:"http://simple-press.com/download-manager.php?id=636&wpupdate=1";}s:7:"default";O:8:"stdClass":5:{s:4:"slug";s:7:"default";s:10:"stylesheet";s:11:"default.php";s:11:"new_version";s:6:"1.2.18";s:3:"url";s:23:"http://simple-press.com";s:7:"package";s:62:"http://simple-press.com/download-manager.php?id=641&wpupdate=1";}}}', 'yes'),
 (412, '_site_transient_timeout_browser_c6e0d466c988c4043691b020b1fec366', '1452445006', 'yes'),
-(413, '_site_transient_browser_c6e0d466c988c4043691b020b1fec366', 'a:9:{s:8:"platform";s:7:"Windows";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"47.0.2526.106";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes');
+(413, '_site_transient_browser_c6e0d466c988c4043691b020b1fec366', 'a:9:{s:8:"platform";s:7:"Windows";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"47.0.2526.106";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
+(424, '_transient_twentyfifteen_categories', '1', 'yes'),
+(423, '_transient_is_multi_author', '0', 'yes');
 
 -- --------------------------------------------------------
 
@@ -889,6 +844,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- Table structure for table `wp_postmeta`
 --
 
+DROP TABLE IF EXISTS `wp_postmeta`;
 CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -905,10 +861,10 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
 
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (1, 2, '_wp_page_template', 'default'),
-(2, 4, '_form', '<p>Your Name (required)<br />\n    [text* your-name] </p>\n\n<p>Your Email (required)<br />\n    [email* your-email] </p>\n\n<p>Subject<br />\n    [text your-subject] </p>\n\n<p>Your Message<br />\n    [textarea your-message] </p>\n\n<p>[submit "Send"]</p>'),
-(3, 4, '_mail', 'a:8:{s:7:"subject";s:14:"[your-subject]";s:6:"sender";s:44:"[your-name] <wordpress@blogfordeveloper.com>";s:4:"body";s:187:"From: [your-name] <[your-email]>\nSubject: [your-subject]\n\nMessage Body:\n[your-message]\n\n--\nThis e-mail was sent from a contact form on Kingston (http://localhost/kingston)";s:9:"recipient";s:24:"bikash.pal2000@gmail.com";s:18:"additional_headers";s:22:"Reply-To: [your-email]";s:11:"attachments";s:0:"";s:8:"use_html";i:0;s:13:"exclude_blank";i:0;}'),
-(4, 4, '_mail_2', 'a:9:{s:6:"active";b:0;s:7:"subject";s:14:"[your-subject]";s:6:"sender";s:41:"Kingston <wordpress@blogfordeveloper.com>";s:4:"body";s:129:"Message Body:\n[your-message]\n\n--\nThis e-mail was sent from a contact form on Kingston (http://localhost/kingston)";s:9:"recipient";s:12:"[your-email]";s:18:"additional_headers";s:34:"Reply-To: bikash.pal2000@gmail.com";s:11:"attachments";s:0:"";s:8:"use_html";i:0;s:13:"exclude_blank";i:0;}'),
-(5, 4, '_messages', 'a:8:{s:12:"mail_sent_ok";s:43:"Your message was sent successfully. Thanks.";s:12:"mail_sent_ng";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:16:"validation_error";s:74:"Validation errors occurred. Please confirm the fields and submit it again.";s:4:"spam";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:12:"accept_terms";s:35:"Please accept the terms to proceed.";s:16:"invalid_required";s:34:"Please fill in the required field.";s:16:"invalid_too_long";s:23:"This input is too long.";s:17:"invalid_too_short";s:24:"This input is too short.";}'),
+(2, 4, '_form', '<div class="contact-us-form">\nName<span class="required">*</span>\n[text* name]\nEmail<span class="required">*</span>\n[email* email]\nSubject<span class="required">*</span>\n[text* subject]\nMessage<span class="required">*</span>\n[textarea* message]\n[submit "Submit"]\n<div class="margin20"><span class="required">*</span>Required fields are mandatory</div>\n</div>'),
+(3, 4, '_mail', 'a:8:{s:7:"subject";s:0:"";s:6:"sender";s:0:"";s:4:"body";s:0:"";s:9:"recipient";s:0:"";s:18:"additional_headers";s:0:"";s:11:"attachments";s:0:"";s:8:"use_html";b:0;s:13:"exclude_blank";b:0;}'),
+(4, 4, '_mail_2', 'a:9:{s:6:"active";b:0;s:7:"subject";s:0:"";s:6:"sender";s:0:"";s:4:"body";s:0:"";s:9:"recipient";s:0:"";s:18:"additional_headers";s:0:"";s:11:"attachments";s:0:"";s:8:"use_html";b:0;s:13:"exclude_blank";b:0;}'),
+(5, 4, '_messages', 'a:23:{s:12:"mail_sent_ok";s:43:"Your message was sent successfully. Thanks.";s:12:"mail_sent_ng";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:16:"validation_error";s:74:"Validation errors occurred. Please confirm the fields and submit it again.";s:4:"spam";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:12:"accept_terms";s:35:"Please accept the terms to proceed.";s:16:"invalid_required";s:34:"Please fill in the required field.";s:16:"invalid_too_long";s:23:"This input is too long.";s:17:"invalid_too_short";s:24:"This input is too short.";s:12:"invalid_date";s:26:"Date format seems invalid.";s:14:"date_too_early";s:23:"This date is too early.";s:13:"date_too_late";s:22:"This date is too late.";s:13:"upload_failed";s:22:"Failed to upload file.";s:24:"upload_file_type_invalid";s:30:"This file type is not allowed.";s:21:"upload_file_too_large";s:23:"This file is too large.";s:23:"upload_failed_php_error";s:38:"Failed to upload file. Error occurred.";s:14:"invalid_number";s:28:"Number format seems invalid.";s:16:"number_too_small";s:25:"This number is too small.";s:16:"number_too_large";s:25:"This number is too large.";s:23:"quiz_answer_not_correct";s:27:"Your answer is not correct.";s:17:"captcha_not_match";s:31:"Your entered code is incorrect.";s:13:"invalid_email";s:28:"Email address seems invalid.";s:11:"invalid_url";s:18:"URL seems invalid.";s:11:"invalid_tel";s:31:"Telephone number seems invalid.";}'),
 (6, 4, '_additional_settings', ''),
 (7, 4, '_locale', 'en_US'),
 (8, 2, '_edit_last', '1'),
@@ -1329,10 +1285,10 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (519, 190, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:350;s:6:"height";i:204;s:4:"file";s:13:"2016/01/6.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:13:"6-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:13:"6-300x175.jpg";s:5:"width";i:300;s:6:"height";i:175;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";d:3.79999999999999982236431605997495353221893310546875;s:6:"credit";s:0:"";s:6:"camera";s:9:"NIKON D60";s:7:"caption";s:0:"";s:17:"created_timestamp";i:1200878213;s:9:"copyright";s:0:"";s:12:"focal_length";s:2:"20";s:3:"iso";s:4:"1600";s:13:"shutter_speed";s:17:"0.016666666666667";s:5:"title";s:0:"";s:11:"orientation";i:1;s:8:"keywords";a:0:{}}}'),
 (520, 191, '_wp_attached_file', '2016/01/7.jpg'),
 (521, 191, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:350;s:6:"height";i:231;s:4:"file";s:13:"2016/01/7.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:13:"7-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:13:"7-300x198.jpg";s:5:"width";i:300;s:6:"height";i:198;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";d:10;s:6:"credit";s:0:"";s:6:"camera";s:11:"NIKON D7000";s:7:"caption";s:0:"";s:17:"created_timestamp";i:1425441647;s:9:"copyright";s:0:"";s:12:"focal_length";s:2:"45";s:3:"iso";s:3:"800";s:13:"shutter_speed";s:6:"0.0025";s:5:"title";s:0:"";s:11:"orientation";i:1;s:8:"keywords";a:0:{}}}'),
-(522, 192, '_wp_attached_file', '2016/01/8.jpg'),
-(523, 192, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:350;s:6:"height";i:234;s:4:"file";s:13:"2016/01/8.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:13:"8-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:13:"8-300x201.jpg";s:5:"width";i:300;s:6:"height";i:201;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";s:11:"orientation";i:1;s:8:"keywords";a:0:{}}}'),
-(524, 193, '_wp_attached_file', '2016/01/9.jpg');
+(522, 192, '_wp_attached_file', '2016/01/8.jpg');
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(523, 192, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:350;s:6:"height";i:234;s:4:"file";s:13:"2016/01/8.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:13:"8-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:13:"8-300x201.jpg";s:5:"width";i:300;s:6:"height";i:201;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";s:11:"orientation";i:1;s:8:"keywords";a:0:{}}}'),
+(524, 193, '_wp_attached_file', '2016/01/9.jpg'),
 (525, 193, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:350;s:6:"height";i:234;s:4:"file";s:13:"2016/01/9.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:13:"9-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:13:"9-300x201.jpg";s:5:"width";i:300;s:6:"height";i:201;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";d:5.5999999999999996447286321199499070644378662109375;s:6:"credit";s:0:"";s:6:"camera";s:9:"NIKON D60";s:7:"caption";s:0:"";s:17:"created_timestamp";i:1358514618;s:9:"copyright";s:0:"";s:12:"focal_length";s:2:"58";s:3:"iso";s:3:"800";s:13:"shutter_speed";s:4:"0.01";s:5:"title";s:0:"";s:11:"orientation";i:1;s:8:"keywords";a:0:{}}}'),
 (526, 194, '_wp_attached_file', '2016/01/10.jpg'),
 (527, 194, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:350;s:6:"height";i:231;s:4:"file";s:14:"2016/01/10.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"10-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:14:"10-300x198.jpg";s:5:"width";i:300;s:6:"height";i:198;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";d:5;s:6:"credit";s:0:"";s:6:"camera";s:11:"NIKON D7000";s:7:"caption";s:0:"";s:17:"created_timestamp";i:1426037214;s:9:"copyright";s:0:"";s:12:"focal_length";s:2:"55";s:3:"iso";s:3:"640";s:13:"shutter_speed";s:4:"0.01";s:5:"title";s:0:"";s:11:"orientation";i:1;s:8:"keywords";a:0:{}}}'),
@@ -1349,6 +1305,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- Table structure for table `wp_posts`
 --
 
+DROP TABLE IF EXISTS `wp_posts`;
 CREATE TABLE IF NOT EXISTS `wp_posts` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -1389,7 +1346,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (2, 1, '2015-12-16 02:34:17', '2015-12-16 02:34:17', 'Kingston Educational Institute, the stepping stone for the students to enter into the kingdom of higher education has completed its 12 years of its glorious existence on serving humanity. The sprawling campus covering an area of 30 acres of land is located in a semi-urban place surrounded by lush green meadow in the serenity of pollution free and eco-friendly environment. Veteran teachers with their quality teaching have been the greatest strength of the KEI which has helps the thousands of students to bear the light of hope and secured future. Inspired by the theory “nature is the best teacher”, KEI with its ethnic beauty of green meadow along with modern infrastructure has given the ample scope to the students to nurture their creativity and excel their versatility on campusing to see them happily placed in different sectors of professional career.\r\n<h3>VISION</h3>\r\nTo achieve excellence in the world of education from KG to PG based on quality and innovation.\r\n<h3>MISSION</h3>\r\nEnabling the generation to succeed in competitive society by nurturing versatility in various fields of learning to serve the humanity.\r\n<h3>VALUES:</h3>\r\n<ul>\r\n	<li>Establishing discipline as a passion to lead the life</li>\r\n	<li>Dedication to impart quality and value based education to raise satisfaction</li>\r\n	<li>Flourishing ideologies based on upcoming technologies</li>\r\n	<li>Treating students with high level of service with maintaining dignity of their lives</li>\r\n</ul>\r\n<h3>Academic Chairman Desk</h3>\r\nDear Students,\r\n\r\n<p><span class="tab"></span>It is a great pleasure and proud privilege for me to witness the birth and growth of a full- fledged academy in the name and style as “Kingston Educational Institute. I do hope that students joining the Institute would enjoy their learning and become leaders of tomorrow. I only warn them against ragging and stress on the fact that rigorous punishment will be enforced on those who participate in ragging. I heartily welcome the successful students to join this Institute and convey my best wishes for their bright and shining career.</p>\r\n<p>&nbsp;</p>\r\n<p>Prof. (Dr.) J.P. Bandyopadhyay<br/>\r\nPhd.(Tech) FIETE, SMIEEE(USA)<br/>\r\nProfessor Emeritus, Calcutta University</p>', 'About Us', '', 'publish', 'open', 'closed', '', 'about-us', '', '', '2015-12-27 09:23:26', '2015-12-27 09:23:26', '', 0, 'http://localhost/kingston/?page_id=2', 2, 'page', '', 0),
 (88, 1, '2015-12-27 08:56:26', '2015-12-27 08:56:26', ' <p>Kingston Educational Institute, the stepping stone for the students to enter into the kingdom of higher education has completed its 12 years of its glorious existence on serving humanity. The sprawling campus covering an area of 30 acres of land is located in a semi-urban place surrounded by lush green meadow in the serenity of pollution free and eco-friendly environment. Veteran teachers with their quality teaching have been the greatest strength of the KEI which has helps the thousands of students to bear the light of hope and secured future. Inspired by the theory “nature is the best teacher”, KEI with its ethnic beauty of green meadow along with modern infrastructure has given the ample scope to the students to nurture their creativity and excel their versatility on campusing to see them happily placed in different sectors of professional career.</p>', 'About Us', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2015-12-27 08:56:26', '2015-12-27 08:56:26', '', 2, 'http://blogfordeveloper.com/kingston/2-revision-v1/', 0, 'revision', '', 0),
 (7, 1, '2015-12-24 15:56:20', '2015-12-24 15:56:20', '', 'Student Login', '', 'publish', 'closed', 'closed', '', 'student-login', '', '', '2015-12-24 17:30:42', '2015-12-24 17:30:42', '', 0, 'http://localhost/kingston/?page_id=7', 9, 'page', '', 0),
-(4, 1, '2015-12-23 15:41:32', '2015-12-23 15:41:32', '<p>Your Name (required)<br />\n    [text* your-name] </p>\n\n<p>Your Email (required)<br />\n    [email* your-email] </p>\n\n<p>Subject<br />\n    [text your-subject] </p>\n\n<p>Your Message<br />\n    [textarea your-message] </p>\n\n<p>[submit "Send"]</p>\n[your-subject]\n[your-name] <wordpress@blogfordeveloper.com>\nFrom: [your-name] <[your-email]>\nSubject: [your-subject]\n\nMessage Body:\n[your-message]\n\n--\nThis e-mail was sent from a contact form on Kingston (http://localhost/kingston)\nbikash.pal2000@gmail.com\nReply-To: [your-email]\n\n0\n0\n\n[your-subject]\nKingston <wordpress@blogfordeveloper.com>\nMessage Body:\n[your-message]\n\n--\nThis e-mail was sent from a contact form on Kingston (http://localhost/kingston)\n[your-email]\nReply-To: bikash.pal2000@gmail.com\n\n0\n0\nYour message was sent successfully. Thanks.\nFailed to send your message. Please try later or contact the administrator by another method.\nValidation errors occurred. Please confirm the fields and submit it again.\nFailed to send your message. Please try later or contact the administrator by another method.\nPlease accept the terms to proceed.\nPlease fill in the required field.\nThis input is too long.\nThis input is too short.', 'Contact form 1', '', 'publish', 'open', 'open', '', 'contact-form-1', '', '', '2015-12-23 15:41:32', '2015-12-23 15:41:32', '', 0, 'http://localhost/kingston/?post_type=wpcf7_contact_form&p=4', 0, 'wpcf7_contact_form', '', 0),
+(4, 1, '2015-12-23 15:41:32', '2015-12-23 15:41:32', '<div class="contact-us-form">\r\nName<span class="required">*</span>\r\n[text* name]\r\nEmail<span class="required">*</span>\r\n[email* email]\r\nSubject<span class="required">*</span>\r\n[text* subject]\r\nMessage<span class="required">*</span>\r\n[textarea* message]\r\n[submit "Submit"]\r\n<div class="margin20"><span class="required">*</span>Required fields are mandatory</div>\r\n</div>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour message was sent successfully. Thanks.\nFailed to send your message. Please try later or contact the administrator by another method.\nValidation errors occurred. Please confirm the fields and submit it again.\nFailed to send your message. Please try later or contact the administrator by another method.\nPlease accept the terms to proceed.\nPlease fill in the required field.\nThis input is too long.\nThis input is too short.\nDate format seems invalid.\nThis date is too early.\nThis date is too late.\nFailed to upload file.\nThis file type is not allowed.\nThis file is too large.\nFailed to upload file. Error occurred.\nNumber format seems invalid.\nThis number is too small.\nThis number is too large.\nYour answer is not correct.\nYour entered code is incorrect.\nEmail address seems invalid.\nURL seems invalid.\nTelephone number seems invalid.', 'Contact form 1', '', 'publish', 'open', 'open', '', 'contact-form-1', '', '', '2016-01-04 18:57:09', '2016-01-04 18:57:09', '', 0, 'http://localhost/kingston/?post_type=wpcf7_contact_form&#038;p=4', 0, 'wpcf7_contact_form', '', 0),
 (5, 1, '2015-12-24 15:55:28', '2015-12-24 15:55:28', 'This is an example page. It''s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I''m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin'' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://localhost/kingston/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'About Us', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2015-12-24 15:55:28', '2015-12-24 15:55:28', '', 2, 'http://localhost/kingston/2015/12/24/2-revision-v1/', 0, 'revision', '', 0),
 (6, 1, '2015-12-24 15:57:17', '2015-12-24 15:57:17', '', 'Our Mission', '', 'publish', 'closed', 'closed', '', 'our-mission', '', '', '2015-12-24 17:29:18', '2015-12-24 17:29:18', '', 2, 'http://localhost/kingston/?page_id=6', 1, 'page', '', 0),
 (8, 1, '2015-12-24 15:56:20', '2015-12-24 15:56:20', '', 'Student Login', '', 'inherit', 'closed', 'closed', '', '7-revision-v1', '', '', '2015-12-24 15:56:20', '2015-12-24 15:56:20', '', 7, 'http://localhost/kingston/2015/12/24/7-revision-v1/', 0, 'revision', '', 0),
@@ -1577,6 +1534,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- Table structure for table `wp_sfauthcats`
 --
 
+DROP TABLE IF EXISTS `wp_sfauthcats`;
 CREATE TABLE IF NOT EXISTS `wp_sfauthcats` (
   `authcat_id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `authcat_name` varchar(50) NOT NULL,
@@ -1606,6 +1564,7 @@ INSERT INTO `wp_sfauthcats` (`authcat_id`, `authcat_name`, `authcat_slug`, `auth
 -- Table structure for table `wp_sfauths`
 --
 
+DROP TABLE IF EXISTS `wp_sfauths`;
 CREATE TABLE IF NOT EXISTS `wp_sfauths` (
   `auth_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `auth_name` varchar(50) NOT NULL,
@@ -1670,6 +1629,7 @@ INSERT INTO `wp_sfauths` (`auth_id`, `auth_name`, `auth_desc`, `active`, `ignore
 -- Table structure for table `wp_sfcache`
 --
 
+DROP TABLE IF EXISTS `wp_sfcache`;
 CREATE TABLE IF NOT EXISTS `wp_sfcache` (
   `cache_id` varchar(40) NOT NULL DEFAULT '',
   `cache_out` bigint(6) DEFAULT NULL,
@@ -1677,17 +1637,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfcache` (
   PRIMARY KEY (`cache_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `wp_sfcache`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfdefpermissions`
 --
 
+DROP TABLE IF EXISTS `wp_sfdefpermissions`;
 CREATE TABLE IF NOT EXISTS `wp_sfdefpermissions` (
   `permission_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `group_id` bigint(20) NOT NULL DEFAULT '0',
@@ -1699,17 +1655,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfdefpermissions` (
   KEY `permission_role_idx` (`permission_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfdefpermissions`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sferrorlog`
 --
 
+DROP TABLE IF EXISTS `wp_sferrorlog`;
 CREATE TABLE IF NOT EXISTS `wp_sferrorlog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `error_date` datetime NOT NULL,
@@ -1726,7 +1678,7 @@ CREATE TABLE IF NOT EXISTS `wp_sferrorlog` (
 --
 
 INSERT INTO `wp_sferrorlog` (`id`, `error_date`, `error_type`, `error_cat`, `keycheck`, `error_count`, `error_text`) VALUES
-(1, '2016-01-03 07:42:03', 'php', 'spaErrNotice', 'Notice82ress/sp-api/sp-api-plugins.php', 1, 'file: /simple-press/sp-api/sp-api-plugins.php<br />line: 82<br />function: sp_get_plugins<br />Notice | Undefined variable: plugins_subdir'),
+(1, '2016-01-05 05:35:58', 'php', 'spaErrNotice', 'Notice82ress/sp-api/sp-api-plugins.php', 3, 'file: /simple-press/sp-api/sp-api-plugins.php<br />line: 82<br />function: sp_get_plugins<br />Notice | Undefined variable: plugins_subdir'),
 (2, '2016-01-03 11:02:56', 'php', 'spaErrNotice', 'Notice726sp-forum-support-functions.php', 2, 'file: /simple-press/sp-startup/forum/sp-forum-support-functions.php<br />line: 726<br />function: sp_og_namespace<br />Notice | Undefined index: sfseo_og'),
 (3, '2016-01-03 11:02:57', 'php', 'spaErrNotice', 'Notice741sp-forum-support-functions.php', 2, 'file: /simple-press/sp-startup/forum/sp-forum-support-functions.php<br />line: 741<br />function: sp_og_meta<br />Notice | Undefined index: sfseo_og'),
 (4, '2016-01-03 16:54:07', 'php', 'spaErrWarning', 'Warning59ress/sp-api/sp-api-plugins.php', 3, 'file: /simple-press/sp-api/sp-api-plugins.php<br />line: 59<br />function: opendir<br />Warning | opendir(D:\\wamp\\www\\kingston/wp-content/sp-resources/forum-plugins,D:\\wamp\\www\\kingston/wp-content/sp-resources/forum-plugins) [<a href=''function.opendir''>function.opendir</a>]: The system cannot find the file specified. (code: 2)');
@@ -1737,6 +1689,7 @@ INSERT INTO `wp_sferrorlog` (`id`, `error_date`, `error_type`, `error_cat`, `key
 -- Table structure for table `wp_sfforums`
 --
 
+DROP TABLE IF EXISTS `wp_sfforums`;
 CREATE TABLE IF NOT EXISTS `wp_sfforums` (
   `forum_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `forum_name` varchar(200) NOT NULL,
@@ -1771,17 +1724,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfforums` (
   KEY `post_id_idx` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfforums`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfgroups`
 --
 
+DROP TABLE IF EXISTS `wp_sfgroups`;
 CREATE TABLE IF NOT EXISTS `wp_sfgroups` (
   `group_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `group_name` text,
@@ -1793,17 +1742,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfgroups` (
   PRIMARY KEY (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfgroups`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sflog`
 --
 
+DROP TABLE IF EXISTS `wp_sflog`;
 CREATE TABLE IF NOT EXISTS `wp_sflog` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
@@ -1827,6 +1772,7 @@ INSERT INTO `wp_sflog` (`id`, `user_id`, `install_date`, `release_type`, `versio
 -- Table structure for table `wp_sflogmeta`
 --
 
+DROP TABLE IF EXISTS `wp_sflogmeta`;
 CREATE TABLE IF NOT EXISTS `wp_sflogmeta` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `version` varchar(10) DEFAULT NULL,
@@ -1834,17 +1780,13 @@ CREATE TABLE IF NOT EXISTS `wp_sflogmeta` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sflogmeta`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfmembers`
 --
 
+DROP TABLE IF EXISTS `wp_sfmembers`;
 CREATE TABLE IF NOT EXISTS `wp_sfmembers` (
   `user_id` bigint(20) NOT NULL DEFAULT '0',
   `display_name` varchar(100) DEFAULT NULL,
@@ -1880,6 +1822,7 @@ INSERT INTO `wp_sfmembers` (`user_id`, `display_name`, `moderator`, `avatar`, `s
 -- Table structure for table `wp_sfmemberships`
 --
 
+DROP TABLE IF EXISTS `wp_sfmemberships`;
 CREATE TABLE IF NOT EXISTS `wp_sfmemberships` (
   `membership_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -1889,17 +1832,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfmemberships` (
   KEY `usergroup_id_idx` (`usergroup_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfmemberships`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfmeta`
 --
 
+DROP TABLE IF EXISTS `wp_sfmeta`;
 CREATE TABLE IF NOT EXISTS `wp_sfmeta` (
   `meta_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `meta_type` varchar(20) NOT NULL,
@@ -1940,6 +1879,7 @@ INSERT INTO `wp_sfmeta` (`meta_id`, `meta_type`, `meta_key`, `meta_value`, `auto
 -- Table structure for table `wp_sfnotices`
 --
 
+DROP TABLE IF EXISTS `wp_sfnotices`;
 CREATE TABLE IF NOT EXISTS `wp_sfnotices` (
   `notice_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
@@ -1953,17 +1893,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfnotices` (
   KEY `user_id_idx` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfnotices`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfoptions`
 --
 
+DROP TABLE IF EXISTS `wp_sfoptions`;
 CREATE TABLE IF NOT EXISTS `wp_sfoptions` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `option_name` varchar(64) NOT NULL DEFAULT '',
@@ -2051,6 +1987,7 @@ INSERT INTO `wp_sfoptions` (`option_id`, `option_name`, `option_value`) VALUES
 -- Table structure for table `wp_sfpermissions`
 --
 
+DROP TABLE IF EXISTS `wp_sfpermissions`;
 CREATE TABLE IF NOT EXISTS `wp_sfpermissions` (
   `permission_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `forum_id` bigint(20) NOT NULL DEFAULT '0',
@@ -2062,17 +1999,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfpermissions` (
   KEY `permission_role_idx` (`permission_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfpermissions`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfposts`
 --
 
+DROP TABLE IF EXISTS `wp_sfposts`;
 CREATE TABLE IF NOT EXISTS `wp_sfposts` (
   `post_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `post_content` longtext,
@@ -2098,17 +2031,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfposts` (
   KEY `post_date_idx` (`post_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfposts`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfroles`
 --
 
+DROP TABLE IF EXISTS `wp_sfroles`;
 CREATE TABLE IF NOT EXISTS `wp_sfroles` (
   `role_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `role_name` varchar(50) NOT NULL DEFAULT '',
@@ -2135,6 +2064,7 @@ INSERT INTO `wp_sfroles` (`role_id`, `role_name`, `role_desc`, `role_auths`) VAL
 -- Table structure for table `wp_sfspecialranks`
 --
 
+DROP TABLE IF EXISTS `wp_sfspecialranks`;
 CREATE TABLE IF NOT EXISTS `wp_sfspecialranks` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
@@ -2144,17 +2074,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfspecialranks` (
   KEY `special_rank_idx` (`special_rank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfspecialranks`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sftopics`
 --
 
+DROP TABLE IF EXISTS `wp_sftopics`;
 CREATE TABLE IF NOT EXISTS `wp_sftopics` (
   `topic_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `topic_name` varchar(200) NOT NULL,
@@ -2176,17 +2102,13 @@ CREATE TABLE IF NOT EXISTS `wp_sftopics` (
   KEY `post_id_idx` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sftopics`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sftrack`
 --
 
+DROP TABLE IF EXISTS `wp_sftrack`;
 CREATE TABLE IF NOT EXISTS `wp_sftrack` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `trackuserid` bigint(20) DEFAULT '0',
@@ -2217,6 +2139,7 @@ INSERT INTO `wp_sftrack` (`id`, `trackuserid`, `trackname`, `trackdate`, `forum_
 -- Table structure for table `wp_sfuseractivity`
 --
 
+DROP TABLE IF EXISTS `wp_sfuseractivity`;
 CREATE TABLE IF NOT EXISTS `wp_sfuseractivity` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
@@ -2228,17 +2151,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfuseractivity` (
   KEY `user_id_idx` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_sfuseractivity`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_sfusergroups`
 --
 
+DROP TABLE IF EXISTS `wp_sfusergroups`;
 CREATE TABLE IF NOT EXISTS `wp_sfusergroups` (
   `usergroup_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `usergroup_name` text NOT NULL,
@@ -2264,6 +2183,7 @@ INSERT INTO `wp_sfusergroups` (`usergroup_id`, `usergroup_name`, `usergroup_desc
 -- Table structure for table `wp_sfwaiting`
 --
 
+DROP TABLE IF EXISTS `wp_sfwaiting`;
 CREATE TABLE IF NOT EXISTS `wp_sfwaiting` (
   `topic_id` bigint(20) NOT NULL,
   `forum_id` bigint(20) NOT NULL,
@@ -2273,17 +2193,13 @@ CREATE TABLE IF NOT EXISTS `wp_sfwaiting` (
   PRIMARY KEY (`topic_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `wp_sfwaiting`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_termmeta`
 --
 
+DROP TABLE IF EXISTS `wp_termmeta`;
 CREATE TABLE IF NOT EXISTS `wp_termmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2294,17 +2210,13 @@ CREATE TABLE IF NOT EXISTS `wp_termmeta` (
   KEY `meta_key` (`meta_key`(191))
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `wp_termmeta`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `wp_terms`
 --
 
+DROP TABLE IF EXISTS `wp_terms`;
 CREATE TABLE IF NOT EXISTS `wp_terms` (
   `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -2329,6 +2241,7 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- Table structure for table `wp_term_relationships`
 --
 
+DROP TABLE IF EXISTS `wp_term_relationships`;
 CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2368,6 +2281,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Table structure for table `wp_term_taxonomy`
 --
 
+DROP TABLE IF EXISTS `wp_term_taxonomy`;
 CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2394,6 +2308,7 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- Table structure for table `wp_usermeta`
 --
 
+DROP TABLE IF EXISTS `wp_usermeta`;
 CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2422,7 +2337,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (11, 1, 'wp_user_level', '10'),
 (12, 1, 'dismissed_wp_pointers', 'wp360_locks,wp390_widgets'),
 (13, 1, 'show_welcome_panel', '1'),
-(14, 1, 'session_tokens', 'a:4:{s:64:"4602e81dddbf2c25a593bf40de93a99ce74b7fd68aaad85ec58da49c72ed744e";a:4:{s:10:"expiration";i:1452182889;s:2:"ip";s:3:"::1";s:2:"ua";s:102:"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1450973289;}s:64:"f625592fcd8895be7f8264ca00e48b06aeced8489cdb35296dbf45f2f9b08721";a:4:{s:10:"expiration";i:1451980421;s:2:"ip";s:3:"::1";s:2:"ua";s:102:"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1451807621;}s:64:"44b5c4fa39674e76d6cc12ce6567545c35fc7091ce5938964db52783bb359d0f";a:4:{s:10:"expiration";i:1451983379;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1451810579;}s:64:"2481a1c81428fbaa025ca4e511fa9a3a007fb7a70a3cfc63a1c50f48e2fc34db";a:4:{s:10:"expiration";i:1452013004;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1451840204;}}'),
+(14, 1, 'session_tokens', 'a:5:{s:64:"4602e81dddbf2c25a593bf40de93a99ce74b7fd68aaad85ec58da49c72ed744e";a:4:{s:10:"expiration";i:1452182889;s:2:"ip";s:3:"::1";s:2:"ua";s:102:"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1450973289;}s:64:"f625592fcd8895be7f8264ca00e48b06aeced8489cdb35296dbf45f2f9b08721";a:4:{s:10:"expiration";i:1451980421;s:2:"ip";s:3:"::1";s:2:"ua";s:102:"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1451807621;}s:64:"44b5c4fa39674e76d6cc12ce6567545c35fc7091ce5938964db52783bb359d0f";a:4:{s:10:"expiration";i:1451983379;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1451810579;}s:64:"2481a1c81428fbaa025ca4e511fa9a3a007fb7a70a3cfc63a1c50f48e2fc34db";a:4:{s:10:"expiration";i:1452013004;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1451840204;}s:64:"76903d5cb7fc82b9a2b8363bc05be6ecf5cd67fb8628d0161baaa43669a889ad";a:4:{s:10:"expiration";i:1452105250;s:2:"ip";s:3:"::1";s:2:"ua";s:102:"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36";s:5:"login";i:1451932450;}}'),
 (22, 1, 'wppb_pms_cross_promo_dismiss_notification', 'true'),
 (15, 1, 'wp_dashboard_quick_press_last_post_id', '16'),
 (16, 1, 'signup_ip', '45.64.225.11'),
@@ -2438,6 +2353,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Table structure for table `wp_users`
 --
 
+DROP TABLE IF EXISTS `wp_users`;
 CREATE TABLE IF NOT EXISTS `wp_users` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -2467,6 +2383,7 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 -- Table structure for table `wp_wpeditor_settings`
 --
 
+DROP TABLE IF EXISTS `wp_wpeditor_settings`;
 CREATE TABLE IF NOT EXISTS `wp_wpeditor_settings` (
   `key` varchar(50) NOT NULL,
   `value` text NOT NULL,
@@ -2501,3 +2418,7 @@ INSERT INTO `wp_wpeditor_settings` (`key`, `value`) VALUES
 ('theme_indent_unit', '2'),
 ('post_indent_unit', '2'),
 ('admin_page_roles', 'a:3:{s:8:"settings";s:14:"manage_options";s:12:"theme-editor";s:11:"edit_themes";s:13:"plugin-editor";s:12:"edit_plugins";}');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
