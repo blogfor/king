@@ -137,7 +137,7 @@ ul {
 }
 .nav ul li:last-child a{
     border-right:none;}
-.nav ul li a:hover{
+.nav ul li a:hover,.current-menu-item{
     background-color:#0e3a67;
     color:#fff;
 }
@@ -1487,4 +1487,32 @@ padding-bottom:20px;
 }
 .margin-footer {
 	height:40px;
+}
+
+/* Our Unit Page */
+.our-units {
+	line-height:25px;
+}
+
+
+.our-units h3.big {
+	font-size:24px;
+	
+}
+.our-units h3 {
+	margin:20px 0;	
+}
+.our-units ul li {
+	margin:10px 0;
+	
+}
+
+.our-units .col-lg-1, .our-units .col-lg-10, .our-units .col-lg-11, .our-units .col-lg-12, .our-units .col-lg-2, .our-units .col-lg-3, .our-units .col-lg-4, .our-units .col-lg-5, .our-units .col-lg-6, .our-units .col-lg-7, .our-units .col-lg-8, .our-units .col-lg-9, .our-units .col-md-1, .our-units .col-md-10, .our-units .col-md-11, .our-units .col-md-12, .our-units .col-md-2, .our-units .col-md-3, .our-units .col-md-4, .our-units .col-md-5, .our-units .col-md-6, .our-units .col-md-7, .our-units .col-md-8, .our-units .col-md-9, .our-units .col-sm-1, .our-units .col-sm-10, .our-units .col-sm-11, .our-units .col-sm-12, .our-units .col-sm-2, .our-units .col-sm-3, .our-units .col-sm-4, .our-units .col-sm-5, .our-units .col-sm-6, .our-units .col-sm-7, .our-units .col-sm-8, .our-units .col-sm-9, .our-units .col-xs-1, .our-units .col-xs-10, .our-units .col-xs-11, .our-units .col-xs-12, .our-units .col-xs-2, .our-units .col-xs-3, .our-units .col-xs-4, .our-units .col-xs-5, .our-units .col-xs-6, .our-units .col-xs-7, .our-units .col-xs-8, .our-units .col-xs-9 {
+   
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.our-units .col-sm-6 {
+	margin:10px 0;
 }
