@@ -531,3 +531,4 @@ function get_custom_msslider($atts){
 	echo $str;	
 }
 add_shortcode('ms-custom-slider', 'get_custom_msslider');
+?>
