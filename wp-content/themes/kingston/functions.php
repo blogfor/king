@@ -25,6 +25,10 @@
  * @since Twenty Fifteen 1.0
  */
 
+//Enable short code in widget area.
+add_filter( 'widget_text', 'do_shortcode' );
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
