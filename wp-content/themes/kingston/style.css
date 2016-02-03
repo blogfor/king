@@ -1,18 +1,1 @@
-/*
-Theme Name: Kingston
-Theme URI: http://goodcausetechnologies.org/
-Author: the Blogfor team
-Author URI: http://blogfordeveloper.com/
-Description: 
-Version: 1.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: 
-Text Domain: twentyfifteen
-
-*/
-.iso p{margin-top: 1px !important;}
-
-.campus-box{
-	padding-top:55px;
-}
+/*Theme Name: KingstonTheme URI: http://goodcausetechnologies.org/Author: the Blogfor teamAuthor URI: http://blogfordeveloper.com/Description: Version: 1.0License: GNU General Public License v2 or laterLicense URI: http://www.gnu.org/licenses/gpl-2.0.htmlTags: Text Domain: twentyfifteen*/.iso p{margin-top: 1px !important;}.campus-box{	padding-top:55px;}.abt-us ul {    list-style: inherit !important;    margin: 15px 5px !important;    padding: 5px 15px !important;}
