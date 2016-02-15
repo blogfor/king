@@ -30,9 +30,7 @@
 
 </div><!--footer-->
 
-<!-- Bootstrap core JavaScript
-
-================================================== -->
+<!-- Bootstrap core JavaScript ================================================== -->
 
 <!-- Placed at the end of the document so the pages load faster -->
 
@@ -44,22 +42,14 @@
 $(document).ready(function(){	
 	
     $('.menu-item-has-children').hover(function() {
-			//alert("rrr");
-			//$(this).find('ul.dropdown-menu').show();
-			$(this).find('ul.dropdown-menu').slideToggle("fast");
-        //$('.dropdown-menu', this).trigger('click');
+	$(this).find('ul.dropdown-menu').slideToggle("fast");  
 
     });
-	$('.dropdown-menu').focusout(function() {
-		alert("ddd");
-		 //$('ul.dropdown-menu').hide();
+	$('.dropdown-menu').focusout(function() {		
+		 $('ul.dropdown-menu').hide();
 	});
 
-
-	 
-		 
-
-});
+	});
 
 </script>
 
